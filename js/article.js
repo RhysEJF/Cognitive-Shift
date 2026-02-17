@@ -42,13 +42,15 @@ function pbFileUrl(record, field) {
 // ---------------------------------------------------------------------------
 
 /**
- * Render the article header section.
- * @param {Object} article - Article record with expanded author & publication
+ * Render the article header section with multi-author support.
+ * @param {Object} article - Article record with expanded authors & publication
  * @returns {string} HTML string
  */
 function renderArticleHeader(article) {
   var pub = article.expand && article.expand.publication;
-  var author = article.expand && article.expand.author;
+  var authors = article.expand && article.expand.authors;
+  if (authors && !Array.isArray(authors)) authors = [authors];
+  if (!authors) authors = [];
 
   var pubLink = "";
   if (pub) {
@@ -57,22 +59,31 @@ function renderArticleHeader(article) {
       escapeHtml(pub.name) + '</a>';
   }
 
-  var avatarHtml = "";
-  if (author && author.avatar) {
-    var avatarUrl = pbFileUrl(author, "avatar");
-    avatarHtml = '<img class="article-meta-avatar" src="' + avatarUrl +
-      '" alt="' + escapeHtml(author.display_name || "") + '">';
+  var authorsHtml = "";
+  if (authors.length > 0) {
+    var authorParts = authors.map(function(author) {
+      var avatarHtml = "";
+      if (author.avatar) {
+        var avatarUrl = pbFileUrl(author, "avatar");
+        avatarHtml = '<img class="article-meta-avatar" src="' + avatarUrl +
+          '" alt="' + escapeHtml(author.name || "") + '">';
+      }
+      var name = author.name || "Unknown";
+      var nameHtml = author.slug
+        ? '<a href="/authors/?slug=' + encodeURIComponent(author.slug) + '">' + escapeHtml(name) + '</a>'
+        : escapeHtml(name);
+      return avatarHtml + '<span class="article-meta-name">' + nameHtml + '</span>';
+    });
+    authorsHtml = '<div class="article-meta-authors">' + authorParts.join('<span class="article-meta-sep">&amp;</span>') + '</div>';
   }
 
-  var authorName = author ? escapeHtml(author.display_name || "Unknown") : "Unknown";
   var dateStr = formatDate(article.published_at);
 
   return '<div class="article-header">' +
     pubLink +
     '<h1>' + escapeHtml(article.title) + '</h1>' +
     '<div class="article-meta">' +
-      avatarHtml +
-      '<span class="article-meta-name">' + authorName + '</span>' +
+      authorsHtml +
       (dateStr ? '<span class="article-meta-sep">&middot;</span>' +
         '<span class="article-meta-date">' + dateStr + '</span>' : '') +
     '</div>' +
@@ -92,35 +103,40 @@ function renderArticleBody(article) {
 }
 
 /**
- * Render the author bio card at the bottom.
- * @param {Object} article - Article record with expanded author
+ * Render author bio cards at the bottom (supports multiple authors).
+ * @param {Object} article - Article record with expanded authors
  * @returns {string} HTML string
  */
 function renderAuthorBio(article) {
-  var author = article.expand && article.expand.author;
-  if (!author) return "";
+  var authors = article.expand && article.expand.authors;
+  if (authors && !Array.isArray(authors)) authors = [authors];
+  if (!authors || authors.length === 0) return "";
 
-  var avatarHtml = "";
-  if (author.avatar) {
-    var avatarUrl = pbFileUrl(author, "avatar");
-    avatarHtml = '<img class="author-bio-avatar" src="' + avatarUrl +
-      '" alt="' + escapeHtml(author.display_name || "") + '">';
-  }
+  var cards = authors.map(function(author) {
+    var avatarHtml = "";
+    if (author.avatar) {
+      var avatarUrl = pbFileUrl(author, "avatar");
+      avatarHtml = '<img class="author-bio-avatar" src="' + avatarUrl +
+        '" alt="' + escapeHtml(author.name || "") + '">';
+    }
 
-  var authorLink = author.slug
-    ? '<a href="/authors/?slug=' + encodeURIComponent(author.slug) + '">' +
-        escapeHtml(author.display_name || "Unknown") + '</a>'
-    : escapeHtml(author.display_name || "Unknown");
+    var authorLink = author.slug
+      ? '<a href="/authors/?slug=' + encodeURIComponent(author.slug) + '">' +
+          escapeHtml(author.name || "Unknown") + '</a>'
+      : escapeHtml(author.name || "Unknown");
 
-  var bioText = author.bio ? escapeHtml(author.bio) : "";
+    var bioText = author.bio ? escapeHtml(author.bio) : "";
 
-  return '<div class="author-bio-card">' +
-    avatarHtml +
-    '<div class="author-bio-info">' +
-      '<div class="author-bio-name">' + authorLink + '</div>' +
-      (bioText ? '<div class="author-bio-text">' + bioText + '</div>' : '') +
-    '</div>' +
-  '</div>';
+    return '<div class="author-bio-card">' +
+      avatarHtml +
+      '<div class="author-bio-info">' +
+        '<div class="author-bio-name">' + authorLink + '</div>' +
+        (bioText ? '<div class="author-bio-text">' + bioText + '</div>' : '') +
+      '</div>' +
+    '</div>';
+  });
+
+  return cards.join("");
 }
 
 /**

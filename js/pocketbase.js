@@ -77,7 +77,7 @@ async function getArticles(publicationSlug, page, perPage) {
     page: String(page),
     perPage: String(perPage),
     sort: "-published_at",
-    expand: "author,publication"
+    expand: "authors,publication"
   });
   if (publicationSlug) {
     params.set("filter", "(publication.slug='" + publicationSlug + "' && is_published=true)");
@@ -88,14 +88,14 @@ async function getArticles(publicationSlug, page, perPage) {
 }
 
 /**
- * Fetch a single article by slug with expanded author and publication.
+ * Fetch a single article by slug with expanded authors and publication.
  * @param {string} slug
  * @returns {Promise<Object|null>} First matching record or null
  */
 async function getArticle(slug) {
   var params = new URLSearchParams({
     filter: "(slug='" + slug + "')",
-    expand: "author,publication"
+    expand: "authors,publication"
   });
   var result = await _pbGet(_pbUrl("articles") + "?" + params.toString());
   return result && result.items && result.items.length > 0 ? result.items[0] : null;
@@ -147,7 +147,7 @@ async function getAuthor(slug) {
  */
 async function getAuthorArticles(authorId) {
   var params = new URLSearchParams({
-    filter: "(author='" + authorId + "' && is_published=true)",
+    filter: "(authors?~'" + authorId + "' && is_published=true)",
     sort: "-published_at",
     expand: "publication"
   });

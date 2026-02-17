@@ -54,10 +54,10 @@ function renderAuthorAvatar(author) {
   if (author.avatar) {
     var avatarUrl = pbFileUrl(author, "avatar");
     return '<img class="author-profile-avatar" src="' + avatarUrl +
-      '" alt="' + escapeHtml(author.display_name || "") + '">';
+      '" alt="' + escapeHtml(author.name || "") + '">';
   }
 
-  var initial = (author.display_name || "?").charAt(0).toUpperCase();
+  var initial = (author.name || "?").charAt(0).toUpperCase();
   return '<div class="author-profile-avatar-placeholder">' +
     '<span>' + escapeHtml(initial) + '</span>' +
   '</div>';
@@ -146,7 +146,7 @@ async function initAuthorPage() {
   }
 
   // Update page title
-  document.title = (author.display_name || "Author") + " — The Cognitive Shift";
+  document.title = (author.name || "Author") + " — The Cognitive Shift";
 
   // Render author header
   if (headerEl) {
@@ -157,7 +157,7 @@ async function initAuthorPage() {
     headerEl.innerHTML =
       '<div class="section-label">Author</div>' +
       renderAuthorAvatar(author) +
-      '<h1 class="page-title">' + escapeHtml(author.display_name || "Unknown") + '</h1>' +
+      '<h1 class="page-title">' + escapeHtml(author.name || "Unknown") + '</h1>' +
       bioHtml;
   }
 
@@ -168,11 +168,11 @@ async function initAuthorPage() {
   if (articlesEl) {
     if (articles.length === 0) {
       articlesEl.innerHTML =
-        '<div class="section-label">Articles by ' + escapeHtml(author.display_name || "this author") + '</div>' +
+        '<div class="section-label">Articles by ' + escapeHtml(author.name || "this author") + '</div>' +
         '<p class="author-no-articles">No published articles yet.</p>';
     } else {
       var html = '<div class="section-label">Articles by ' +
-        escapeHtml(author.display_name || "this author") + '</div>' +
+        escapeHtml(author.name || "this author") + '</div>' +
         '<div class="author-articles-list">';
       for (var i = 0; i < articles.length; i++) {
         html += renderAuthorArticleItem(articles[i]);

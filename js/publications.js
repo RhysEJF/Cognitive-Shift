@@ -19,7 +19,7 @@
  */
 function renderPublicationCard(pub) {
   var owner = pub.expand && pub.expand.owner;
-  var ownerName = owner ? escapeHtml(owner.display_name || "Unknown") : "";
+  var ownerName = owner ? escapeHtml(owner.name || "Unknown") : "";
 
   var descriptionHtml = "";
   if (pub.description) {
@@ -83,12 +83,12 @@ function renderPublicationHero(pub, owner) {
     if (owner.avatar) {
       var avatarUrl = pbFileUrl(owner, "avatar");
       avatarHtml = '<img class="pub-hero-avatar" src="' + avatarUrl +
-        '" alt="' + escapeHtml(owner.display_name || "") + '">';
+        '" alt="' + escapeHtml(owner.name || "") + '">';
     }
     var ownerLink = owner.slug
       ? '<a href="/authors/?slug=' + encodeURIComponent(owner.slug) + '">' +
-          escapeHtml(owner.display_name || "Unknown") + '</a>'
-      : escapeHtml(owner.display_name || "Unknown");
+          escapeHtml(owner.name || "Unknown") + '</a>'
+      : escapeHtml(owner.name || "Unknown");
 
     ownerHtml = '<div class="pub-hero-owner">' +
       avatarHtml +
@@ -115,8 +115,10 @@ function renderPublicationHero(pub, owner) {
  * @returns {string} HTML string
  */
 function renderPubArticleItem(article, pubSlug) {
-  var author = article.expand && article.expand.author;
-  var authorName = author ? escapeHtml(author.display_name || "Unknown") : "";
+  var authors = article.expand && article.expand.authors;
+  if (authors && !Array.isArray(authors)) authors = [authors];
+  if (!authors) authors = [];
+  var authorName = authors.map(function(a) { return a.name || "Unknown"; }).join(" & ");
   var dateStr = formatDate(article.published_at);
   var articleUrl = '/publications/?slug=' + encodeURIComponent(pubSlug) +
     '&article=' + encodeURIComponent(article.slug);
