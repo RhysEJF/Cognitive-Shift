@@ -35,8 +35,12 @@
     var githubUrl = form.querySelector("#q-github").value.trim();
     var motivation = form.querySelector("#q-motivation").value.trim();
 
-    if (!role || !linkedinUrl || !motivation) {
+    if (!role || !motivation) {
       showError("Please fill in all required fields.");
+      return;
+    }
+    if (!linkedinUrl && !twitterUrl && !githubUrl) {
+      showError("Please provide at least one link so we can find you.");
       return;
     }
 
