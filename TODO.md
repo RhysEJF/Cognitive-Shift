@@ -2,7 +2,7 @@
 
 > Last updated: 2026-02-17
 
-## Status: Soft Launch (site deployed, backend not connected)
+## Status: Backend connected, ready for content
 
 ---
 
@@ -18,16 +18,16 @@
 - [ ] Generate OG image (1200×630px) and upload to `assets/og-image.png`
 - [ ] Test social previews at https://opengraph.xyz
 
-## 3. PocketBase Collections (BLOCKING — signups broken without this)
+## 3. PocketBase Collections
 PocketBase is running at `https://pocketbase-production-3085.up.railway.app`
 Admin UI: `https://pocketbase-production-3085.up.railway.app/_/`
 
-Create collections per `POCKETBASE-SCHEMA.md`:
-- [ ] Extend `users` auth collection (add display_name, slug, bio, avatar, role)
-- [ ] Create `publications` collection (name, slug, description, cover_image, owner, editors, is_active)
-- [ ] Create `articles` collection (title, slug, excerpt, content, author, publication, featured_image, is_published, published_at, tags)
-- [ ] Create `newsletter_subscribers` collection — **set public create rule (empty string "")**
-- [ ] Create `community_applications` collection — **set public create rule (empty string "")**
+- [x] Extend `users` auth collection (added slug, bio, role fields; made list/view public)
+- [x] Create `publications` collection (name, slug, description, cover_image, owner, editors, is_active)
+- [x] Create `articles` collection (title, slug, excerpt, content, **authors** (multi), publication, featured_image, is_published, published_at, tags)
+- [x] `newsletter_subscribers` collection exists with public create
+- [x] `community_applications` collection exists with public create
+- [x] End-to-end test: publication + article renders on live site (verified & cleaned up)
 - [ ] Test newsletter signup from landing page (end-to-end)
 - [ ] Test community application from /signup/ page (end-to-end)
 
@@ -39,10 +39,9 @@ Create collections per `POCKETBASE-SCHEMA.md`:
 - [ ] Test `send-community-invite.js --dry-run`
 
 ## 5. First Content
-- [ ] Create your author profile in PocketBase (users collection — display_name, slug, bio, avatar)
+- [ ] Create your author profile in PocketBase (users collection — name, slug, bio, avatar)
 - [ ] Create first publication (e.g., "Bottleneck Cartography" or similar)
 - [ ] Write and publish first article
-- [ ] Verify article renders correctly on the site
 - [ ] Verify newsletter modal appears on article scroll (30% trigger)
 
 ## 6. Nice-to-Haves (Post-Launch)
@@ -67,3 +66,8 @@ Create collections per `POCKETBASE-SCHEMA.md`:
 | Design system | `DESIGN-SYSTEM.md` | — |
 | DB schema | `POCKETBASE-SCHEMA.md` | — |
 | Digital Twin outcome | `out_wzaiVsINHd7t` | — |
+
+## Notes
+- Articles support multiple authors (multi-relation `authors` field)
+- The `users` collection `name` field is used for display (not `display_name`)
+- Sean has been added as a PocketBase superuser
