@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Cognitive Shift</title>
-<meta name="description" content="Every industry has a hidden cognitive bottleneck. We map them, dissolve them, and build what comes next.">
+<meta name="description" content="Learn to build the AI workforce. Stay human while the world catches up. Free weekly dispatches on structural AI shifts.">
 <meta property="og:title" content="The Cognitive Shift">
-<meta property="og:description" content="Every industry has a hidden cognitive bottleneck. We map them, dissolve them, and build what comes next.">
+<meta property="og:description" content="Learn to build the AI workforce. Stay human while the world catches up. Free weekly dispatches on structural AI shifts.">
 <meta property="og:image" content="https://thecognitiveshift.com/assets/og-image.png">
 <meta property="og:url" content="https://thecognitiveshift.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Cognitive Shift">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Cognitive Shift">
-<meta name="twitter:description" content="Every industry has a hidden cognitive bottleneck. We map them, dissolve them, and build what comes next.">
+<meta name="twitter:description" content="Learn to build the AI workforce. Stay human while the world catches up. Free weekly dispatches on structural AI shifts.">
 <meta name="twitter:image" content="https://thecognitiveshift.com/assets/og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/styles.css">
@@ -46,10 +46,10 @@
       </div>
 
       <!-- Eyebrow -->
-      <div class="hero-eyebrow">For operators, leaders & builders</div>
+      <div class="hero-eyebrow">For <span id="typed-role"></span><span class="typed-cursor">|</span></div>
 
       <!-- Title -->
-      <h1 class="hero-title">Learn to build the <em>AI workforce</em> your industry doesn't see coming</h1>
+      <h1 class="hero-title">Learn to build the <em>AI workforce</em>. Stay human while the world catches up.</h1>
 
       <!-- Body -->
       <p class="hero-body">
@@ -141,5 +141,43 @@
   <script src="/js/config.js"></script>
   <script src="/js/pocketbase.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+  (function() {
+    var words = ['operators', 'scientists', 'builders', 'philosophers', 'leaders'];
+    var el = document.getElementById('typed-role');
+    if (!el) return;
+    var wordIndex = 0;
+    var charIndex = 0;
+    var deleting = false;
+    var typeSpeed = 100;
+    var deleteSpeed = 60;
+    var pauseAfterType = 2000;
+    var pauseAfterDelete = 400;
+
+    function tick() {
+      var current = words[wordIndex];
+      if (!deleting) {
+        el.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          setTimeout(function() { deleting = true; tick(); }, pauseAfterType);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(tick, pauseAfterDelete);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+    tick();
+  })();
+  </script>
 </body>
 </html>

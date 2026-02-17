@@ -433,7 +433,19 @@ body {
 /* ========================================
    8. Utility Classes
    ======================================== */
-/* (none yet) */
+
+/* --- Typed Role Cycling --- */
+.typed-cursor {
+  display: inline-block;
+  color: var(--gold);
+  animation: blink 0.7s step-end infinite;
+  margin-left: 1px;
+  font-weight: 300;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 
 /* ========================================
