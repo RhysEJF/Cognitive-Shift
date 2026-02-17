@@ -10,8 +10,8 @@
 - [x] A records pointing to GitHub Pages IPs (185.199.108-111.153)
 - [x] CNAME `www` → `thecognitiveshift.com`
 - [x] CNAME file in repo set to `thecognitiveshift.com` (apex domain)
-- [ ] HTTPS certificate issued by GitHub/Let's Encrypt (waiting — provisioning overnight)
-- [ ] Enforce HTTPS in GitHub repo Settings → Pages
+- [x] HTTPS certificate issued by GitHub/Let's Encrypt
+- [x] Enforce HTTPS in GitHub repo Settings → Pages
 
 ## 2. Open Graph / Social Sharing
 - [x] OG + Twitter Card meta tags on all pages (index, signup, publications, authors, 404)
