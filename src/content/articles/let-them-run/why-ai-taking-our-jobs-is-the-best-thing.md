@@ -29,16 +29,16 @@ For the first time in history, having a great idea AND the ability to execute on
 
 I know *"it'll be fine"* isn't a satisfying argument. So let me give you four economic concepts that explain why the humans-become-useless narrative falls apart under scrutiny.
 
-###**When intelligence gets cheaper, we don't use less of it, we use more**: 
+### **When intelligence gets cheaper, we don't use less of it, we use more**: 
 Jevons Paradox. When coal got cheaper in the 1800s, we didn't use less coal, we used astronomically more. Same thing is happening with intelligence. As AI makes cognitive work cheaper, we'll demand a hundred times more of it. And the human who's directing that intelligence? They become the bottleneck. Bottlenecks don't get cheaper. They get very, very well paid.
 
-###**Everything AI can't improve becomes more expensive:**
+### **Everything AI can't improve becomes more expensive:**
 A hairdresser today earns dramatically more than a hairdresser a hundred years ago. Not because they cut hair any better, that hasn't changed. It's because the people buying haircuts have more money, and the human experience of the service is the value. Baumol's Cost Disease means that when productivity rises everywhere else, the things that stay human become premium. Trust, curation, community, human presence, these appreciate as AI commoditises everything cognitive.
 
-###**Even if AI is better than you at everything, you still have a role**: 
+### **Even if AI is better than you at everything, you still have a role**: 
 Trade happens based on opportunity cost, not absolute ability. Roger Federer might genuinely be a better driver than his chauffeur. But he should be playing tennis, because that's where his time is most valuable. Same with AI, even when it's superhuman at a task, if it's more superhuman at other tasks, the lower-value work defaults back to humans. There's always something for us to do, and it pays better than you'd think.
 
-###**AI can't handle what it hasn't seen before:** 
+### **AI can't handle what it hasn't seen before:** 
 Everything AI is good at comes from its training data. The entire internet, essentially. But anything novel, any new situation, any out-of-distribution problem, any task where there are only five examples in existence, and it falls apart. Humans are built for low-information environments. We extrapolate from a single data point. We generate the first examples of the new thing. We're the scouts, creating the future training sets that AI will eventually learn from. That's not going away.
 
 ## So what does this mean for you?
