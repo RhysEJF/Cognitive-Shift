@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const authors = await getCollection('authors');
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  const publications = await getCollection('publications');
+
+  return authors.map(author => ({
+    params: { slug: author.slug },
+    props: {
+      author,
+      articles: articles.filter(a => a.data.authors.includes(author.slug)),
+      publications,
+    },
+  }));
+}
+
+function formatDate(dateStr: Date | string): string {
+  const d = typeof dateStr === 'string' ? new Date(dateStr) : dateStr;
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function getPubName(slug: string, pubs: Array<{ slug: string; data: { name: string } }>): string {
+  const pub = pubs.find(p => p.slug === slug);
+  return pub ? pub.data.name : slug.replace(/-/g, ' ');
+}
+
+const { author, articles, publications } = Astro.props;
+---
+<BaseLayout
+  title={`${author.data.name} — The Cognitive Shift`}
+  description={author.data.bio || `Articles by ${author.data.name} on The Cognitive Shift.`}
+  ogUrl={`https://thecognitiveshift.com/authors/${author.slug}/`}
+>
+  <header class="page-header" id="author-header">
+    <div class="section-label">Author</div>
+    {author.data.avatar ? (
+      <img src={author.data.avatar} alt={author.data.name} class="author-profile-avatar" />
+    ) : (
+      <div class="author-profile-avatar-placeholder">
+        <span>{author.data.name.charAt(0)}</span>
+      </div>
+    )}
+    <h1 class="page-title">{author.data.name}</h1>
+    {author.data.bio && <p class="author-profile-bio">{author.data.bio}</p>}
+  </header>
+
+  <GoldRule />
+
+  <section class="content-section" id="author-articles">
+    {articles.length === 0 ? (
+      <p class="author-no-articles">No articles published yet.</p>
+    ) : (
+      <div class="author-articles-list">
+        {articles
+          .sort((a: any, b: any) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
+          .map((article: any) => {
+            const articleSlug = article.slug.includes('/') ? article.slug.split('/').pop() : article.slug;
+            return (
+              <div class="author-article-item">
+                <h3>
+                  <a href={`/publications/${article.data.publication}/${articleSlug}/`}>{article.data.title}</a>
+                </h3>
+                <div class="author-article-excerpt">{article.data.excerpt}</div>
+                <div class="author-article-meta">
+                  <a href={`/publications/${article.data.publication}/`} class="author-article-pub">
+                    {getPubName(article.data.publication, publications)}
+                  </a>
+                  <span class="author-article-sep">&middot;</span>
+                  <span class="author-article-date">{formatDate(article.data.publishedAt)}</span>
+                </div>
+              </div>
+            );
+          })}
+      </div>
+    )}
+  </section>
+</BaseLayout>

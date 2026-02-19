@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Complete Your Profile — The Cognitive Shift</title>
-<meta name="description" content="Complete your profile to request access to The Cognitive Shift community.">
-<meta property="og:title" content="Join the Circle — The Cognitive Shift">
-<meta property="og:description" content="Complete your application to join Swarm Operators — a private circle of operators, builders, and leaders.">
-<meta property="og:image" content="https://thecognitiveshift.com/assets/og-image.png">
-<meta property="og:url" content="https://thecognitiveshift.com/signup/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="The Cognitive Shift">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Join the Circle — The Cognitive Shift">
-<meta name="twitter:description" content="Complete your application to join Swarm Operators — a private circle of operators, builders, and leaders.">
-<meta name="twitter:image" content="https://thecognitiveshift.com/assets/og-image.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-  <nav class="topbar">
-    <a href="/" class="topbar-mark">The Cognitive Shift</a>
-    <div class="topbar-right">
-      <nav class="topbar-nav">
-        <a href="/publications/">Publications</a>
-      </nav>
-    </div>
-  </nav>
-
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import HeroCrest from '../../components/HeroCrest.astro';
+---
+<BaseLayout
+  title="Complete Your Profile — The Cognitive Shift"
+  description="Complete your profile to request access to The Cognitive Shift community."
+  ogUrl="https://thecognitiveshift.com/signup/"
+>
   <main>
     <!-- No-email fallback (hidden by default, shown by JS) -->
     <section id="no-email-state" class="signup-q-hero" style="display: none;">
@@ -36,7 +16,7 @@
         <p class="signup-q-body">
           You'll need to join first before completing your profile.
         </p>
-        <div class="gold-rule"></div>
+        <GoldRule />
         <a href="/" class="signup-q-back-link">Back to the landing page</a>
       </div>
     </section>
@@ -49,7 +29,7 @@
         <p class="signup-q-body">
           Complete your profile to request access to the community.
         </p>
-        <div class="gold-rule"></div>
+        <GoldRule />
       </div>
 
       <div class="signup-q-card">
@@ -137,36 +117,18 @@
     <!-- Success state (hidden by default) -->
     <section id="success-state" class="signup-q-hero" style="display: none;">
       <div class="signup-q-hero-content">
-        <div class="hero-crest">
-          <svg viewBox="0 0 64 64" fill="none">
-            <path d="M32 4 L60 32 L32 60 L4 32 Z" stroke="#c8a45c" stroke-width="0.8" fill="none" opacity="0.3"/>
-            <path d="M32 16 L48 32 L32 48 L16 32 Z" stroke="#c8a45c" stroke-width="0.8" fill="none" opacity="0.5"/>
-            <circle cx="32" cy="32" r="6" stroke="#c8a45c" stroke-width="1" fill="none"/>
-            <circle cx="32" cy="32" r="2" fill="#c8a45c" opacity="0.6"/>
-          </svg>
-        </div>
+        <HeroCrest showCrosshairs={false} />
         <div class="signup-q-eyebrow">You're in</div>
         <h1 class="signup-q-title">Welcome to the circle.</h1>
         <p class="signup-q-body">
           The Swarm Operators Discord is where the real conversations happen. Join now to connect with the people building, deploying, and thinking deeply about AI workforces, and what they mean for the future of work and human potential.
         </p>
-        <div class="gold-rule"></div>
+        <GoldRule />
         <a href="https://discord.gg/sU2DuH6g96" target="_blank" rel="noopener" class="signup-q-submit" style="display: inline-block; text-align: center; text-decoration: none; margin-bottom: 1rem;">Join the Discord</a>
         <p class="signup-q-note">This is a private community. Please keep conversations constructive and confidential.</p>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-line">
-      <div class="footer-text">The Cognitive Shift</div>
-      <div class="footer-diamond"></div>
-      <div class="footer-text">&copy; 2026</div>
-    </div>
-  </footer>
-
-  <script src="/js/config.js"></script>
-  <script src="/js/pocketbase.js"></script>
-  <script src="/js/signup-questions.js"></script>
-</body>
-</html>
+  <script src="/js/signup-questions.js" is:inline></script>
+</BaseLayout>

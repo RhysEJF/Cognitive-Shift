@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCrest from '../components/HeroCrest.astro';
+import GoldRule from '../components/GoldRule.astro';
+---
+<BaseLayout
+  title="Not Found — The Cognitive Shift"
+  description="Every industry has a hidden cognitive bottleneck. We map them, dissolve them, and build what comes next."
+>
+  <section class="hero">
+    <div class="hero-content">
+      <HeroCrest showCrosshairs={false} />
+
+      <div class="hero-eyebrow">Page not found</div>
+
+      <h1 class="hero-title">This path leads <em>nowhere</em></h1>
+
+      <p class="hero-body">
+        The page you're looking for doesn't exist. It may have been moved, or the URL may be incorrect.
+      </p>
+
+      <GoldRule />
+
+      <p style="text-align: center;">
+        <a href="/" style="color: var(--gold); text-decoration: none; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;">Return to the observatory</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

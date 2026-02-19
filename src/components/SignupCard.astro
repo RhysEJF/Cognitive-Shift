@@ -1,0 +1,22 @@
+---
+interface Props {
+  formId: string;
+  header?: string;
+  note?: string;
+  buttonText?: string;
+}
+const {
+  formId,
+  header = 'Swarm Operators Discord Channel',
+  note = 'A private circle of operators, builders, and leaders dissolving cognitive bottlenecks. Entry by application.',
+  buttonText = 'Request entry',
+} = Astro.props;
+---
+<div class="signup-card">
+  <div class="signup-card-header">{header}</div>
+  <form class="signup-form" id={formId}>
+    <input type="email" placeholder="your@email.com" required />
+    <button type="submit">{buttonText}</button>
+  </form>
+  <div class="signup-card-note">{note}</div>
+</div>

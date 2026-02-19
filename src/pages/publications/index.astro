@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import { getCollection } from 'astro:content';
+
+const publications = await getCollection('publications', ({ data }) => data.isActive);
+const authors = await getCollection('authors');
+
+function getAuthorName(slug: string): string {
+  const author = authors.find(a => a.slug === slug);
+  return author ? author.data.name : slug.replace(/-/g, ' ');
+}
+---
+<BaseLayout
+  title="Publications — The Cognitive Shift"
+  description="Long-form explorations of the structural AI shifts reshaping industries, workforces, and what it means to build."
+  ogUrl="https://thecognitiveshift.com/publications/"
+>
+  <header class="page-header">
+    <div class="section-label">Observatory</div>
+    <h1 class="page-title">Publications</h1>
+    <p class="page-subtitle">
+      Long-form explorations of the structural AI shifts reshaping industries, workforces, and what it means to build.
+    </p>
+  </header>
+
+  <GoldRule />
+
+  <section class="content-section">
+    {publications.length === 0 ? (
+      <p class="pub-empty">No publications yet. Check back soon.</p>
+    ) : (
+      <div class="pub-grid">
+        {publications.map((pub) => (
+          <a href={`/publications/${pub.slug}/`} class="pub-card">
+            <div class="pub-card-name">{pub.data.name}</div>
+            {pub.data.description && (
+              <div class="pub-card-description">
+                {pub.data.description.length > 160
+                  ? pub.data.description.slice(0, 160) + '...'
+                  : pub.data.description}
+              </div>
+            )}
+            <div class="pub-card-meta">
+              <span class="pub-card-owner">{getAuthorName(pub.data.owner)}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="bottom-epigraph">&ldquo;The shift is structural. The window is now.&rdquo;</div>
+    <div class="bottom-attribution">&mdash; The Cognitive Shift</div>
+    <form class="signup-form" id="bottom-signup-form">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Join free</button>
+    </form>
+  </section>
+</BaseLayout>

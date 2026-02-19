@@ -1,0 +1,79 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogUrl?: string;
+  ogType?: string;
+}
+
+const {
+  title = 'The Cognitive Shift',
+  description = 'Learn to build the AI workforce. Stay human while the world catches up. Free weekly dispatches on structural AI shifts.',
+  ogImage = 'https://thecognitiveshift.com/assets/og-image.png',
+  ogUrl = 'https://thecognitiveshift.com/',
+  ogType = 'website',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:url" content={ogUrl}>
+  <meta property="og:type" content={ogType}>
+  <meta property="og:site_name" content="The Cognitive Shift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+  <script>
+    // Redirect legacy ?slug= URLs to clean paths
+    (function() {
+      var p = new URLSearchParams(location.search);
+      var slug = p.get('slug');
+      if (!slug) return;
+      var path = location.pathname.replace(/\/$/, '');
+      var article = p.get('article');
+      if (path.startsWith('/publications')) {
+        location.replace(article ? '/publications/' + slug + '/' + article : '/publications/' + slug);
+      } else if (path.startsWith('/authors')) {
+        location.replace('/authors/' + slug);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="/" class="topbar-mark">The Cognitive Shift</a>
+    <div class="topbar-right">
+      <nav class="topbar-nav">
+        <a href="/publications/">Publications</a>
+      </nav>
+    </div>
+  </nav>
+
+  <slot />
+
+  <footer class="footer">
+    <div class="footer-line">
+      <div class="footer-text">The Cognitive Shift</div>
+      <div class="footer-diamond"></div>
+      <div class="footer-text">&copy; 2026</div>
+    </div>
+  </footer>
+
+  <script src="/js/config.js" is:inline></script>
+  <script src="/js/pocketbase.js" is:inline></script>
+  <script src="/js/main.js" is:inline></script>
+</body>
+</html>

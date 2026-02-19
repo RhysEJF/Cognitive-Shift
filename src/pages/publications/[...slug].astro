@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import NewsletterModal from '../../components/NewsletterModal.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pubs = await getCollection('publications');
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  const authors = await getCollection('authors');
+
+  const paths: Array<{
+    params: { slug: string };
+    props: Record<string, unknown>;
+  }> = [];
+
+  // Publication pages: /publications/{pub-slug}
+  for (const pub of pubs) {
+    const pubArticles = articles.filter(a => a.data.publication === pub.slug);
+    paths.push({
+      params: { slug: pub.slug },
+      props: { type: 'publication', pub, pubArticles, authors },
+    });
+  }
+
+  // Article pages: /publications/{pub-slug}/{article-slug}
+  for (const article of articles) {
+    const pubSlug = article.data.publication;
+    const articleSlug = article.slug.includes('/') ? article.slug.split('/').pop()! : article.slug;
+    paths.push({
+      params: { slug: `${pubSlug}/${articleSlug}` },
+      props: { type: 'article', article, authors, pubs },
+    });
+  }
+
+  return paths;
+}
+
+function formatDate(dateStr: Date | string): string {
+  const d = typeof dateStr === 'string' ? new Date(dateStr) : dateStr;
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function getAuthorName(slug: string, authors: Array<{ slug: string; data: { name: string } }>): string {
+  const author = authors.find(a => a.slug === slug);
+  return author ? author.data.name : slug.replace(/-/g, ' ');
+}
+
+function getAuthorAvatar(slug: string, authors: Array<{ slug: string; data: { avatar?: string } }>): string | undefined {
+  const author = authors.find(a => a.slug === slug);
+  return author?.data.avatar;
+}
+
+function getPubName(slug: string, pubs: Array<{ slug: string; data: { name: string } }>): string {
+  const pub = pubs.find(p => p.slug === slug);
+  return pub ? pub.data.name : slug.replace(/-/g, ' ');
+}
+
+const { type } = Astro.props;
+
+// Prepare data based on page type
+let pageTitle = 'The Cognitive Shift';
+let pageDescription = '';
+let pageOgUrl = '';
+let pageOgImage = 'https://thecognitiveshift.com/assets/og-image.png';
+let pageOgType = 'website';
+
+let pub: any = null;
+let pubArticles: any[] = [];
+let article: any = null;
+let authors: any[] = (Astro.props.authors as any[]) || [];
+let pubs: any[] = (Astro.props.pubs as any[]) || [];
+let renderedContent: any = null;
+
+if (type === 'publication') {
+  pub = Astro.props.pub as any;
+  pubArticles = (Astro.props.pubArticles as any[]) || [];
+  pageTitle = `${pub.data.name} — The Cognitive Shift`;
+  pageDescription = pub.data.description || `Articles from ${pub.data.name}`;
+  pageOgUrl = `https://thecognitiveshift.com/publications/${pub.slug}/`;
+} else if (type === 'article') {
+  article = Astro.props.article as any;
+  const { Content } = await article.render();
+  renderedContent = Content;
+  const articleSlug = article.slug.includes('/') ? article.slug.split('/').pop() : article.slug;
+  pageTitle = `${article.data.title} — The Cognitive Shift`;
+  pageDescription = article.data.excerpt;
+  pageOgUrl = `https://thecognitiveshift.com/publications/${article.data.publication}/${articleSlug}/`;
+  pageOgImage = article.data.featuredImage || pageOgImage;
+  pageOgType = 'article';
+}
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  ogUrl={pageOgUrl}
+  ogImage={pageOgImage}
+  ogType={pageOgType}
+>
+  {type === 'publication' && pub && (
+    <>
+      <header class="page-header">
+        <div class="section-label">Publication</div>
+        <h1 class="page-title">{pub.data.name}</h1>
+        {pub.data.description && (
+          <div class="pub-hero-description">
+            <p>{pub.data.description}</p>
+          </div>
+        )}
+        <div class="pub-hero-owner">
+          {getAuthorAvatar(pub.data.owner, authors) && (
+            <img src={getAuthorAvatar(pub.data.owner, authors)} alt={getAuthorName(pub.data.owner, authors)} class="pub-hero-avatar" />
+          )}
+          <span class="pub-hero-owner-name">
+            <a href={`/authors/${pub.data.owner}/`}>{getAuthorName(pub.data.owner, authors)}</a>
+          </span>
+        </div>
+      </header>
+
+      <GoldRule />
+
+      <section class="content-section">
+        {pubArticles.length === 0 ? (
+          <p class="pub-empty">No articles published yet.</p>
+        ) : (
+          <div class="pub-article-list">
+            {pubArticles
+              .sort((a: any, b: any) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
+              .map((a: any) => {
+                const articleSlug = a.slug.includes('/') ? a.slug.split('/').pop() : a.slug;
+                const authorNames = a.data.authors.map((s: string) => getAuthorName(s, authors)).join(' & ');
+                return (
+                  <div class="pub-article-item">
+                    <h3>
+                      <a href={`/publications/${pub.slug}/${articleSlug}/`}>{a.data.title}</a>
+                    </h3>
+                    <div class="pub-article-excerpt">{a.data.excerpt}</div>
+                    <div class="pub-article-meta">
+                      <span class="pub-article-author">{authorNames}</span>
+                      <span class="pub-article-sep">&middot;</span>
+                      <span class="pub-article-date">{formatDate(a.data.publishedAt)}</span>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        )}
+      </section>
+
+      <section class="bottom-cta">
+        <div class="bottom-epigraph">&ldquo;The shift is structural. The window is now.&rdquo;</div>
+        <div class="bottom-attribution">&mdash; The Cognitive Shift</div>
+        <form class="signup-form" id="bottom-signup-form">
+          <input type="email" placeholder="your@email.com" required />
+          <button type="submit">Join free</button>
+        </form>
+      </section>
+    </>
+  )}
+
+  {type === 'article' && article && renderedContent && (() => {
+    const RenderedContent = renderedContent;
+    const firstAuthorAvatar = getAuthorAvatar(article.data.authors[0], authors);
+    return (
+      <>
+        <main id="article-main">
+          <header class="article-header">
+            <a href={`/publications/${article.data.publication}/`} class="article-publication-link">
+              {getPubName(article.data.publication, pubs)}
+            </a>
+            <h1>{article.data.title}</h1>
+            <div class="article-meta">
+              {firstAuthorAvatar && (
+                <img src={firstAuthorAvatar} alt="" class="article-meta-avatar" />
+              )}
+              <span class="article-meta-name">
+                {article.data.authors.map((slug: string, i: number) => (
+                  <>
+                    {i > 0 && ' & '}
+                    <a href={`/authors/${slug}/`} style="color: inherit; text-decoration: none;">{getAuthorName(slug, authors)}</a>
+                  </>
+                ))}
+              </span>
+              <span class="article-meta-sep">&middot;</span>
+              <span class="article-meta-date">{formatDate(article.data.publishedAt)}</span>
+            </div>
+          </header>
+
+          <GoldRule />
+
+          <div class="article-content">
+            <RenderedContent />
+          </div>
+
+          {article.data.authors.map((slug: string) => {
+            const author = authors.find((a: any) => a.slug === slug);
+            if (!author) return null;
+            return (
+              <div class="author-bio-card">
+                {author.data.avatar ? (
+                  <img src={author.data.avatar} alt={author.data.name} class="author-bio-avatar" />
+                ) : (
+                  <div style="width:48px;height:48px;border-radius:50%;border:1px solid var(--gold-border);display:inline-flex;align-items:center;justify-content:center;background:var(--bg);flex-shrink:0;">
+                    <span style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);">{author.data.name.charAt(0)}</span>
+                  </div>
+                )}
+                <div class="author-bio-info">
+                  <div class="author-bio-name">
+                    <a href={`/authors/${author.slug}/`}>{author.data.name}</a>
+                  </div>
+                  {author.data.bio && <div class="author-bio-text">{author.data.bio}</div>}
+                </div>
+              </div>
+            );
+          })}
+        </main>
+
+        <NewsletterModal />
+      </>
+    );
+  })()}
+</BaseLayout>
