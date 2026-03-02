@@ -7,7 +7,7 @@ publishedAt: 2026-03-02
 tags: []
 ---
 
-Everyone's grinding in Cursor. I was too. I launched two products this year, [RideReady](https://rideready.xyz/) and [Fizz](https://fizz.fit/), and nearly lost my mind vibe coding them into existence. You can only say "fix it, it doesn't work" so many times before you start imagining a world where these things run while you sleep. So I built an AI workforce manager where I describe the outcome, deploy swarms overnight, and only get pulled back in when they're stuck. It breaks, I fix the system, and next time it breaks less. This is what it looks like when you stop being the cognitive bottleneck and start being the swarm operator.
+Everyone's grinding in Cursor. I was too. I launched two products this year, [RideReady](https://rideready.xyz/) and [fizz](https://fizz.fit/), and nearly lost my mind vibe coding them into existence. You can only say "fix it, it doesn't work" so many times before you start imagining a world where these things run while you sleep. So I built an AI workforce manager where I describe the outcome, deploy swarms overnight, and only get pulled back in when they're stuck. It breaks, I fix the system, and next time it breaks less. This is what it looks like when you stop being the cognitive bottleneck and start being the swarm operator.
 
 ---
 
@@ -17,7 +17,7 @@ Every generation of tooling promises to make building faster. And every generati
 
 When GitHub Copilot arrived, developers celebrated writing code faster. When Cursor and Claude Code followed, non-developers like me could suddenly ship products from scratch. But here's what nobody warned us about. When execution gets cheap, the bottleneck shifts upstream. It moves from "can you build it?" to "can you describe what's worth building, and why, with enough clarity that something else can go and do it?"
 
-I noticed this halfway through building Fizz. The hours I spent getting the best results weren't the ones where I was writing better prompts. They were the ones where I stepped back and wrote a clearer description of what I actually wanted. The bottleneck was never my typing speed. It was my thinking. The industry has a name for this shift. From human-in-the-loop, where you supervise every step, to human-on-the-loop, where you set the intent and only get pulled in when it matters. But the way it felt to me was simpler than that. I stopped being an operator and started being an orchestrator.
+I noticed this halfway through building fizz. The hours I spent getting the best results weren't the ones where I was writing better prompts. They were the ones where I stepped back and wrote a clearer description of what I actually wanted. The bottleneck was never my typing speed. It was my thinking. The industry has a name for this shift. From human-in-the-loop, where you supervise every step, to human-on-the-loop, where you set the intent and only get pulled in when it matters. But the way it felt to me was simpler than that. I stopped being an operator and started being an orchestrator.
 
 I experienced this shift firsthand. Not as theory, but as pain.
 
@@ -25,11 +25,11 @@ I experienced this shift firsthand. Not as theory, but as pain.
 
 I'm not a developer. I cut my teeth in marketing, ran a boutique data analytics consultancy, then co-founded [AskRally](https://askrally.com/) before starting a venture studio. I've never attached my identity to writing code. That turned out to matter.
 
-At the start of this year, I vibe coded two products from scratch. Ride Ready is an automated bike component wear tracker. As you ride, it calculates kilometres across your components and alerts you for maintenance. Fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and you're hiking in Spain.
+At the start of this year, I vibe coded two products from scratch. RideReady is an automated bike component wear tracker. As you ride, it calculates kilometres across your components and alerts you for maintenance. fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and you're hiking in Spain.
 
 ![RideReady and Fizz product screens](/assets/rideready-fizz-screens.png)
 
-Fizz took eight days of sixteen-hour sessions. Most of the core product came together in a couple of days, but then I spent the rest trying to hack-proof it. AI video generation is expensive, and I didn't want someone exploiting the system and draining my account.
+fizz took eight days of sixteen-hour sessions. Most of the core product came together in a couple of days, but then I spent the rest trying to hack-proof it. AI video generation is expensive, and I didn't want someone exploiting the system and draining my account.
 
 The loop looked like this. Prompt the LLM, run the code, find the bug, prompt again. I knew what the MVP should be almost immediately. But I was burning my best days in the weeds while the vision document sat unfinished and the deployment plan gathered dust. Feature creep was eating the hours I should have spent on go-to-market, on strategy, on the next idea.
 
