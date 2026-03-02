@@ -51,7 +51,7 @@ Think of it as taking a generic group of agents and turning them into a speciali
 
 ## The retro loop
 
-The system breaks constantly. The first few days of running projects through Flow, I was getting pulled in left, right and centre. Agents hit ambiguity, got stuck in loops, or just failed. Every time, the observability layer (I call it HOMЯ) would escalate and surface a decision. Add more context, split it.
+The system breaks constantly. The first few days of running projects through Flow, I was getting pulled in left, right and centre. Agents hit ambiguity, got stuck in loops, or just failed. Every time, the observability layer (I call it [HOMЯ](https://youtu.be/FNptHqAlgwM?si=c-MlVLzhW0hiTwN7)) would escalate and surface a decision. Add more context, split it.
 
 ![HOMЯ escalation with decision options](/assets/homr-escalation.png)
 
