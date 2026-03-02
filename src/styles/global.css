@@ -129,6 +129,12 @@ body {
   background: radial-gradient(ellipse at center, transparent 50%, rgba(16, 24, 18, 0.4) 100%);
   pointer-events: none;
 }
+#starlings-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
 .hero-content { max-width: 620px; position: relative; z-index: 1; }
 .hero-crest {
   margin: 0 auto 2.5rem;

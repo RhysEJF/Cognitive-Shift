@@ -7,6 +7,7 @@ import SignupToggle from '../components/SignupToggle.astro';
 <BaseLayout>
   <main>
   <section class="hero" aria-label="Hero">
+    <canvas id="starlings-canvas"></canvas>
     <div class="hero-content">
       <HeroCrest />
 
@@ -117,4 +118,5 @@ import SignupToggle from '../components/SignupToggle.astro';
     tick();
   })();
   </script>
+  <script src="/js/starlings.js" is:inline></script>
 </BaseLayout>
