@@ -46,6 +46,7 @@ authors: ["your-name"]
 publication: "your-pub-slug"
 publishedAt: 2026-02-20
 tags: ["topic-one", "topic-two"]
+featuredImage: "/assets/articles/your-image.jpg"  # optional
 ---
 
 Write your article here in Markdown.
@@ -56,6 +57,8 @@ Regular paragraphs, **bold**, *italic*, [links](https://example.com), and:
 
 > Blockquotes work too.
 ```
+
+**SEO is automatic.** Your `title` becomes the page title and `og:title`, `excerpt` becomes the meta description and `og:description`, and `featuredImage` (optional) becomes the `og:image`. No extra configuration needed.
 
 ## Step 4: Submit via pull request
 

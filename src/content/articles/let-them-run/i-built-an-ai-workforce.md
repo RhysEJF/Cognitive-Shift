@@ -49,17 +49,17 @@ Think of it as taking a generic group of agents and turning them into a speciali
 
 ## The retro loop
 
-The system breaks constantly. The first few days of running projects through Flow, I was getting pulled in left, right and centre. Agents hit ambiguity, got stuck in loops, or just failed. Every time, the observability layer (I call it Homer) would escalate and surface a decision. Add more context, split it.
+The system breaks constantly. The first few days of running projects through Flow, I was getting pulled in left, right and centre. Agents hit ambiguity, got stuck in loops, or just failed. Every time, the observability layer (I call it HOMЯ) would escalate and surface a decision. Add more context, split it.
 
-<!-- IMAGE: Homer escalation with decision options -->
+![HOMЯ escalation with decision options](/assets/homr-escalation.png)
 
 You can only take so much of that before you add a YOLO mode. So I did. YOLO mode puts another AI in the human-in-the-loop seat, letting it make decisions that would normally require me. This is the shift from human-in-the-loop to human-on-the-loop in practice, not as a theoretical framework, but as something I built because I needed to sleep.
 
 The real breakthrough, though, is what happens after. The U.S. Army developed a practice in the 1970s called the After Action Review, a structured debrief where soldiers analyse what was supposed to happen, what actually happened, and what to do differently next time. Peter Senge called it "one of the most successful organisational learning methods yet devised." I built the AI equivalent.
 
-After every completed outcome, I run an automated retrospective. It analyses every escalation, every moment Homer pulled me in, every failure point, and surfaces ideas for how the system can improve itself. Some features it's suggested are things I'd never have come up with, or at least not without spending hours combing through error logs for patterns. I approve the ones I like, and Flow creates a new outcome focused on implementing them.
+After every completed outcome, I run an automated retrospective. It analyses every escalation, every moment HOMЯ pulled me in, every failure point, and surfaces ideas for how the system can improve itself. Some features it's suggested are things I'd never have come up with, or at least not without spending hours combing through error logs for patterns. I approve the ones I like, and Flow creates a new outcome focused on implementing them.
 
-<!-- IMAGE: Retro output with suggested improvements -->
+![Retro output with suggested improvements](/assets/retro-improvements.png)
 
 There's a flywheel here. The more work I push through, the more it learns, the less it escalates, the less it needs me. I've committed to getting kicked in the teeth as much as possible over the next few months, feeding it every project I can, to see how fast the flywheel spins.
 
