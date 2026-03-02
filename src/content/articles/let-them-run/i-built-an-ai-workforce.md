@@ -101,6 +101,4 @@ But the discomfort is the point. We've spent years building identities around th
 
 The U.S. Army learned this when they moved from top-down performance critiques to After Action Reviews. The breakthrough wasn't better soldiers; it was leaders learning to let the team surface its own lessons. The breakthrough wasn't control. It was trust.
 
-I think the same thing is happening now with AI swarms. The builders who thrive won't be the ones who code fastest. They'll be the ones who can hold a clear vision, describe it with precision, and then do the hardest thing of all. Walk away and let them run.
-
-I'm publishing these experiments at thecognitiveshift.com, and together with Shaun we've created a community called Swarm Operators. We're going to have to answer some tough questions over the next twelve to twenty-four months. I'd rather be in the messy middle when those questions arrive than theorising from the sidelines.
+I think the same thing is happening now with AI swarms. The builders who thrive won't be the ones who code fastest. They'll be the ones who can hold a clear vision, describe it with precision, and then do the hardest thing of all. Walk away while the busy work happens.
