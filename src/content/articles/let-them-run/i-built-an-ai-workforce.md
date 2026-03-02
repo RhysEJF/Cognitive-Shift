@@ -33,7 +33,7 @@ The loop looked like this. Prompt the LLM, run the code, find the bug, prompt ag
 
 ![The vibe coding loop](/assets/vibe-coding-loop.png)
 
-I knew what the MVP should be almost immediately. But I was burning my best days in the weeds while the vision document sat unfinished and the deployment plan gathered dust. Feature creep was eating the hours I should have spent on go-to-market, on strategy, on the next idea.
+I had the MVP clear in my head almost immediately. But I never documented it. I was too busy making things bug-proof and secure to think about anything beyond the next fix. Go-to-market, strategy, the next idea, none of it got touched.
 
 That's when I stopped asking *"how do I code faster?"* and started asking *"what if I wasn't in the editor at all?"*
 
