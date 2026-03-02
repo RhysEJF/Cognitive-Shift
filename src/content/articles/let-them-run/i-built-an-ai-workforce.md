@@ -23,7 +23,7 @@ I noticed this halfway through building fizz. My best results never came from th
 
 I'm not a developer. I cut my teeth in marketing, ran a boutique data analytics consultancy, then co-founded [AskRally](https://askrally.com/) before starting [a venture studio](https://calendly.com/rhys-fisher/talk-with-rhys-15). I've never attached my identity to writing code. That turned out to matter.
 
-At the start of this year, I vibe coded two products from scratch. RideReady is an automated bike component wear tracker. As you ride, it calculates kilometres across your components and alerts you for maintenance. fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and you're hiking in Spain.
+RideReady started as a personal itch. I'm not someone who cleans their bike after every ride, and I kept missing maintenance windows until something expensive failed. I wanted a system that would just tell me when a component needed attention. It hooks into Strava, tracks wear across every part on your bike, and sends you the alert before something costs you. [Watch a demo here.](https://youtube.com/shorts/fVMDpQ9hW1k?si=H0_za1QFx8npRPiQ) fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and [you're hiking in Spain.](https://www.tiktok.com/@getfizzy/video/7605596469978025248)
 
 ![RideReady and Fizz product screens](/assets/rideready-fizz-screens.png)
 
