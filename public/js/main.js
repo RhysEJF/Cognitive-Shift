@@ -163,4 +163,8 @@ function initPage() {
   initAllToggles();
 }
 
-document.addEventListener("DOMContentLoaded", initPage);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPage);
+} else {
+  initPage();
+}
