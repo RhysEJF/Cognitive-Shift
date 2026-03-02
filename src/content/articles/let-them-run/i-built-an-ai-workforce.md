@@ -79,7 +79,7 @@ Flow also works through the CLI and Telegram, which solved a problem that's nagg
 
 Now I talk into Telegram mid-walk. There's a Claude agent between me and Flow that has a skill on how to pilot the whole system. It knows the CLI commands, how to structure outcomes, how to prep and deploy runs. I ramble at it, it prepares the project, and hits run. By the time I'm back, there's something to look at.
 
-<!-- IMAGE: Telegram conversation showing a walk-to-run flow -->
+<iframe width="315" height="560" src="https://www.youtube.com/embed/2HGnnzuidIQ" frameborder="0" allowfullscreen></iframe>
 
 A few days ago I tested this with something personal. I was out walking and threw it a task. Build me a maintenance guide for my bike. Not a generic one. Something specific to my exact components.
 
