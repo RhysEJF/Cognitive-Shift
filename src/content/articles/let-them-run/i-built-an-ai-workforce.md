@@ -7,7 +7,7 @@ publishedAt: 2026-03-02
 tags: []
 ---
 
-Everyone's running Claude Code in Cursor. I was too. I launched two products this year, [RideReady](https://rideready.xyz/) and [fizz](https://fizz.fit/), and nearly lost my mind vibe coding them into existence. You can only say "fix it, it doesn't work" so many times before you start imagining a world where these things run while you sleep. So I built an AI workforce manager where I describe the outcome, deploy swarms overnight, and only get pulled back in when they're stuck.
+Everyone's running Claude Code in Cursor. I was too. I launched two products this year, [RideReady](https://rideready.xyz/) and [fizz](https://fizz.fit/), and nearly lost my mind vibe coding them into existence. You can only say *"fix it, it doesn't work"* so many times before you start imagining a world where these things run while you sleep. So I built an AI workforce manager where I describe the outcome, deploy swarms overnight, and only get pulled back in when they're stuck.
 
 It has a self-improving loop. When it breaks, it learns why, and next time it breaks less. This is what it looks like when you stop being the cognitive bottleneck and start being the swarm operator.
 
@@ -15,7 +15,7 @@ It has a self-improving loop. When it breaks, it learns why, and next time it br
 
 Every generation of tooling promises to make building faster. And every generation reveals that speed was never really the constraint.
 
-When GitHub Copilot arrived, developers celebrated writing code faster. When Cursor and Claude Code followed, non-developers like me could suddenly ship products from scratch. But here's what nobody warned us about. When execution gets cheap, the bottleneck shifts upstream. It moves from "can you build it?" to "can you describe what's worth building, and why, with enough clarity that something else can go and do it?"
+When GitHub Copilot arrived, developers celebrated writing code faster. When Cursor and Claude Code followed, non-developers like me could suddenly ship products from scratch. But here's what nobody warned us about. When execution gets cheap, the bottleneck shifts upstream. It moves from *"can you build it?"* to *"can you describe what's worth building, and why, with enough clarity that something else can go and do it?"*
 
 I noticed this halfway through building fizz. The hours I spent getting the best results weren't the ones where I was writing better prompts. They were the ones where I stepped back and wrote a clearer description of what I actually wanted. The bottleneck was never my typing speed. It was my thinking. The industry has a name for this shift. From human-in-the-loop, where you supervise every step, to human-on-the-loop, where you set the intent and only get pulled in when it matters. But the way it felt to me was simpler than that. I stopped being an operator and started being an orchestrator.
 
@@ -33,7 +33,7 @@ fizz took eight days of sixteen-hour sessions. Most of the core product came tog
 
 The loop looked like this. Prompt the LLM, run the code, find the bug, prompt again. I knew what the MVP should be almost immediately. But I was burning my best days in the weeds while the vision document sat unfinished and the deployment plan gathered dust. Feature creep was eating the hours I should have spent on go-to-market, on strategy, on the next idea.
 
-That's when I stopped asking "how do I code faster?" and started asking "what if I wasn't in the editor at all?"
+That's when I stopped asking *"how do I code faster?"* and started asking *"what if I wasn't in the editor at all?"*
 
 ## From operator to orchestrator
 
@@ -55,7 +55,7 @@ The system breaks constantly. The first few days of running projects through Flo
 
 You can only take so much of that before you add a YOLO mode. So I did. YOLO mode puts another AI in the human-in-the-loop seat, letting it make decisions that would normally require me. This is the shift from human-in-the-loop to human-on-the-loop in practice, not as a theoretical framework, but as something I built because I needed to sleep.
 
-The real breakthrough, though, is what happens after. The U.S. Army developed a practice in the 1970s called the After Action Review, a structured debrief where soldiers analyse what was supposed to happen, what actually happened, and what to do differently next time. Peter Senge called it "one of the most successful organisational learning methods yet devised." I built the AI equivalent.
+The real breakthrough, though, is what happens after. The U.S. Army developed a practice in the 1970s called the After Action Review, a structured debrief where soldiers analyse what was supposed to happen, what actually happened, and what to do differently next time. Peter Senge called it *"one of the most successful organisational learning methods yet devised."* I built the AI equivalent.
 
 After every completed outcome, I run an automated retrospective. It analyses every escalation, every moment HOMЯ pulled me in, every failure point, and surfaces ideas for how the system can improve itself. Some features it's suggested are things I'd never have come up with, or at least not without spending hours combing through error logs for patterns. I approve the ones I like, and Flow creates a new outcome focused on implementing them.
 
@@ -67,7 +67,7 @@ There's a flywheel here. The more work I push through, the more it learns, the l
 
 This isn't just for building apps. I pointed the swarm at a content creator called Etymology Nerd (millions of followers, incredible short-form videos) and told it to download his recent YouTube content, extract transcripts, and analyse his format.
 
-It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. [The output was remarkable.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say "create video transcripts in this style."
+It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. [The output was remarkable.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say *"create video transcripts in this style."*
 
 ![Etymology Nerd content analysis output](/assets/etymology-nerd-analysis.png)
 
