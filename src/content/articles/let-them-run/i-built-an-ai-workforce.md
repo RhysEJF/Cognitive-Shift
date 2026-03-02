@@ -23,7 +23,7 @@ I experienced this shift firsthand. Not as theory, but as pain.
 
 ## 128 hours in the loop
 
-I'm not a developer. I cut my teeth in marketing, ran a data analytics company called Unvanity, was the first marketing hire at Bitrefill, co-founded Ask Rally, was interim CEO at Vexpower. I've never attached my identity to writing code. That turned out to matter.
+I'm not a developer. I cut my teeth in marketing, ran a boutique data analytics consultancy, then co-founded [AskRally](https://askrally.com/) before starting a venture studio. I've never attached my identity to writing code. That turned out to matter.
 
 At the start of this year, I vibe coded two products from scratch. Ride Ready is an automated bike component wear tracker. As you ride, it calculates kilometres across your components and alerts you for maintenance. Fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and you're hiking in Spain.
 
