@@ -83,9 +83,9 @@ Now I talk into Telegram mid-walk. There's a Claude agent between me and Flow th
 
 A few days ago I tested this with something personal. I was out walking and threw it a task. Build me a maintenance guide for my bike. Not a generic one. Something specific to my exact components.
 
-Here's what happened. Flow deployed agents to do deep research and build an AI agent that could act as my bike mechanic, one that understood component-level maintenance. Then the bike mechanic agent prepped an interview and actually interviewed me about every component on the bike. What groupset, what wheels, what tyres, what year, what condition. Once it had all that context, it prepared a component-specific maintenance guide tailored to exactly what I'm riding.
+Here's what happened. Flow deployed agents to do deep research and build an AI agent that could act as my bike mechanic, one that understood component-level maintenance. Then the bike mechanic agent prepped an interview and actually interviewed me about every component on the bike. What groupset, what wheels, what tyres, what year, what condition. Once it had all that context, it prepared a [component-specific maintenance guide](https://docs.google.com/document/d/16Hw3HpV-WV6_tids9bssPww8RUkhyZlqirBIc9XdM28/edit?usp=sharing) tailored to exactly what I'm riding.
 
-<!-- IMAGE: The bike mechanic interview or the final component guide -->
+![Bike mechanic component guide](/assets/bike-mechanic-guide.png)
 
 That whole chain, research, agent creation, interview, personalised guide, kicked off from a voice message on a walk. That's when the thesis became real to me. The bottleneck isn't building. It's knowing what to describe and caring enough about the outcome to describe it well.
 
