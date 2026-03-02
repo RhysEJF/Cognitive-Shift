@@ -7,7 +7,9 @@ publishedAt: 2026-03-02
 tags: []
 ---
 
-Everyone's running Claude Code in Cursor. I was too. I launched two products this year, [RideReady](https://rideready.xyz/) and [fizz](https://fizz.fit/), and nearly lost my mind vibe coding them into existence. You can only say "fix it, it doesn't work" so many times before you start imagining a world where these things run while you sleep. So I built an AI workforce manager where I describe the outcome, deploy swarms overnight, and only get pulled back in when they're stuck. It breaks, I fix the system, and next time it breaks less. This is what it looks like when you stop being the cognitive bottleneck and start being the swarm operator.
+Everyone's running Claude Code in Cursor. I was too. I launched two products this year, [RideReady](https://rideready.xyz/) and [fizz](https://fizz.fit/), and nearly lost my mind vibe coding them into existence. You can only say "fix it, it doesn't work" so many times before you start imagining a world where these things run while you sleep. So I built an AI workforce manager where I describe the outcome, deploy swarms overnight, and only get pulled back in when they're stuck. It has a self-improving loop. When it breaks, it learns why, and next time it breaks less.
+
+This is what it looks like when you stop being the cognitive bottleneck and start being the swarm operator.
 
 ## The bottleneck has moved
 
