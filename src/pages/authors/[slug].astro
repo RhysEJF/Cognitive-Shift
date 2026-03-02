@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GoldRule from '../../components/GoldRule.astro';
+import SignupToggle from '../../components/SignupToggle.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -49,34 +50,40 @@ const { author, articles, publications } = Astro.props;
     {author.data.bio && <p class="author-profile-bio">{author.data.bio}</p>}
   </header>
 
-  <GoldRule />
+  <div class="cream-band">
+    <GoldRule />
 
-  <section class="content-section" id="author-articles">
-    {articles.length === 0 ? (
-      <p class="author-no-articles">No articles published yet.</p>
-    ) : (
-      <div class="author-articles-list">
-        {articles
-          .sort((a: any, b: any) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
-          .map((article: any) => {
-            const articleSlug = article.slug.includes('/') ? article.slug.split('/').pop() : article.slug;
-            return (
-              <div class="author-article-item">
-                <h3>
-                  <a href={`/publications/${article.data.publication}/${articleSlug}/`}>{article.data.title}</a>
-                </h3>
-                <div class="author-article-excerpt">{article.data.excerpt}</div>
-                <div class="author-article-meta">
-                  <a href={`/publications/${article.data.publication}/`} class="author-article-pub">
-                    {getPubName(article.data.publication, publications)}
-                  </a>
-                  <span class="author-article-sep">&middot;</span>
-                  <span class="author-article-date">{formatDate(article.data.publishedAt)}</span>
+    <div class="author-top-signup">
+      <SignupToggle id="author-top" />
+    </div>
+
+    <section class="content-section" id="author-articles">
+      {articles.length === 0 ? (
+        <p class="author-no-articles">No articles published yet.</p>
+      ) : (
+        <div class="author-articles-list">
+          {articles
+            .sort((a: any, b: any) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
+            .map((article: any) => {
+              const articleSlug = article.slug.includes('/') ? article.slug.split('/').pop() : article.slug;
+              return (
+                <div class="author-article-item">
+                  <h3>
+                    <a href={`/publications/${article.data.publication}/${articleSlug}/`}>{article.data.title}</a>
+                  </h3>
+                  <div class="author-article-excerpt">{article.data.excerpt}</div>
+                  <div class="author-article-meta">
+                    <a href={`/publications/${article.data.publication}/`} class="author-article-pub">
+                      {getPubName(article.data.publication, publications)}
+                    </a>
+                    <span class="author-article-sep">&middot;</span>
+                    <span class="author-article-date">{formatDate(article.data.publishedAt)}</span>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-      </div>
-    )}
-  </section>
+              );
+            })}
+        </div>
+      )}
+    </section>
+  </div>
 </BaseLayout>

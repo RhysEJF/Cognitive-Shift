@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GoldRule from '../../components/GoldRule.astro';
 import NewsletterModal from '../../components/NewsletterModal.astro';
+import SignupToggle from '../../components/SignupToggle.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -119,44 +120,43 @@ if (type === 'publication') {
         </div>
       </header>
 
-      <GoldRule />
+      <div class="cream-band">
+        <GoldRule />
 
-      <section class="content-section">
-        {pubArticles.length === 0 ? (
-          <p class="pub-empty">No articles published yet.</p>
-        ) : (
-          <div class="pub-article-list">
-            {pubArticles
-              .sort((a: any, b: any) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
-              .map((a: any) => {
-                const articleSlug = a.slug.includes('/') ? a.slug.split('/').pop() : a.slug;
-                const authorNames = a.data.authors.map((s: string) => getAuthorName(s, authors)).join(' & ');
-                return (
-                  <div class="pub-article-item">
-                    <h3>
-                      <a href={`/publications/${pub.slug}/${articleSlug}/`}>{a.data.title}</a>
-                    </h3>
-                    <div class="pub-article-excerpt">{a.data.excerpt}</div>
-                    <div class="pub-article-meta">
-                      <span class="pub-article-author">{authorNames}</span>
-                      <span class="pub-article-sep">&middot;</span>
-                      <span class="pub-article-date">{formatDate(a.data.publishedAt)}</span>
+        <section class="content-section">
+          {pubArticles.length === 0 ? (
+            <p class="pub-empty">No articles published yet.</p>
+          ) : (
+            <div class="pub-article-list">
+              {pubArticles
+                .sort((a: any, b: any) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
+                .map((a: any) => {
+                  const articleSlug = a.slug.includes('/') ? a.slug.split('/').pop() : a.slug;
+                  const authorNames = a.data.authors.map((s: string) => getAuthorName(s, authors)).join(' & ');
+                  return (
+                    <div class="pub-article-item">
+                      <h3>
+                        <a href={`/publications/${pub.slug}/${articleSlug}/`}>{a.data.title}</a>
+                      </h3>
+                      <div class="pub-article-excerpt">{a.data.excerpt}</div>
+                      <div class="pub-article-meta">
+                        <span class="pub-article-author">{authorNames}</span>
+                        <span class="pub-article-sep">&middot;</span>
+                        <span class="pub-article-date">{formatDate(a.data.publishedAt)}</span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-          </div>
-        )}
-      </section>
+                  );
+                })}
+            </div>
+          )}
+        </section>
 
-      <section class="bottom-cta">
-        <div class="bottom-epigraph">&ldquo;The shift is structural. The window is now.&rdquo;</div>
-        <div class="bottom-attribution">&mdash; The Cognitive Shift</div>
-        <form class="signup-form" id="bottom-signup-form">
-          <input type="email" placeholder="your@email.com" required />
-          <button type="submit">Join free</button>
-        </form>
-      </section>
+        <section class="bottom-cta">
+          <div class="bottom-epigraph">&ldquo;You set the vision. They run with it. That&rsquo;s the shift.&rdquo;</div>
+          <div class="bottom-attribution">&mdash; <a href="https://x.com/virtual_rf" target="_blank" rel="noopener">Rhys Fisher</a></div>
+          <SignupToggle id="pub-bottom" />
+        </section>
+      </div>
     </>
   )}
 
@@ -188,33 +188,39 @@ if (type === 'publication') {
             </div>
           </header>
 
-          <GoldRule />
+          <div class="article-body-wrap">
+            <GoldRule />
 
-          <div class="article-content">
-            <RenderedContent />
-          </div>
+            <div class="article-top-signup">
+              <SignupToggle id="article-top" />
+            </div>
 
-          {article.data.authors.map((slug: string) => {
-            const author = authors.find((a: any) => a.slug === slug);
-            if (!author) return null;
-            return (
-              <div class="author-bio-card">
-                {author.data.avatar ? (
-                  <img src={author.data.avatar} alt={author.data.name} class="author-bio-avatar" />
-                ) : (
-                  <div style="width:48px;height:48px;border-radius:50%;border:1px solid var(--gold-border);display:inline-flex;align-items:center;justify-content:center;background:var(--bg);flex-shrink:0;">
-                    <span style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);">{author.data.name.charAt(0)}</span>
+            <div class="article-content">
+              <RenderedContent />
+            </div>
+
+            {article.data.authors.map((slug: string) => {
+              const author = authors.find((a: any) => a.slug === slug);
+              if (!author) return null;
+              return (
+                <div class="author-bio-card">
+                  {author.data.avatar ? (
+                    <img src={author.data.avatar} alt={author.data.name} class="author-bio-avatar" />
+                  ) : (
+                    <div style="width:48px;height:48px;border-radius:50%;border:1px solid var(--gold-border);display:inline-flex;align-items:center;justify-content:center;background:var(--cream-bg);flex-shrink:0;">
+                      <span style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);">{author.data.name.charAt(0)}</span>
+                    </div>
+                  )}
+                  <div class="author-bio-info">
+                    <div class="author-bio-name">
+                      <a href={`/authors/${author.slug}/`}>{author.data.name}</a>
+                    </div>
+                    {author.data.bio && <div class="author-bio-text">{author.data.bio}</div>}
                   </div>
-                )}
-                <div class="author-bio-info">
-                  <div class="author-bio-name">
-                    <a href={`/authors/${author.slug}/`}>{author.data.name}</a>
-                  </div>
-                  {author.data.bio && <div class="author-bio-text">{author.data.bio}</div>}
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </main>
 
         <NewsletterModal publicationSlug={article.data.publication} />

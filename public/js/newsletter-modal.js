@@ -102,54 +102,42 @@
         button.textContent = "Joining...";
         button.disabled = true;
 
+        var isDuplicate = false;
+
         try {
-          // Try to create subscriber — 400 means duplicate email, which is fine
-          try {
-            await createNewsletterSubscriber(email, "article_modal", publicationSlug);
-          } catch (subErr) {
-            // Check if this is a duplicate email error (expected)
-            var isDuplicate = subErr.message && subErr.message.indexOf("400") !== -1;
-            if (!isDuplicate) throw subErr;
-            // Duplicate email is OK — we still record the publication signal below
+          await createNewsletterSubscriber(email, "article_modal", publicationSlug);
+        } catch (subErr) {
+          isDuplicate = subErr.message && subErr.message.indexOf("400") !== -1;
+          if (!isDuplicate) {
+            // Real error — show message and bail
+            console.error("Modal signup error:", subErr);
+            button.textContent = originalText;
+            button.disabled = false;
+
+            var existingErr = overlay.querySelector(".modal-signup-error");
+            if (existingErr) existingErr.remove();
+            var errEl = document.createElement("div");
+            errEl.className = "modal-signup-error";
+            errEl.textContent = "Something went wrong \u2014 please try again.";
+            errEl.style.color = "#c0392b";
+            errEl.style.fontSize = "0.85rem";
+            errEl.style.marginTop = "0.5rem";
+            errEl.style.textAlign = "center";
+            form.insertAdjacentElement("afterend", errEl);
+            return;
           }
-
-          // Always record the publication signal (not unique, always succeeds)
-          if (publicationSlug) {
-            try {
-              await createPublicationSignal(email, publicationSlug);
-            } catch (sigErr) {
-              // Non-critical — log but don't fail the UX
-              console.warn("Publication signal error:", sigErr);
-            }
-          }
-
-          localStorage.setItem("tcs_newsletter", "subscribed");
-
-          // Replace form area with confirmation
-          var modalContent = overlay.querySelector(".modal-content");
-          modalContent.innerHTML =
-            '<p style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.2rem;' +
-            'color:var(--cream);text-align:center;padding:2rem 0;margin:0;">You are in</p>';
-
-          // Auto-close after 2 seconds
-          setTimeout(closeModal, 2000);
-        } catch (err) {
-          console.error("Modal signup error:", err);
-          button.textContent = originalText;
-          button.disabled = false;
-
-          // Show inline error below the form
-          var existingErr = overlay.querySelector(".modal-signup-error");
-          if (existingErr) existingErr.remove();
-          var errEl = document.createElement("div");
-          errEl.className = "modal-signup-error";
-          errEl.textContent = "Something went wrong \u2014 please try again.";
-          errEl.style.color = "#c0392b";
-          errEl.style.fontSize = "0.85rem";
-          errEl.style.marginTop = "0.5rem";
-          errEl.style.textAlign = "center";
-          form.insertAdjacentElement("afterend", errEl);
         }
+
+        // Success (new or duplicate) — set localStorage and show confirmation
+        localStorage.setItem("tcs_newsletter", "subscribed");
+
+        var confirmMsg = isDuplicate ? "You\u2019re already subscribed" : "You are in";
+        var modalContent = overlay.querySelector(".modal-content");
+        modalContent.innerHTML =
+          '<p style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.2rem;' +
+          'color:var(--cream);text-align:center;padding:2rem 0;margin:0;">' + confirmMsg + '</p>';
+
+        setTimeout(closeModal, 2000);
       });
     }
 

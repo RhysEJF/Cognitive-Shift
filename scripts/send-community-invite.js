@@ -60,7 +60,7 @@ if (!dryRun && (!POCKETBASE_ADMIN_EMAIL || !POCKETBASE_ADMIN_PASSWORD)) {
 let adminToken = null;
 
 async function authenticateAdmin() {
-  const res = await fetch(`${POCKETBASE_URL}/api/admins/auth-with-password`, {
+  const res = await fetch(`${POCKETBASE_URL}/api/collections/_superusers/auth-with-password`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

@@ -1,0 +1,39 @@
+---
+/**
+ * Reusable newsletter / community toggle signup component.
+ * Each instance needs a unique `id` prefix so multiple can coexist on a page.
+ */
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+<div class="signup-toggle-block" data-signup-toggle={id}>
+  <div class="mode-toggle-wrap">
+    <div class="mode-toggle">
+      <span class="mode-toggle-label mode-toggle-label--active" data-label="newsletter">Newsletter</span>
+      <button class="mode-toggle-switch" data-toggle-switch type="button" aria-label="Toggle between newsletter and community signup">
+        <span class="mode-toggle-thumb"></span>
+      </button>
+      <span class="mode-toggle-label" data-label="community">Community</span>
+    </div>
+  </div>
+
+  <div class="signup-card mode-panel mode-panel--active" data-panel="newsletter">
+    <div class="signup-card-header">Weekly newsletter</div>
+    <form class="signup-form" data-form="newsletter">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Join free</button>
+    </form>
+    <div class="signup-card-note">One email per week. Unsubscribe anytime.</div>
+  </div>
+
+  <div class="signup-card mode-panel" data-panel="community">
+    <div class="signup-card-header">Swarm Operators Discord Channel</div>
+    <form class="signup-form" data-form="community">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Request entry</button>
+    </form>
+    <div class="signup-card-note">A private circle of operators, builders, and leaders dissolving cognitive bottlenecks. Entry by application.</div>
+  </div>
+</div>

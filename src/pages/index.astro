@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCrest from '../components/HeroCrest.astro';
 import GoldRule from '../components/GoldRule.astro';
-import SignupCard from '../components/SignupCard.astro';
+import SignupToggle from '../components/SignupToggle.astro';
 ---
 <BaseLayout>
   <main>
@@ -20,7 +20,7 @@ import SignupCard from '../components/SignupCard.astro';
 
       <GoldRule />
 
-      <SignupCard formId="hero-signup-form" />
+      <SignupToggle id="hero" />
     </div>
   </section>
 
@@ -71,14 +71,10 @@ import SignupCard from '../components/SignupCard.astro';
     </div>
   </section>
 
-  <!-- Bottom CTA -->
-  <section class="bottom-cta" aria-label="Sign up">
-    <div class="bottom-epigraph">"You set the vision. They run with it. That's the shift."</div>
-    <div class="bottom-attribution">— <a href="https://x.com/virtual_rf" target="_blank" rel="noopener">Rhys Fisher</a></div>
-    <form class="signup-form" id="bottom-signup-form">
-      <input type="email" placeholder="your@email.com" required />
-      <button type="submit">Request entry</button>
-    </form>
+  <!-- Bottom Quote -->
+  <section class="bottom-cta" aria-label="Quote">
+    <div class="bottom-epigraph">&ldquo;You set the vision. They run with it. That&rsquo;s the shift.&rdquo;</div>
+    <div class="bottom-attribution">&mdash; <a href="https://x.com/virtual_rf" target="_blank" rel="noopener">Rhys Fisher</a></div>
   </section>
 
   </main>

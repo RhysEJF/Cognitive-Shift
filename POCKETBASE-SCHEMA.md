@@ -106,28 +106,6 @@ These collections accept unauthenticated `POST` requests directly from the brows
 
 ---
 
-### `newsletter_publication_signals`
-
-Append-only signal table. The browser writes a signal every time someone subscribes from an article page. The `send-newsletter.js` script reconciles these into the subscriber's `publications` array before each send, then deletes the processed signals.
-
-| Field | Type | Required | Options | Description |
-|-------|------|----------|---------|-------------|
-| `email` | email | yes | **NOT unique** | Subscriber email (may have multiple rows per email) |
-| `publication_slug` | text | yes | — | Publication slug the user subscribed from |
-
-**API Rules:**
-
-| Action | Rule |
-|--------|------|
-| List / View | Admin only |
-| **Create** | **Public** (empty string `""`) |
-| Update | Admin only |
-| Delete | Admin only |
-
-> **Why not unique?** A user may subscribe from different publications on different devices/sessions. Each signal is consumed exactly once during reconciliation.
-
----
-
 ### `community_applications`
 
 | Field | Type | Required | Options | Description |
@@ -175,8 +153,6 @@ Resend is used **only for sending emails**, never for form collection. All form 
 | `--preview` | Send only to `reese@unvanity.com` instead of all subscribers |
 | `--dry-run` | Print what would be sent, send nothing |
 | `--since YYYY-MM-DD` | Override the 7-day lookback window |
-
-**Pre-send reconciliation:** Before each send, the script fetches all `newsletter_publication_signals`, merges each signal's `publication_slug` into the matching subscriber's `publications` array (deduped via Set), then deletes the processed signals.
 
 **Required env vars:** `RESEND_API_KEY`, `POCKETBASE_URL`, `POCKETBASE_ADMIN_EMAIL`, `POCKETBASE_ADMIN_PASSWORD`
 

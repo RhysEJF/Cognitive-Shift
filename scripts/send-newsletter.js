@@ -3,8 +3,7 @@
 /**
  * Send weekly digest newsletter to all subscribers via Resend.
  *
- * Before sending, reconciles publication signals into each subscriber's
- * publications array, then builds a grouped email template.
+ * Builds a grouped email template with articles organized by publication.
  *
  * Environment variables:
  *   RESEND_API_KEY             - Resend API key (re_xxx)
@@ -24,8 +23,8 @@ const POCKETBASE_URL = process.env.POCKETBASE_URL;
 const POCKETBASE_ADMIN_EMAIL = process.env.POCKETBASE_ADMIN_EMAIL;
 const POCKETBASE_ADMIN_PASSWORD = process.env.POCKETBASE_ADMIN_PASSWORD;
 const SITE_URL = "https://thecognitiveshift.com";
-const FROM_EMAIL = "The Cognitive Shift <newsletter@thecognitiveshift.com>";
-const PREVIEW_EMAIL = "reese@unvanity.com";
+const FROM_EMAIL = "The Cognitive Shift <hello@thecognitiveshift.com>";
+const PREVIEW_EMAIL = "rhys@unvanity.com";
 
 // ---------------------------------------------------------------------------
 // CLI flags
@@ -73,7 +72,7 @@ if (!dryRun && (!POCKETBASE_ADMIN_EMAIL || !POCKETBASE_ADMIN_PASSWORD)) {
 let adminToken = null;
 
 async function authenticateAdmin() {
-  const res = await fetch(`${POCKETBASE_URL}/api/admins/auth-with-password`, {
+  const res = await fetch(`${POCKETBASE_URL}/api/collections/_superusers/auth-with-password`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -104,37 +103,6 @@ async function pbFetch(path) {
   return res.json();
 }
 
-async function pbPatch(path, body) {
-  const url = `${POCKETBASE_URL}${path}`;
-  const res = await fetch(url, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: adminToken,
-    },
-    body: JSON.stringify(body),
-  });
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`PocketBase PATCH failed: ${res.status} — ${text}`);
-  }
-  return res.json();
-}
-
-async function pbDelete(path) {
-  const url = `${POCKETBASE_URL}${path}`;
-  const res = await fetch(url, {
-    method: "DELETE",
-    headers: { Authorization: adminToken },
-  });
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`PocketBase DELETE failed: ${res.status} — ${text}`);
-  }
-}
-
 async function fetchAllPages(path) {
   let page = 1;
   const perPage = 200;
@@ -149,67 +117,6 @@ async function fetchAllPages(path) {
   }
 
   return items;
-}
-
-// ---------------------------------------------------------------------------
-// Reconcile publication signals
-// ---------------------------------------------------------------------------
-
-async function reconcilePublicationSignals() {
-  const signals = await fetchAllPages("/api/collections/newsletter_publication_signals/records");
-  if (signals.length === 0) {
-    console.log("No publication signals to reconcile");
-    return;
-  }
-
-  console.log(`Reconciling ${signals.length} publication signal(s)...`);
-
-  // Group signals by email
-  const byEmail = {};
-  for (const sig of signals) {
-    if (!byEmail[sig.email]) byEmail[sig.email] = [];
-    byEmail[sig.email].push(sig);
-  }
-
-  for (const [email, emailSignals] of Object.entries(byEmail)) {
-    // Find the subscriber
-    const filter = `email='${email.replace(/'/g, "\\'")}'`;
-    const path = `/api/collections/newsletter_subscribers/records?filter=${encodeURIComponent(filter)}`;
-    const data = await pbFetch(path);
-
-    if (data.items.length === 0) {
-      console.log(`  Skipping signals for ${email} — no subscriber record found`);
-      continue;
-    }
-
-    const subscriber = data.items[0];
-    const existing = new Set(subscriber.publications || []);
-    let added = 0;
-
-    for (const sig of emailSignals) {
-      if (sig.publication_slug && !existing.has(sig.publication_slug)) {
-        existing.add(sig.publication_slug);
-        added++;
-      }
-    }
-
-    if (added > 0) {
-      await pbPatch(
-        `/api/collections/newsletter_subscribers/records/${subscriber.id}`,
-        { publications: Array.from(existing) }
-      );
-      console.log(`  ${email}: added ${added} publication(s) → [${Array.from(existing).join(", ")}]`);
-    } else {
-      console.log(`  ${email}: no new publications to add`);
-    }
-
-    // Delete processed signals
-    for (const sig of emailSignals) {
-      await pbDelete(`/api/collections/newsletter_publication_signals/records/${sig.id}`);
-    }
-  }
-
-  console.log("Reconciliation complete\n");
 }
 
 // ---------------------------------------------------------------------------
@@ -257,17 +164,17 @@ function buildArticleRowHtml(article) {
 
   return `
         <tr>
-          <td style="padding: 16px 0; border-bottom: 1px solid #e5e0d8;">
-            <h3 style="margin: 0 0 6px; font-size: 18px; color: #2d2d2d;">
-              <a href="${articleUrl}" style="color: #2d2d2d; text-decoration: none;">${article.title}</a>
+          <td style="padding: 20px 0; border-bottom: 1px solid #e8e0d4;">
+            <h3 style="margin: 0 0 6px; font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: normal; color: #1a2a22; line-height: 1.3;">
+              <a href="${articleUrl}" style="color: #1a2a22; text-decoration: none;">${article.title}</a>
             </h3>
-            <p style="margin: 0 0 6px; font-size: 13px; color: #888;">
+            <p style="margin: 0 0 8px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #8a8070;">
               By ${authorName}
             </p>
-            <p style="margin: 0 0 10px; font-size: 15px; color: #444; line-height: 1.5;">
+            <p style="margin: 0 0 12px; font-family: Georgia, 'Times New Roman', serif; font-size: 16px; color: #3d3830; line-height: 1.6;">
               ${excerpt}
             </p>
-            <a href="${articleUrl}" style="color: #5a7a5a; text-decoration: underline; font-size: 13px;">
+            <a href="${articleUrl}" style="color: #5a7a5a; text-decoration: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
               Read more &rarr;
             </a>
           </td>
@@ -280,10 +187,12 @@ function buildPublicationGroupHtml(group) {
 
   return `
       <tr>
-        <td style="padding: 24px 0 8px;">
-          <h2 style="margin: 0; font-size: 20px; color: #2d2d2d; border-bottom: 2px solid #c9a96e; padding-bottom: 8px;">
-            <a href="${pubUrl}" style="color: #2d2d2d; text-decoration: none;">${group.name}</a>
-          </h2>
+        <td style="padding: 28px 0 4px;">
+          <table width="100%" cellpadding="0" cellspacing="0"><tr>
+            <td style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5a7a5a; padding-bottom: 8px; border-bottom: 2px solid #c8a45c;">
+              <a href="${pubUrl}" style="color: #5a7a5a; text-decoration: none;">${group.name}</a>
+            </td>
+          </tr></table>
         </td>
       </tr>
       <tr>
@@ -298,32 +207,61 @@ function buildPublicationGroupHtml(group) {
 function buildEmailHtml(articles) {
   const groups = groupArticlesByPublication(articles);
   const groupRows = groups.map(buildPublicationGroupHtml).join("");
+  const unsubscribeUrl = `mailto:hello@thecognitiveshift.com?subject=Unsubscribe&body=Please%20unsubscribe%20me%20from%20the%20newsletter.`;
 
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
-<body style="margin: 0; padding: 0; background-color: #f5f0eb; font-family: Georgia, 'Times New Roman', serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f0eb; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #1a2a22; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #1a2a22;">
+    <!-- Header -->
     <tr>
-      <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; padding: 40px;">
+      <td align="center" style="padding: 40px 20px 0;">
+        <table width="600" cellpadding="0" cellspacing="0">
           <tr>
-            <td>
-              <h1 style="margin: 0 0 4px; font-size: 28px; color: #2d2d2d;">The Cognitive Shift</h1>
-              <p style="margin: 0 0 24px; font-size: 16px; color: #888;">Weekly digest</p>
+            <td align="center" style="padding: 32px 40px;">
+              <h1 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: normal; color: #f0e8d8; letter-spacing: 0.02em;">The Cognitive Shift</h1>
+              <table width="60" cellpadding="0" cellspacing="0" style="margin: 16px auto 8px;">
+                <tr><td style="height: 1px; background: #c8a45c;"></td></tr>
+              </table>
+              <p style="margin: 0; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5a7a68;">Weekly digest</p>
             </td>
           </tr>
-          ${groupRows}
+        </table>
+      </td>
+    </tr>
+    <!-- Body -->
+    <tr>
+      <td align="center" style="padding: 0 20px;">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #f5efe5;">
           <tr>
-            <td style="padding-top: 32px;">
-              <a href="${SITE_URL}" style="display: inline-block; background-color: #5a7a5a; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-size: 14px;">
+            <td style="padding: 12px 40px 32px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                ${groupRows}
+              </table>
+            </td>
+          </tr>
+          <!-- CTA -->
+          <tr>
+            <td align="center" style="padding: 8px 40px 40px;">
+              <a href="${SITE_URL}" style="display: inline-block; background-color: #1a2a22; color: #f0e8d8; padding: 14px 32px; text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;">
                 Visit The Cognitive Shift
               </a>
             </td>
           </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- Footer -->
+    <tr>
+      <td align="center" style="padding: 0 20px 40px;">
+        <table width="600" cellpadding="0" cellspacing="0">
           <tr>
-            <td style="padding-top: 32px; font-size: 12px; color: #999; line-height: 1.5;">
-              You received this because you subscribed to The Cognitive Shift newsletter.
+            <td align="center" style="padding: 24px 40px;">
+              <p style="margin: 0 0 8px; font-size: 12px; color: #5a7a68; line-height: 1.5;">
+                You received this because you subscribed to The Cognitive Shift newsletter.
+              </p>
+              <a href="${unsubscribeUrl}" style="color: #988f7a; font-size: 12px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
         </table>
@@ -353,6 +291,7 @@ function buildEmailText(articles) {
 
   lines.push(`---\nVisit: ${SITE_URL}`);
   lines.push("You received this because you subscribed to The Cognitive Shift newsletter.");
+  lines.push("To unsubscribe, reply to this email with 'Unsubscribe'.");
   return lines.join("\n");
 }
 
@@ -395,13 +334,6 @@ async function main() {
 
   if (!dryRun) {
     await authenticateAdmin();
-  }
-
-  // Reconcile publication signals before sending
-  if (!dryRun) {
-    await reconcilePublicationSignals();
-  } else {
-    console.log("[DRY RUN] Skipping signal reconciliation\n");
   }
 
   const [subscribers, articles] = await Promise.all([
