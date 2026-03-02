@@ -71,7 +71,7 @@ There's a flywheel here. The more work I push through, the more it learns, the l
 
 This isn't just for building apps. I pointed the swarm at a content creator called [Etymology Nerd](https://www.youtube.com/@etymology_nerd) and told it to download his recent YouTube content, extract transcripts, and analyse his format.
 
-It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. [The output was remarkable.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say *"create video transcripts in this style."*
+It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. The output was surprisingly good. No, it was [great.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) And I've since remixed it for my own purpose to produce these [daily videos.](https://www.tiktok.com/@aiwithrhys/video/7610836497008233760?is_from_webapp=1&sender_device=pc&web_id=7521862494023124512) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say *"create video transcripts in this style."*
 
 ![Etymology Nerd content analysis output](/assets/etymology-nerd-analysis.png)
 
