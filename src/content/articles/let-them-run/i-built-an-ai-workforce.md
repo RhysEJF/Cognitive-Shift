@@ -65,6 +65,8 @@ After every completed outcome, I run an automated retrospective. It analyses eve
 
 There's a flywheel here. The more work I push through, the more it learns, the less it escalates, the less it needs me. I've committed to getting kicked in the teeth as much as possible over the next few months, feeding it every project I can, to see how fast the flywheel spins.
 
+![The retro flywheel](/assets/retro-flywheel.png)
+
 ## Beyond code
 
 This isn't just for building apps. I pointed the swarm at a content creator called Etymology Nerd (millions of followers, incredible short-form videos) and told it to download his recent YouTube content, extract transcripts, and analyse his format.
