@@ -51,7 +51,7 @@ async function handleLandingSignup(event) {
   button.disabled = true;
 
   try {
-    await createNewsletterSubscriber(email, "landing");
+    await createNewsletterSubscriber(email, "landing", "");
     localStorage.setItem("tcs_signup_email", email);
     button.textContent = "Welcome";
     emailInput.value = "";

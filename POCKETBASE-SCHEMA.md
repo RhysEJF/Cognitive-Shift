@@ -91,6 +91,7 @@ These collections accept unauthenticated `POST` requests directly from the brows
 | `email` | email | yes | unique | Subscriber email |
 | `source` | text | no | — | Where they signed up from (`"landing"`, `"article_modal"`) |
 | `subscribed_at` | date | no | — | When they subscribed |
+| `publications` | JSON | no | default `[]` | Array of publication slugs the subscriber signed up from |
 
 **API Rules:**
 
@@ -102,6 +103,28 @@ These collections accept unauthenticated `POST` requests directly from the brows
 | Delete | Admin only |
 
 > **Important:** The create rule must be an empty string `""` (not `null`). An empty string means "allow everyone". A `null` or missing rule means "deny everyone".
+
+---
+
+### `newsletter_publication_signals`
+
+Append-only signal table. The browser writes a signal every time someone subscribes from an article page. The `send-newsletter.js` script reconciles these into the subscriber's `publications` array before each send, then deletes the processed signals.
+
+| Field | Type | Required | Options | Description |
+|-------|------|----------|---------|-------------|
+| `email` | email | yes | **NOT unique** | Subscriber email (may have multiple rows per email) |
+| `publication_slug` | text | yes | — | Publication slug the user subscribed from |
+
+**API Rules:**
+
+| Action | Rule |
+|--------|------|
+| List / View | Admin only |
+| **Create** | **Public** (empty string `""`) |
+| Update | Admin only |
+| Delete | Admin only |
+
+> **Why not unique?** A user may subscribe from different publications on different devices/sessions. Each signal is consumed exactly once during reconciliation.
 
 ---
 
@@ -136,14 +159,26 @@ These collections accept unauthenticated `POST` requests directly from the brows
 
 Resend is used **only for sending emails**, never for form collection. All form data lives in PocketBase.
 
-### Newsletter emails (new content notification)
+### Newsletter emails (weekly digest)
 
 | Property | Value |
 |----------|-------|
-| **Trigger** | A new article is published (`is_published` flipped to `true`) |
-| **Action** | Query all `newsletter_subscribers` from PocketBase, send email via Resend API |
-| **Resend contact label** | `newsletter` |
-| **Implementation** | Server-side script on Railway (where PocketBase is hosted), or manual initially. Can be automated later with PocketBase hooks or a cron job. |
+| **Trigger** | Railway cron: `0 9 * * 4` (Thursday 9 AM UTC) |
+| **Action** | Reconcile publication signals, then send grouped digest to all subscribers via Resend |
+| **From** | `The Cognitive Shift <newsletter@thecognitiveshift.com>` |
+| **Script** | `node scripts/send-newsletter.js` |
+
+**Script flags:**
+
+| Flag | Effect |
+|------|--------|
+| `--preview` | Send only to `reese@unvanity.com` instead of all subscribers |
+| `--dry-run` | Print what would be sent, send nothing |
+| `--since YYYY-MM-DD` | Override the 7-day lookback window |
+
+**Pre-send reconciliation:** Before each send, the script fetches all `newsletter_publication_signals`, merges each signal's `publication_slug` into the matching subscriber's `publications` array (deduped via Set), then deletes the processed signals.
+
+**Required env vars:** `RESEND_API_KEY`, `POCKETBASE_URL`, `POCKETBASE_ADMIN_EMAIL`, `POCKETBASE_ADMIN_PASSWORD`
 
 ### Community invite emails
 

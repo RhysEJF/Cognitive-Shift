@@ -34,13 +34,33 @@ async function _pbPost(url, data) {
  * Create a newsletter subscriber record.
  * @param {string} email
  * @param {string} source - e.g. "landing" or "article_modal"
+ * @param {string} [publicationSlug] - publication slug the user subscribed from
  * @returns {Promise<Object>} Created record
  */
-async function createNewsletterSubscriber(email, source) {
-  return _pbPost(_pbUrl("newsletter_subscribers"), {
+async function createNewsletterSubscriber(email, source, publicationSlug) {
+  var payload = {
     email: email,
     source: source,
     subscribed_at: new Date().toISOString()
+  };
+  if (publicationSlug) {
+    payload.publications = [publicationSlug];
+  }
+  return _pbPost(_pbUrl("newsletter_subscribers"), payload);
+}
+
+/**
+ * Create a publication signal record.
+ * Always succeeds (collection is not unique on email) — used for server-side
+ * reconciliation into the subscriber's publications array.
+ * @param {string} email
+ * @param {string} publicationSlug
+ * @returns {Promise<Object>} Created record
+ */
+async function createPublicationSignal(email, publicationSlug) {
+  return _pbPost(_pbUrl("newsletter_publication_signals"), {
+    email: email,
+    publication_slug: publicationSlug
   });
 }
 

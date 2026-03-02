@@ -1,7 +1,11 @@
 ---
 // Newsletter modal — triggered on article scroll via newsletter-modal.js
+interface Props {
+  publicationSlug?: string;
+}
+const { publicationSlug = '' } = Astro.props;
 ---
-<div class="modal-overlay" id="newsletter-modal-overlay" style="display:none;">
+<div class="modal-overlay" id="newsletter-modal-overlay" style="display:none;" data-publication-slug={publicationSlug}>
   <div class="modal-content">
     <button class="modal-close" id="newsletter-modal-close" aria-label="Close">&times;</button>
     <h3 class="modal-heading">Stay ahead of the shift</h3>

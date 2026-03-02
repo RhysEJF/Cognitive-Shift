@@ -75,6 +75,8 @@
 
     if (!overlay) return;
 
+    var publicationSlug = overlay.getAttribute("data-publication-slug") || "";
+
     // Close button — hide modal, no localStorage update (will reappear next visit)
     if (closeBtn) {
       closeBtn.addEventListener("click", closeModal);
@@ -101,7 +103,26 @@
         button.disabled = true;
 
         try {
-          await createNewsletterSubscriber(email, "article_modal");
+          // Try to create subscriber — 400 means duplicate email, which is fine
+          try {
+            await createNewsletterSubscriber(email, "article_modal", publicationSlug);
+          } catch (subErr) {
+            // Check if this is a duplicate email error (expected)
+            var isDuplicate = subErr.message && subErr.message.indexOf("400") !== -1;
+            if (!isDuplicate) throw subErr;
+            // Duplicate email is OK — we still record the publication signal below
+          }
+
+          // Always record the publication signal (not unique, always succeeds)
+          if (publicationSlug) {
+            try {
+              await createPublicationSignal(email, publicationSlug);
+            } catch (sigErr) {
+              // Non-critical — log but don't fail the UX
+              console.warn("Publication signal error:", sigErr);
+            }
+          }
+
           localStorage.setItem("tcs_newsletter", "subscribed");
 
           // Replace form area with confirmation
