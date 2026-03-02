@@ -41,7 +41,7 @@ Because I'm not a developer, I had no ego keeping me at the keyboard. If handing
 
 That's the mindset behind Flow, my R&D experiment in what I'm calling outcome-first orchestration. The concept is simple. Instead of prompting an LLM line by line, I describe an outcome. Build this app, decode that content formula, research this market. I shape a vision. What are we trying to do, what does success look like, what opinions do I have on how the work should be done. Then I deploy autonomous workers and let them run.
 
-<!-- IMAGE: Flow outcome interface with intent and success criteria -->
+![Flow outcome interface with intent and success criteria](/assets/flow-outcome-interface.png)
 
 An outcome is a structured brief. Intent, success criteria, context sections. I can talk into it, literally ramble about wanting the app optimised for virality, or wanting agents to build a custom scraper before tackling the main task. Flow detects skill and tool dependencies automatically. It runs a two-phased implementation. First it deploys workers to build the required capabilities (scrapers, analysers, whatever the main task needs) and then it deploys workers to execute on the actual outcome.
 
