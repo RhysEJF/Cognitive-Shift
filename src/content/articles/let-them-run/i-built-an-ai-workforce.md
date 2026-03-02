@@ -37,7 +37,7 @@ I had the MVP clear in my head almost immediately. But I never documented it. I 
 
 That's when I stopped asking *"how do I code faster?"* and started asking *"what if I wasn't in the editor at all?"*
 
-## From operator to orchestrator
+## From vibe coder to swarm operator
 
 Because I'm not a developer, I had no ego keeping me at the keyboard. If handing the whole process to agents worked, I'd happily do it. There were more valuable things I could spend my time on.
 
