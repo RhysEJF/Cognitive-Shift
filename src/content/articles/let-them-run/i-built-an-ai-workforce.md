@@ -59,7 +59,7 @@ The real breakthrough, though, is what happens after. The U.S. Army developed a 
 
 After every completed outcome, I run an automated retrospective. It analyses every escalation, every moment HOMЯ pulled me in, every failure point, and surfaces ideas for how the system can improve itself. Some features it's suggested are things I'd never have come up with, or at least not without spending hours combing through error logs for patterns. I approve the ones I like, and Flow creates a new outcome focused on implementing them.
 
-<!-- IMAGE: Retro output with suggested improvements -->
+![Retro output with suggested improvements](/assets/retro-improvements.png)
 
 There's a flywheel here. The more work I push through, the more it learns, the less it escalates, the less it needs me. I've committed to getting kicked in the teeth as much as possible over the next few months, feeding it every project I can, to see how fast the flywheel spins.
 
