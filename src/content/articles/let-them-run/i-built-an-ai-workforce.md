@@ -59,7 +59,7 @@ The real breakthrough, though, is what happens after. The U.S. Army developed a 
 
 After every completed outcome, I run an automated retrospective. It analyses every escalation, every moment HOMЯ pulled me in, every failure point, and surfaces ideas for how the system can improve itself. Some features it's suggested are things I'd never have come up with, or at least not without spending hours combing through error logs for patterns. I approve the ones I like, and Flow creates a new outcome focused on implementing them.
 
-![Retro output with suggested improvements](/assets/retro-improvements.png)
+<!-- IMAGE: Retro output with suggested improvements -->
 
 There's a flywheel here. The more work I push through, the more it learns, the less it escalates, the less it needs me. I've committed to getting kicked in the teeth as much as possible over the next few months, feeding it every project I can, to see how fast the flywheel spins.
 
@@ -69,7 +69,7 @@ This isn't just for building apps. I pointed the swarm at a content creator call
 
 It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. [The output was remarkable.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say "create video transcripts in this style."
 
-<!-- IMAGE: Etymology Nerd content analysis output -->
+![Etymology Nerd content analysis output](/assets/etymology-nerd-analysis.png)
 
 Now every Sunday I generate a batch of transcripts, add them to my Google Calendar, and each morning I read from one and publish a video. His formula produces one video a week because of the research involved. I could do ten a day.
 
