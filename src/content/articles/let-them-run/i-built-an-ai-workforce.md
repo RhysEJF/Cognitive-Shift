@@ -85,9 +85,9 @@ Now I talk into Telegram mid-walk. There's a Claude agent between me and Flow th
 
 <iframe width="315" height="560" src="https://www.youtube.com/embed/2HGnnzuidIQ" frameborder="0" allowfullscreen></iframe>
 
-A few days ago I tested this with something personal. I was out walking and threw it a task. Build me a maintenance guide for my bike. Not a generic one. Something specific to my exact components.
+A few days ago I tested this with something personal. I was out walking and threw it a task. I'm building a [custom titanium bike.](https://www.linkedin.com/posts/rejf_now-i-just-need-to-build-this-thing-howlerbikescom-ugcPost-7428791830915358721-00wL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAACo6mGMBDpbQyAlPqJxgDtPXnTE5rx2Qzk0) Help me spec it.
 
-Here's what happened. Flow deployed agents to do deep research and build an AI agent that could act as my bike mechanic, one that understood component-level maintenance. Then the bike mechanic agent prepped an interview and actually interviewed me about every component on the bike. What groupset, what wheels, what tyres, what year, what condition. Once it had all that context, it prepared a [component-specific maintenance guide](https://docs.google.com/document/d/16Hw3HpV-WV6_tids9bssPww8RUkhyZlqirBIc9XdM28/edit?usp=sharing) tailored to exactly what I'm riding.
+Flow deployed agents to do deep research on frame geometry, groupset compatibility, and component options, then built an AI agent that could act as my bike mechanic. The agent interviewed me about every detail. How I ride, where I ride, what I care about, what I don't. Then it produced a [component-by-component build guide](https://docs.google.com/document/d/16Hw3HpV-WV6_tids9bssPww8RUkhyZlqirBIc9XdM28/edit?usp=sharing) tailored to exactly what I want.
 
 ![Bike mechanic component guide](/assets/bike-mechanic-guide.png)
 
