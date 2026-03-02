@@ -29,7 +29,11 @@ RideReady started as a personal itch. I'm not someone who cleans their bike afte
 
 fizz took eight days of sixteen-hour sessions. Most of the core product came together in a couple of days, but then I spent the rest trying to hack-proof it. AI video generation is expensive, and I didn't want someone exploiting the system and draining my account.
 
-The loop looked like this. Prompt the LLM, run the code, find the bug, prompt again. I knew what the MVP should be almost immediately. But I was burning my best days in the weeds while the vision document sat unfinished and the deployment plan gathered dust. Feature creep was eating the hours I should have spent on go-to-market, on strategy, on the next idea.
+The loop looked like this. Prompt the LLM, run the code, find the bug, prompt again.
+
+![The vibe coding loop](/assets/vibe-coding-loop.png)
+
+I knew what the MVP should be almost immediately. But I was burning my best days in the weeds while the vision document sat unfinished and the deployment plan gathered dust. Feature creep was eating the hours I should have spent on go-to-market, on strategy, on the next idea.
 
 That's when I stopped asking *"how do I code faster?"* and started asking *"what if I wasn't in the editor at all?"*
 
