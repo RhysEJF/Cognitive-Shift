@@ -27,7 +27,7 @@ I'm not a developer. I cut my teeth in marketing, ran a boutique data analytics 
 
 At the start of this year, I vibe coded two products from scratch. Ride Ready is an automated bike component wear tracker. As you ride, it calculates kilometres across your components and alerts you for maintenance. Fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and you're hiking in Spain.
 
-<!-- IMAGE: Ride Ready and Fizz product screens -->
+![RideReady and Fizz product screens](/assets/rideready-fizz-screens.png)
 
 Fizz took eight days of sixteen-hour sessions. Most of the core product came together in a couple of days, but then I spent the rest trying to hack-proof it. AI video generation is expensive, and I didn't want someone exploiting the system and draining my account.
 
