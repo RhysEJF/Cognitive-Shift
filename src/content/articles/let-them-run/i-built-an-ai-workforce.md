@@ -67,7 +67,7 @@ There's a flywheel here. The more work I push through, the more it learns, the l
 
 This isn't just for building apps. I pointed the swarm at a content creator called Etymology Nerd (millions of followers, incredible short-form videos) and told it to download his recent YouTube content, extract transcripts, and analyse his format.
 
-It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. The output was remarkable. His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say "create video transcripts in this style."
+It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. [The output was remarkable.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say "create video transcripts in this style."
 
 <!-- IMAGE: Etymology Nerd content analysis output -->
 
