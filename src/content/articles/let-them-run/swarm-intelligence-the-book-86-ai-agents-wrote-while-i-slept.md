@@ -99,7 +99,7 @@ The book is aimed at being a sort of tactical hand book, organized around the SW
 - **A**DAPT — Strategic evolution and learning velocity
 - **R**EPLICATE — Scaling intelligence operations at near-zero marginal cost
 - **M**OBILIZE — Coordinated execution at scale
-- **S**USTAIce, governance, and the long game
+- **S**USTAIN, governance, and the long game
 
 Each capability is grounded in the research and validated by what the research calls "ten universal principles", patterns that appear independently in ant colonies, military doctrine, StarCraft tournaments, and distributed systems engineering. When six domains converge on the same truth, it's not a metaphor. It's structural.
 
@@ -109,7 +109,7 @@ I used an AI swarm to write a book about AI swarms, and the swarm exhibited the 
 
 The book is its own proof of concept.
 
-The window for establishing competitive advantage with agentic swarms is 18-24 months. After that, this becomes table stakes. The organizations that learn to make AI workforces work for them, self equip with optimized capabilities, manage coordination, and design for failure *now* will compound their advantage while everyone else is still writing prompts by hand.
+The window for establishing competitive advantage with agentic swarms is 18-24 months. After that, this becomes table stakes. The organizations that learn to make AI workforces work for them, self equip with optimizing capabilities, manage coordination, and design for failure *now* will compound their advantage while everyone else is still writing prompts by hand.
 
 The guide is available now in Beta.
 
