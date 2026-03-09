@@ -1,4 +1,4 @@
 ---
 name: "Shaun Thresher"
-avatar: "/assets/authors/s-thresher.jpeg"
+avatar: "https://assets.thecognitiveshift.com/authors/s-thresher.jpeg"
 ---

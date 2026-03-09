@@ -25,13 +25,13 @@ I'm not a developer. I cut my teeth in marketing, ran a boutique data analytics 
 
 RideReady started as a personal itch. I'm not someone who cleans their bike after every ride, and I kept missing maintenance windows until something expensive failed. I wanted a system that would just tell me when a component needed attention. It hooks into Strava, tracks wear across every part on your bike, and sends you the alert before something costs you. [Watch a demo here.](https://youtube.com/shorts/fVMDpQ9hW1k?si=H0_za1QFx8npRPiQ) fizz is stranger. Connect Strava, complete an activity, and it generates a dancing AI video of you in the right sportswear, in the right scene. Hike in Spain, and [you're hiking in Spain.](https://www.tiktok.com/@getfizzy/video/7605596469978025248)
 
-![RideReady and Fizz product screens](/assets/rideready-fizz-screens.png)
+![RideReady and Fizz product screens](https://assets.thecognitiveshift.com/articles/rideready-fizz-screens.png)
 
 fizz took eight days of sixteen-hour sessions. Most of the core product came together in a couple of days, but then I spent the rest trying to hack-proof it. AI video generation is expensive, and I didn't want someone exploiting the system and draining my account.
 
 The loop looked like this. Prompt the LLM, run the code, find the bug, prompt again.
 
-![The vibe coding loop](/assets/vibe-coding-loop.png)
+![The vibe coding loop](https://assets.thecognitiveshift.com/articles/vibe-coding-loop.png)
 
 I had the MVP clear in my head almost immediately. But I never documented it. I was too busy making things bug-proof and secure to think about anything beyond the next fix. Go-to-market, strategy, the next idea, none of it got touched.
 
@@ -43,7 +43,7 @@ Because I'm not a developer, I had no ego keeping me at the keyboard. If handing
 
 That's the mindset behind Flow, my R&D experiment in what I'm calling outcome-first orchestration. The concept is simple. Instead of prompting an LLM line by line, I describe an outcome. Build this app, decode that content formula, research this market. I shape a vision. What are we trying to do, what does success look like, what opinions do I have on how the work should be done. Then I deploy autonomous workers and let them run.
 
-![Flow outcome interface with intent and success criteria](/assets/flow-outcome-interface.png)
+![Flow outcome interface with intent and success criteria](https://assets.thecognitiveshift.com/articles/flow-outcome-interface.png)
 
 An outcome is a structured brief. Intent, success criteria, context sections. I can talk into it, literally ramble about wanting the app optimised for virality, or wanting agents to build a custom scraper before tackling the main task. Flow detects skill and tool dependencies automatically. It runs a two-phased implementation. First it deploys workers to build the required capabilities (scrapers, analysers, whatever the main task needs) and then it deploys workers to execute on the actual outcome.
 
@@ -53,7 +53,7 @@ Think of it as taking a generic group of agents and turning them into a speciali
 
 The system breaks constantly. The first few days of running projects through Flow, I was getting pulled in left, right and centre. Agents hit ambiguity, got stuck in loops, or just failed. Every time, the observability layer (I call it [HOMЯ](https://youtu.be/FNptHqAlgwM?si=c-MlVLzhW0hiTwN7)) would escalate and surface a decision. Add more context, split it.
 
-![HOMЯ escalation with decision options](/assets/homr-escalation.png)
+![HOMЯ escalation with decision options](https://assets.thecognitiveshift.com/articles/homr-escalation.png)
 
 You can only take so much of that before you add a YOLO mode. So I did. YOLO mode puts another AI in the human-in-the-loop seat, letting it make decisions that would normally require me. This is the shift from human-in-the-loop to human-on-the-loop in practice, not as a theoretical framework, but as something I built because I needed to sleep.
 
@@ -61,11 +61,11 @@ The real breakthrough, though, is what happens after. The U.S. Army developed a 
 
 After every completed outcome, I run an automated retrospective. It analyses every escalation, every moment HOMЯ pulled me in, every failure point, and surfaces ideas for how the system can improve itself. Some features it's suggested are things I'd never have come up with, or at least not without spending hours combing through error logs for patterns. I approve the ones I like, and Flow creates a new outcome focused on implementing them.
 
-![Retro output with suggested improvements](/assets/retro-improvements.png)
+![Retro output with suggested improvements](https://assets.thecognitiveshift.com/articles/retro-improvements.png)
 
 There's a flywheel here. The more work I push through, the more it learns, the less it escalates, the less it needs me. I've committed to getting kicked in the teeth as much as possible over the next few months, feeding it every project I can, to see how fast the flywheel spins.
 
-![The retro flywheel](/assets/retro-flywheel.png)
+![The retro flywheel](https://assets.thecognitiveshift.com/articles/retro-flywheel.png)
 
 ## Beyond code
 
@@ -73,7 +73,7 @@ This isn't just for building apps. I pointed the swarm at a content creator call
 
 It built the scraper. It built the transcript extractor. It created skills for how to use those tools. Then it ran the analysis. The output was surprisingly good. No, it was [great.](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing) And I've since remixed it for my own purpose to produce these [daily videos.](https://www.tiktok.com/@aiwithrhys/video/7610836497008233760) His core formula broken down into hook patterns, body structures, transition techniques, rhetorical devices. The kind of teardown that would have taken me days, distilled into something I could paste into a Claude project and say *"create video transcripts in this style."*
 
-![Etymology Nerd content analysis output](/assets/etymology-nerd-analysis.png)
+![Etymology Nerd content analysis output](https://assets.thecognitiveshift.com/articles/etymology-nerd-analysis.png)
 
 Now every Sunday I generate a batch of transcripts, add them to my Google Calendar, and each morning I read from one and publish a video. His formula produces one video a week because of the research involved. I could do ten a day.
 
@@ -87,7 +87,7 @@ Now I talk into Telegram mid-walk. There's a Claude agent between me and Flow th
 
 A few days ago I tested this with something personal. I was out walking and threw it a task. I'm building a [custom titanium bike.](https://www.linkedin.com/posts/rejf_now-i-just-need-to-build-this-thing-howlerbikescom-ugcPost-7428791830915358721-00wL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAACo6mGMBDpbQyAlPqJxgDtPXnTE5rx2Qzk0) I'd sourced all the components but had no idea how to assemble them. Flow deployed agents to research everything a bike mechanic would need to know, then built an AI agent with that expertise. The agent interviewed me about every part I'd collected, how they should interact, what tolerances matter, what order to build in. Then it produced a [component-by-component build guide](https://docs.google.com/document/d/16Hw3HpV-WV6_tids9bssPww8RUkhyZlqirBIc9XdM28/edit?usp=sharing) for my exact setup.
 
-![Bike mechanic component guide](/assets/bike-mechanic-guide.png)
+![Bike mechanic component guide](https://assets.thecognitiveshift.com/articles/bike-mechanic-guide.png)
 
 That whole chain, research, agent creation, interview, personalised guide, kicked off from a voice message on a walk. That's when the thesis became real to me. The bottleneck isn't building. It's knowing what to describe and caring enough about the outcome to describe it well.
 

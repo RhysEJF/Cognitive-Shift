@@ -5,10 +5,10 @@ authors: ["rhys-fisher"]
 publication: "let-them-run"
 publishedAt: 2026-03-09
 tags: ["ai-swarms", "agentic-ai", "book-writing", "flow", "autonomous-agents"]
-featuredImage: "/assets/swarm-intelligence-cover.jpg"
+featuredImage: "https://assets.thecognitiveshift.com/articles/swarm-intelligence-cover.jpg"
 ---
 
-![The Swarm Intelligence Handbook](/assets/swarm-intelligence-cover.jpg)
+![The Swarm Intelligence Handbook](https://assets.thecognitiveshift.com/articles/swarm-intelligence-cover.jpg)
 
 I didn't write a single paragraph of this book. I didn't assign a single task. I described an outcome, went to sleep, and woke up to 431,000 words of working material.
 
@@ -72,7 +72,7 @@ To get the workers unstuck, I built a wiggum observability engine called HOMЯ. 
 
 The whole thing took two  86 tasks. 82 completed successfully. 30 workers running in parallel. 431,000 words of intermediate output distilled into a 54,000-word field guide.
 
-![Flow output from the swarm book project](/assets/swarm-intelligence-flow-outputs.jpg)
+![Flow output from the swarm book project](https://assets.thecognitiveshift.com/articles/swarm-intelligence-flow-outputs.jpg)
 
 [You can download a copy here](https://leanpub.com/agentic-swarms-tactical-field-guide/c/thecognitiveshift). (first 100 downloads while book is in beta are free)
 
