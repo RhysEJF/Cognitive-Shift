@@ -2,5 +2,6 @@ name = "cognitive-shift"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
-[vars]
-# Non-secret env vars go here. Secrets are set in Cloudflare dashboard.
+[[kv_namespaces]]
+binding = "SESSION"
+id = "8c34ad2672ce47eca8ce2eb155c9bca4"
