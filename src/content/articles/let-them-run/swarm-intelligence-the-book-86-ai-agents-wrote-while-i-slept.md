@@ -5,7 +5,10 @@ authors: ["rhys-fisher"]
 publication: "let-them-run"
 publishedAt: 2026-03-09
 tags: ["ai-swarms", "agentic-ai", "book-writing", "flow", "autonomous-agents"]
+featuredImage: "/assets/swarm-intelligence-cover.jpg"
 ---
+
+![The Swarm Intelligence Handbook](/assets/swarm-intelligence-cover.jpg)
 
 I didn't write a single paragraph of this book. I didn't assign a single task. I described an outcome, went to sleep, and woke up to 431,000 words of working material.
 
@@ -13,9 +16,7 @@ You've had an idea for a book you never wrote. So have I.
 
 About a dozen of them. Life, time, the sheer mountain of research, it always wins. Until it didn't.
 
-It happens to me every other week and some books I've been wanting to write for years. But life keeps getting in the way.
-
-But now I have FLOW, my own AI workforce manager, and the swarm has been doing the busy work. Like building this very website you're on right now, I figured I'd test them on a book writing goal and have it run overnight.
+Because now I have FLOW, my own AI workforce manager, and the swarm has been doing the busy work. Like building this very website you're on right now, I figured I'd test them on a book writing goal and have it run overnight.
 
 It worked.
 
@@ -23,7 +24,7 @@ A little too well.
 
 Over two days, a swarm of 86 wiggums extracted wisdom out of Anthropic's mode, across six academic domains, debated each other's findings, caught their own mistakes, and delivered a 54,000-word tactical field guide on a topic that we taken me months.
 
-I just told them what I wanted the topic to be. How the information should be valuable. And my thoughts on how to approach the research using [Wispr low](https://wisprflow.ai/). Ie, I was out of the weeds and in flow state shaping the vision. Fun!
+I just told them what I wanted the topic to be. How the information should be valuable. And my thoughts on how to approach the research using [Wispr Flow](https://wisprflow.ai/). Ie, I was out of the weeds and in flow state shaping the vision. Fun!
 
 Here's what that looked like.
 
@@ -70,6 +71,8 @@ To get the workers unstuck, I built a wiggum observability engine called HOMЯ. 
 **Chapter writing, in waves.** Six chapters were drafted, each grounded in the research. Then came reviews. Five individual chapter reviews plus a cross-chapter consistency review. Then rewrites incorporating the review feedback. Then a final assembly pass into a single consolidated document with a table of contents, appendices, quick-reference cards, and a situation-based index.
 
 The whole thing took two  86 tasks. 82 completed successfully. 30 workers running in parallel. 431,000 words of intermediate output distilled into a 54,000-word field guide.
+
+![Flow output from the swarm book project](/assets/swarm-intelligence-flow-outputs.jpg)
 
 [You can download a copy here](https://leanpub.com/agentic-swarms-tactical-field-guide/c/thecognitiveshift). (first 100 downloads while book is in beta are free)
 
