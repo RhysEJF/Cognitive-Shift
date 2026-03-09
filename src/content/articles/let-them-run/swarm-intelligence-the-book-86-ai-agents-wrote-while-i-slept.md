@@ -16,7 +16,7 @@ You've had an idea for a book you never wrote. So have I.
 
 About a dozen of them. Life, time, the sheer mountain of research, it always wins. Until it didn't.
 
-Because now I have FLOW. My own AI workforce manager. It built the website you're on. I figured a book was next. I set the goal, went to sleep.
+Because now I have [FLOW](https://thecognitiveshift.com/publications/let-them-run/i-built-an-ai-workforce/). My own AI workforce manager. It built the website you're on. I figured a book was next. I set the goal, went to sleep.
 
 It worked.
 
