@@ -74,7 +74,7 @@ The whole thing took two  86 tasks. 82 completed successfully. 30 workers runnin
 
 ![Flow output from the swarm book project](/assets/swarm-intelligence-flow-outputs.jpg)
 
-[You can download a copy here](https://leanpub.com/agentic-swarms-tactical-field-guide/c/thecognitiveshift). (first 100 downloads while book is in beta are free)
+[You can download a copy here](https://leanpub.com/agentic-swarms-tactical-field-guide/c/thecognitiveshift). (Grab one of 100 free beta copies)
 
 ## The Cascade Failure (What Almost Went Wrong)
 
