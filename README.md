@@ -15,7 +15,7 @@ All content is Markdown files in `src/content/`. Edit them directly on GitHub or
 | Articles | [`src/content/articles/{publication}/{article}.md`](src/content/articles/) |
 | Publications | [`src/content/publications/{slug}.md`](src/content/publications/) |
 | Author profiles | [`src/content/authors/{slug}.md`](src/content/authors/) |
-| Images | [`public/assets/`](public/assets/) |
+| Images | Upload via [Image Vault](https://thecognitiveshift.com/contribute/vault), served from `assets.thecognitiveshift.com` |
 
 ### Quick edit on GitHub
 

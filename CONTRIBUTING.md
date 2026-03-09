@@ -5,7 +5,7 @@
 1. Go to [thecognitiveshift.com/keystatic](https://thecognitiveshift.com/keystatic)
 2. Log in with your GitHub account
 3. Create your author profile, publication (if new), and article using the form UI
-4. Upload images — they'll be hosted on our CDN automatically
+4. Upload images via the [Image Vault](https://thecognitiveshift.com/contribute/vault) and paste the CDN URLs into your content
 5. Hit **Save** — this creates a pull request for review
 6. Once reviewed and merged, your article goes live automatically
 
@@ -29,7 +29,7 @@ avatar: "https://assets.thecognitiveshift.com/authors/your-name.jpeg"
 ---
 ```
 
-Upload your avatar image to the R2 assets bucket (ask Rhys for access), or include it in your PR and we'll upload it.
+Upload your avatar via the [Image Vault](https://thecognitiveshift.com/contribute/vault) — choose the **Authors** category, then paste the CDN URL above.
 
 The filename becomes your author slug — use lowercase with hyphens.
 
@@ -69,7 +69,7 @@ Regular paragraphs, **bold**, *italic*, [links](https://example.com), and:
 > Blockquotes work too.
 ```
 
-**Images:** Upload to the assets CDN at `assets.thecognitiveshift.com` and reference by full URL. Do not commit images to the Git repo.
+**Images:** Upload via the [Image Vault](https://thecognitiveshift.com/contribute/vault) and reference by the full CDN URL it gives you. Choose the appropriate category (articles, authors, publications, or general). Do not commit images to the Git repo.
 
 **SEO is automatic.** Your `title` becomes the page title and `og:title`, `excerpt` becomes the meta description and `og:description`, and `featuredImage` (optional) becomes the `og:image`. No extra configuration needed.
 
@@ -89,4 +89,5 @@ Regular paragraphs, **bold**, *italic*, [links](https://example.com), and:
 | Author profiles | `src/content/authors/{slug}.md` |
 | Publications | `src/content/publications/{slug}.md` |
 | Articles | `src/content/articles/{pub-slug}/{article-slug}.md` |
-| Images | `https://assets.thecognitiveshift.com/` (Cloudflare R2) |
+| Image uploads | [thecognitiveshift.com/contribute/vault](https://thecognitiveshift.com/contribute/vault) |
+| Image CDN | `https://assets.thecognitiveshift.com/` (Cloudflare R2) |

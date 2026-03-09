@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /contribute/
+Disallow: /api/upload/
 
 Sitemap: https://thecognitiveshift.com/sitemap.xml

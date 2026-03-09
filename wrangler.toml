@@ -4,3 +4,4 @@ compatibility_flags = ["nodejs_compat"]
 
 # KV bindings are configured in Cloudflare Pages dashboard, not here
 # SESSION binding → KV namespace "SESSION" (id: 8c34ad2672ce47eca8ce2eb155c9bca4)
+# ASSETS_BUCKET binding → R2 bucket "cognitive-shift-assets" (configured in Pages dashboard)
