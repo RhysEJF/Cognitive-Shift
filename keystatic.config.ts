@@ -11,7 +11,7 @@ export default config({
       label: 'Authors',
       slugField: 'name',
       path: 'src/content/authors/*',
-      format: { contentField: 'content' },
+      format: { data: 'yaml' },
       schema: {
         name: fields.slug({ name: { label: 'Name' } }),
         bio: fields.text({ label: 'Bio', multiline: true }),
@@ -26,7 +26,7 @@ export default config({
       label: 'Publications',
       slugField: 'name',
       path: 'src/content/publications/*',
-      format: { contentField: 'content' },
+      format: { data: 'yaml' },
       schema: {
         name: fields.slug({ name: { label: 'Publication Name' } }),
         description: fields.text({ label: 'Description', multiline: true }),
