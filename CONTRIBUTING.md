@@ -1,12 +1,23 @@
 # Contributing to The Cognitive Shift
 
-## Before you start
+## Option A: Visual Editor (recommended for non-developers)
+
+1. Go to [thecognitiveshift.com/keystatic](https://thecognitiveshift.com/keystatic)
+2. Log in with your GitHub account
+3. Create your author profile, publication (if new), and article using the form UI
+4. Upload images — they'll be hosted on our CDN automatically
+5. Hit **Save** — this creates a pull request for review
+6. Once reviewed and merged, your article goes live automatically
+
+## Option B: Git Workflow (for developers)
+
+### Before you start
 
 You'll need:
 - A GitHub account
 - Write access to this repo (ask Rhys)
 
-## Step 1: Set up your author profile
+### Step 1: Set up your author profile
 
 Create a file at `src/content/authors/your-name.md`:
 
@@ -14,15 +25,15 @@ Create a file at `src/content/authors/your-name.md`:
 ---
 name: "Your Name"
 bio: "A short one-liner about you."
-avatar: "/assets/authors/your-name.jpeg"
+avatar: "https://assets.thecognitiveshift.com/authors/your-name.jpeg"
 ---
 ```
 
-Add your avatar image to `public/assets/authors/your-name.jpeg` (square, any size).
+Upload your avatar image to the R2 assets bucket (ask Rhys for access), or include it in your PR and we'll upload it.
 
 The filename becomes your author slug — use lowercase with hyphens.
 
-## Step 2: Create your publication
+### Step 2: Create your publication
 
 Each publication is its own series. Create a file at `src/content/publications/your-pub-slug.md`:
 
@@ -34,7 +45,7 @@ owner: "your-name"
 ---
 ```
 
-## Step 3: Write your article
+### Step 3: Write your article
 
 Create a Markdown file at `src/content/articles/your-pub-slug/your-article-slug.md`:
 
@@ -46,7 +57,7 @@ authors: ["your-name"]
 publication: "your-pub-slug"
 publishedAt: 2026-02-20
 tags: ["topic-one", "topic-two"]
-featuredImage: "/assets/articles/your-image.jpg"  # optional
+featuredImage: "https://assets.thecognitiveshift.com/your-image.jpg"
 ---
 
 Write your article here in Markdown.
@@ -58,9 +69,11 @@ Regular paragraphs, **bold**, *italic*, [links](https://example.com), and:
 > Blockquotes work too.
 ```
 
+**Images:** Upload to the assets CDN at `assets.thecognitiveshift.com` and reference by full URL. Do not commit images to the Git repo.
+
 **SEO is automatic.** Your `title` becomes the page title and `og:title`, `excerpt` becomes the meta description and `og:description`, and `featuredImage` (optional) becomes the `og:image`. No extra configuration needed.
 
-## Step 4: Submit via pull request
+### Step 4: Submit via pull request
 
 1. Create a new branch: `git checkout -b article/your-article-slug`
 2. Add your files (author, publication if new, article)
@@ -72,7 +85,8 @@ Regular paragraphs, **bold**, *italic*, [links](https://example.com), and:
 
 | What | Where |
 |------|-------|
+| Visual editor | [thecognitiveshift.com/keystatic](https://thecognitiveshift.com/keystatic) |
 | Author profiles | `src/content/authors/{slug}.md` |
 | Publications | `src/content/publications/{slug}.md` |
 | Articles | `src/content/articles/{pub-slug}/{article-slug}.md` |
-| Images | `public/assets/` |
+| Images | `https://assets.thecognitiveshift.com/` (Cloudflare R2) |

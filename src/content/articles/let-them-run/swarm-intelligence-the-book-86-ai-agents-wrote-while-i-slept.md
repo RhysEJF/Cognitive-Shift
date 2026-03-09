@@ -5,10 +5,10 @@ authors: ["rhys-fisher"]
 publication: "let-them-run"
 publishedAt: 2026-03-09
 tags: ["ai-swarms", "agentic-ai", "book-writing", "flow", "autonomous-agents"]
-featuredImage: "/assets/swarm-intelligence-cover.jpg"
+featuredImage: "https://assets.thecognitiveshift.com/articles/swarm-intelligence-cover.jpg"
 ---
 
-![The Swarm Intelligence Handbook](/assets/swarm-intelligence-cover.jpg)
+![The Swarm Intelligence Handbook](https://assets.thecognitiveshift.com/articles/swarm-intelligence-cover.jpg)
 
 I didn't write a single paragraph of this book. I didn't assign a single task. I described an outcome, went to sleep, and woke up to 431,000 words of working material.
 
@@ -16,7 +16,7 @@ You've had an idea for a book you never wrote. So have I.
 
 About a dozen of them. Life, time, the sheer mountain of research, it always wins. Until it didn't.
 
-Because now I have FLOW, my own AI workforce manager, and the swarm has been doing the busy work. Like building this very website you're on right now, I figured I'd test them on a book writing goal and have it run overnight.
+Because now I have FLOW. My own AI workforce manager. It built the website you're on. I figured a book was next. I set the goal, went to sleep.
 
 It worked.
 
@@ -72,7 +72,7 @@ To get the workers unstuck, I built a wiggum observability engine called HOMЯ. 
 
 The whole thing took two  86 tasks. 82 completed successfully. 30 workers running in parallel. 431,000 words of intermediate output distilled into a 54,000-word field guide.
 
-![Flow output from the swarm book project](/assets/swarm-intelligence-flow-outputs.jpg)
+![Flow output from the swarm book project](https://assets.thecognitiveshift.com/articles/swarm-intelligence-flow-outputs.jpg)
 
 [You can download a copy here](https://leanpub.com/agentic-swarms-tactical-field-guide/c/thecognitiveshift). (Grab one of 100 free beta copies)
 
