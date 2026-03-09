@@ -10,10 +10,10 @@ export async function getStaticPaths() {
   const publications = await getCollection('publications');
 
   return authors.map(author => ({
-    params: { slug: author.slug },
+    params: { slug: author.id },
     props: {
       author,
-      articles: articles.filter(a => a.data.authors.includes(author.slug)),
+      articles: articles.filter(a => a.data.authors.includes(author.id)),
       publications,
     },
   }));
@@ -25,8 +25,8 @@ function formatDate(dateStr: Date | string): string {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-function getPubName(slug: string, pubs: Array<{ slug: string; data: { name: string } }>): string {
-  const pub = pubs.find(p => p.slug === slug);
+function getPubName(slug: string, pubs: Array<{ id: string; data: { name: string } }>): string {
+  const pub = pubs.find(p => p.id === slug);
   return pub ? pub.data.name : slug.replace(/-/g, ' ');
 }
 
@@ -35,7 +35,7 @@ const { author, articles, publications } = Astro.props;
 <BaseLayout
   title={`${author.data.name} — The Cognitive Shift`}
   description={author.data.bio || `Articles by ${author.data.name} on The Cognitive Shift.`}
-  ogUrl={`https://thecognitiveshift.com/authors/${author.slug}/`}
+  ogUrl={`https://thecognitiveshift.com/authors/${author.id}/`}
 >
   <header class="page-header" id="author-header">
     <div class="section-label">Author</div>

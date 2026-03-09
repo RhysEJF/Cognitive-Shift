@@ -8,7 +8,7 @@ const publications = await getCollection('publications', ({ data }) => data.isAc
 const authors = await getCollection('authors');
 
 function getAuthorName(slug: string): string {
-  const author = authors.find(a => a.slug === slug);
+  const author = authors.find(a => a.id === slug);
   return author ? author.data.name : slug.replace(/-/g, ' ');
 }
 ---
@@ -34,7 +34,7 @@ function getAuthorName(slug: string): string {
       ) : (
         <div class="pub-grid">
           {publications.map((pub) => (
-            <a href={`/publications/${pub.slug}/`} class="pub-card">
+            <a href={`/publications/${pub.id}/`} class="pub-card">
               <div class="pub-card-name">{pub.data.name}</div>
               {pub.data.description && (
                 <div class="pub-card-description">

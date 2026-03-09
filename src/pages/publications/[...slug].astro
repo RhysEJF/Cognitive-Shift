@@ -17,9 +17,9 @@ export async function getStaticPaths() {
 
   // Publication pages: /publications/{pub-slug}
   for (const pub of pubs) {
-    const pubArticles = articles.filter(a => a.data.publication === pub.slug);
+    const pubArticles = articles.filter(a => a.data.publication === pub.id);
     paths.push({
-      params: { slug: pub.slug },
+      params: { slug: pub.id },
       props: { type: 'publication', pub, pubArticles, authors },
     });
   }
@@ -43,18 +43,18 @@ function formatDate(dateStr: Date | string): string {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-function getAuthorName(slug: string, authors: Array<{ slug: string; data: { name: string } }>): string {
-  const author = authors.find(a => a.slug === slug);
+function getAuthorName(slug: string, authors: Array<{ id: string; data: { name: string } }>): string {
+  const author = authors.find(a => a.id === slug);
   return author ? author.data.name : slug.replace(/-/g, ' ');
 }
 
-function getAuthorAvatar(slug: string, authors: Array<{ slug: string; data: { avatar?: string } }>): string | undefined {
-  const author = authors.find(a => a.slug === slug);
+function getAuthorAvatar(slug: string, authors: Array<{ id: string; data: { avatar?: string } }>): string | undefined {
+  const author = authors.find(a => a.id === slug);
   return author?.data.avatar;
 }
 
-function getPubName(slug: string, pubs: Array<{ slug: string; data: { name: string } }>): string {
-  const pub = pubs.find(p => p.slug === slug);
+function getPubName(slug: string, pubs: Array<{ id: string; data: { name: string } }>): string {
+  const pub = pubs.find(p => p.id === slug);
   return pub ? pub.data.name : slug.replace(/-/g, ' ');
 }
 
@@ -79,7 +79,7 @@ if (type === 'publication') {
   pubArticles = (Astro.props.pubArticles as any[]) || [];
   pageTitle = `${pub.data.name} — The Cognitive Shift`;
   pageDescription = pub.data.description || `Articles from ${pub.data.name}`;
-  pageOgUrl = `https://thecognitiveshift.com/publications/${pub.slug}/`;
+  pageOgUrl = `https://thecognitiveshift.com/publications/${pub.id}/`;
 } else if (type === 'article') {
   article = Astro.props.article as any;
   const { Content } = await article.render();
@@ -136,7 +136,7 @@ if (type === 'publication') {
                   return (
                     <div class="pub-article-item">
                       <h3>
-                        <a href={`/publications/${pub.slug}/${articleSlug}/`}>{a.data.title}</a>
+                        <a href={`/publications/${pub.id}/${articleSlug}/`}>{a.data.title}</a>
                       </h3>
                       <div class="pub-article-excerpt">{a.data.excerpt}</div>
                       <div class="pub-article-meta">
@@ -213,7 +213,7 @@ if (type === 'publication') {
                   )}
                   <div class="author-bio-info">
                     <div class="author-bio-name">
-                      <a href={`/authors/${author.slug}/`}>{author.data.name}</a>
+                      <a href={`/authors/${author.id}/`}>{author.data.name}</a>
                     </div>
                     {author.data.bio && <div class="author-bio-text">{author.data.bio}</div>}
                   </div>
