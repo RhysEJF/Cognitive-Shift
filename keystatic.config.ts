@@ -44,7 +44,7 @@ export default config({
       path: 'src/content/articles/**',
       format: { contentField: 'body' },
       schema: {
-        body: fields.document({ label: 'Body', formatting: true, dividers: true, links: true, images: true }),
+        body: fields.document({ label: 'Body', formatting: true, dividers: true, links: true, images: true, extension: 'md' }),
         title: fields.slug({
           name: { label: 'Title' },
           slug: {
