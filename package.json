@@ -14,8 +14,11 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/react": "^4.4.2",
     "@keystatic/astro": "^5.0.6",
     "@keystatic/core": "^0.5.48",
-    "astro": "^5.17.3"
+    "astro": "^5.17.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   }
 }
