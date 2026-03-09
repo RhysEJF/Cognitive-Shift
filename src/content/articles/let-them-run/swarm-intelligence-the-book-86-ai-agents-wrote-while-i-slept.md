@@ -34,13 +34,13 @@ It began with a ramble. Not an outline. Not a brief. Just me talking at my compu
 
 I wanted a cross-domain field guide. Something that would teach leaders how to actually win with agentic AI swarms, grounded in real research, not vibes. The kind of book that treats ant colonies and StarCraft pros and Prussian generals  equal sources of strategic truth.
 
-The problem? I'm one person. I was deep in strategy work for my venture studio clients, and traveling to give talks and executive AI training. Juggling the messy middle stuff I can't yet hand over to the bots.
+The problem? I'm one person. I was deep in strategy work for my venture studio clients, running executive AI trainings, and traveling accross the country to give live demos. Juggling the messy middle stuff I can't hand over to the bots.
 
 The research alone spans six domains, each with decades of literature. The writing would require synthesizing insights from bee decision-making, OODA loops, fitness landscapes, and LLM coordination architectures into something a CEO could actually use on Monday morning.
 
 Where would I get the time?
 
-I decided I wouldn't try.
+Spoiler. I decided I wouldn't try...
 
 ## How FLOW Turned a Ramble Into a Book
 
