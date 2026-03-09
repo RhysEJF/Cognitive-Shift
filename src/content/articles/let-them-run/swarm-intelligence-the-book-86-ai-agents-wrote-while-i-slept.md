@@ -16,7 +16,7 @@ You've had an idea for a book you never wrote. So have I.
 
 About a dozen of them. Life, time, the sheer mountain of research, it always wins. Until it didn't.
 
-Because now I have FLOW, my own AI workforce manager, and the swarm has been doing the busy work. Like building this very website you're on right now, I figured I'd test them on a book writing goal and have it run overnight.
+Because now I have FLOW. My own AI workforce manager. It built the website you're on. I figured a book was next. I set the goal, went to sleep.
 
 It worked.
 
