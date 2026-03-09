@@ -72,6 +72,8 @@ To get the workers unstuck, I built a wiggum observability engine called HOMЯ. 
 
 The whole thing took two  86 tasks. 82 completed successfully. 30 workers running in parallel. 431,000 words of intermediate output distilled into a 54,000-word field guide.
 
+![Flow output from the swarm book project](/assets/swarm-intelligence-flow-outputs.jpg)
+
 [You can download a copy here](https://leanpub.com/agentic-swarms-tactical-field-guide/c/thecognitiveshift). (first 100 downloads while book is in beta are free)
 
 ## The Cascade Failure (What Almost Went Wrong)
