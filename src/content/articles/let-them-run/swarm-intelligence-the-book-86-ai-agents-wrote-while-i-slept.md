@@ -5,7 +5,10 @@ authors: ["rhys-fisher"]
 publication: "let-them-run"
 publishedAt: 2026-03-09
 tags: ["ai-swarms", "agentic-ai", "book-writing", "flow", "autonomous-agents"]
+featuredImage: "/assets/swarm-intelligence-cover.jpg"
 ---
+
+![The Swarm Intelligence Handbook](/assets/swarm-intelligence-cover.jpg)
 
 I didn't write a single paragraph of this book. I didn't assign a single task. I described an outcome, went to sleep, and woke up to 431,000 words of working material.
 
@@ -13,9 +16,7 @@ You've had an idea for a book you never wrote. So have I.
 
 About a dozen of them. Life, time, the sheer mountain of research, it always wins. Until it didn't.
 
-It happens to me every other week and some books I've been wanting to write for years. But life keeps getting in the way.
-
-But now I have FLOW, my own AI workforce manager, and the swarm has been doing the busy work. Like building this very website you're on right now, I figured I'd test them on a book writing goal and have it run overnight.
+Because now I have FLOW, my own AI workforce manager, and the swarm has been doing the busy work. Like building this very website you're on right now, I figured I'd test them on a book writing goal and have it run overnight.
 
 It worked.
 
