@@ -113,6 +113,7 @@ The window for establishing competitive advantage with agentic swarms is 18-24 m
 
 The guide is available now in Beta.
 
-Again. First 100 copies go out for free. I'm one chapter into reading it and can already tell you there's a few billion dollar ideas in that chapter alone.
+Again. First 100 copies go out for free. I'm one chapter into reading it and can already tell you there
+are a few billion dollar ideas in that chapter alone.
 
 Read it and then come join the Discord to discuss. We're organizing our first virtual meetup soon.
