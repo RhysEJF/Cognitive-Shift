@@ -22,7 +22,7 @@ It worked.
 
 A little too well.
 
-Over two days, a swarm of 86 wiggums extracted wisdom out of Anthropic's model, across six academic domains, debated each other's findings, caught their own mistakes, and delivered a 54,000-word tactical field guide on a topic that we taken me months.
+Over two days, a swarm of 86 wiggums extracted wisdom out of Anthropic's model, across six academic domains, debated each other's findings, caught their own mistakes, and delivered a 54,000-word tactical field guide on a topic that would have taken me months.
 
 I just told them what I wanted the topic to be. How the information should be valuable. And my thoughts on how to approach the research using [Wispr Flow](https://wisprflow.ai/). I was out of the weeds and in flow state, shaping the vision. Fun!
 
