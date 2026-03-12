@@ -33,8 +33,6 @@ That's reverse mode running end-to-end, on compiled code, producing a functional
 
 The technique exists. The question is how to apply it systematically to a production codebase?
 
----
-
 ## Why your agents running forward loops are probably guessing
 
 Every Ralph Loop iteration needs constraints to stay on track. Without a spec (or a weak spec), the agent reasons from first principles on each pass, what do I think this should do? That's why loops drift and why you end up re-prompting, correcting, pulling the output back toward what you actually want.
@@ -46,8 +44,6 @@ The problem isn't the prompts. The problem is the agent has no authoritative des
 Or as Horthy put it: "if the specs are bad, the results will be meh." The corollary is worse, if the specs don't exist, the results are random. But if you're a senior engineer, you already know that.
 
 The spec you need already exists. It's inside the code. Reverse mode with Ralph Loops can extract it.
-
----
 
 ## Running Ralph backwards
 
@@ -61,13 +57,11 @@ Not all applications carry the same risk or reward.
 
 Start with your own systems. It has the best risk-to-reward ratio and teaches you the failure modes before the stakes get higher.
 
----
-
 ## Preparation
 
 A few things separate this working from not working.
 
-**Domain knowledge is non-negotiable.** The model can faithfully describe bugs as features. Workarounds become intentional design. Without someone who can distinguish "this is what it does" from "this is what it should do," you're generating plausible fiction. A person with a trained eye needs to be in the loop during validation.
+**Domain knowledge is non-negotiable.** The model can faithfully describe bugs as features. Workarounds become intentional design. Without someone who can distinguish "this is what it does" from "this is what it should do," you're generating plausible fiction. A person with a trained eye needs to be in the loop during validation. One of the core benefits of having the end system online is you can then fill these domain gaps with overnight research runs, just how Rhys did here with his [Swarm Intelligence book](https://thecognitiveshift.com/publications/let-them-run/) before refactoring his harness.
 
 **Sandbox your environment.** Docker, devcontainer, or equivalent. You know the drill.
 
@@ -96,8 +90,6 @@ A few things separate this working from not working.
 Huntley found running extraction against HashiCorp's open-source Nomad orchestrator that the public repository covered roughly 80% of behaviors, but product guides were required to fill in enterprise feature coverage not appearing in the source. Nomad is a workload orchestrator with a significant enterprise feature set beyond the open-source core, and without the product documentation, one in five behaviors would have been missing from the extracted specs.
 
 *One scope note: this guide covers codebases. The same methodology works on other complex systems like workflows, processes, procedures, but the tooling here assumes source code.*
-
----
 
 ## What the extraction actually looks like
 
@@ -269,8 +261,6 @@ Notice what's specific: the signing algorithm (RS256), the 24-hour expiry, the f
 
 The UNCLEAR flag was brought to the engineer who owns the module. Her answer: "Intentional. Key rotation requires a restart anyway, we'd need to support two valid keys during the rotation window, and we haven't built that." The flag was resolved, the constraint documented, the Assumptions section updated.
 
----
-
 ## What surprises most people
 
 This is where reverse mode earns its setup cost:
@@ -323,8 +313,6 @@ the identified gaps. For each addition:
 The third-refinement rule from EPAM's practice: if you're making a third correction to the same spec, stop editing and re-extract from scratch. Accumulated errors are faster to restart than fix.
 
 Horthy's August 2025 experiment demonstrates what this looks like in practice. He ran ralph against HumanLayer's existing frontend codebase with a "make the codebase match the standards" prompt. Ralph autonomously produced a `REACT_REFACTOR_PLAN.md` from the codebase, then implemented it over 6 hours. The PR wasn't merged due to rebase conflicts, but the plan document itself, extracted from existing code, describing what needed to change, is structurally identical to spec extraction. The code produced the spec, not the other way around. (PR: github.com/humanlayer/humanlayer/pull/513)
-
----
 
 ## Roombas and where it compounds
 
@@ -382,8 +370,6 @@ Start with reports, not auto-fixes. Auto-fix requires enough back pressure (test
 
 Huntley has described a full auto-heal cycle where a reverse-mode loop identifies a problem and a forward-mode loop fixes, deploys, and verifies it (documented on ghuntley.com/loop and in the AI Giants podcast). That claim is not independently verified. Whether or not that specific implementation holds, the direction is right: specs that stay current and code that self-corrects against them.
 
----
-
 ## Conclusion
 
 This is not a way to understand a system without documentation or reading code. The specs are a scaffold for human understanding, not a replacement for it.
@@ -395,8 +381,6 @@ The model will miss things. It will describe bugs as features. It will hallucina
 **Model sensitivity.** These techniques were developed and tested primarily with Claude and GPT-family models. Results may differ across providers (Claude, GPT, Gemini, open-weight models) and across versions of the same model. An extraction workflow tuned for one model version is not guaranteed to produce equivalent output on the next. If you change models, re-validate a sample module before trusting the pipeline.
 
 Two different accuracy numbers matter here and they measure different things. Extraction completeness (~80% of actual behavior captured on first pass) and post-review usability (60-80% of specs usable as-is, 20-40% needing correction) are practitioner-reported estimates from a small number of projects, not controlled benchmarks. Your numbers will vary by codebase size, language, domain complexity, and model. Extraction completeness tells you how much of the system the model found. Post-review usability tells you how much human cleanup the output requires. A spec can capture 80% of a module's behavior and still need correction on what it captured, these are different failure modes, not additive metrics.
-
----
 
 ## Sources
 
