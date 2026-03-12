@@ -61,7 +61,7 @@ Start with your own systems. It has the best risk-to-reward ratio and teaches yo
 
 A few things separate this working from not working.
 
-**Domain knowledge is non-negotiable.** The model can faithfully describe bugs as features. Workarounds become intentional design. Without someone who can distinguish "this is what it does" from "this is what it should do," you're generating plausible fiction. A person with a trained eye needs to be in the loop during validation. One of the core benefits of having the end system online is you can then fill these domain gaps with overnight research runs, just how Rhys did here with his [Swarm Intelligence book](https://thecognitiveshift.com/publications/let-them-run/) before refactoring his harness.
+**Domain knowledge is non-negotiable.** The model can faithfully describe bugs as features. Workarounds become intentional design. Without someone who can distinguish "this is what it does" from "this is what it should do," you're generating plausible fiction. A person with a trained eye needs to be in the loop during validation. One of the core benefits of having the end system online is you can then fill these domain gaps with overnight research runs, just how Rhys did here with his [Swarm Intelligence book](https://thecognitiveshift.com/publications/let-them-run/swarm-intelligence-the-book-86-ai-agents-wrote-while-i-slept/) before refactoring his harness.
 
 **Sandbox your environment.** Docker, devcontainer, or equivalent. You know the drill.
 
