@@ -14,7 +14,7 @@ tags:
   - ralph loop
 featuredImage: >-
   https://assets.thecognitiveshift.com/articles/1773252139374-man-upside-down.jpg
-draft: true
+draft: false
 ---
 You're running the Ralph Loop. You know the pattern, give the agent a spec, let it build, test, iterate. Almost everyone runs it the same direction: forward, toward something you want to create, like an app.
 
