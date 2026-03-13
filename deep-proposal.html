@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlowSpace — Deep Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0d0f1e;
+    --card:     #13162b;
+    --card2:    #181b30;
+    --purple:   #8b5cf6;
+    --purple-l: #a78bfa;
+    --purple-d: #6d28d9;
+    --purple-glow: rgba(139,92,246,0.15);
+    --white:    #ffffff;
+    --gray:     #94a3b8;
+    --gray-l:   #cbd5e1;
+    --border:   rgba(139,92,246,0.2);
+    --badge-bg: rgba(139,92,246,0.18);
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--white);
+    overflow: hidden;
+  }
+
+  /* ── SLIDESHOW ── */
+  .slideshow { width:100vw; height:100vh; position:relative; overflow:hidden; }
+
+  .slide {
+    position: absolute; top:0; left:0;
+    width:100%; height:100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 3.5rem 5rem;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+  .slide.active  { opacity:1; transform:translateX(0); pointer-events:all; }
+  .slide.exit    { opacity:0; transform:translateX(-50px); }
+
+  /* ── HEADER BAR (on every slide) ── */
+  .slide-header {
+    position: absolute; top:2rem; left:5rem; right:5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gray);
+  }
+  .brand span { color: var(--purple-l); }
+  .badge-q2 {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--purple-l);
+    background: var(--badge-bg);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.8rem; border-radius: 20px;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .section-label {
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--purple-l);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 500; line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 500; line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .body { font-size:1rem; font-weight:300; line-height:1.75; color:var(--gray-l); }
+  .body-sm { font-size:0.9rem; font-weight:300; line-height:1.7; color:var(--gray); }
+
+  .accent { color: var(--purple-l); }
+
+  /* ── DIVIDER ── */
+  .divider { width:40px; height:2px; background:var(--purple); margin:1rem 0; }
+  .divider-center { margin:1rem auto; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+  }
+  .card-left { border-left: 3px solid var(--purple); border-radius: 0 8px 8px 0; }
+
+  /* ── GRID ── */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; width:100%; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; width:100%; }
+
+  /* ── VALUE BADGE ── */
+  .value-badge {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--purple-l);
+    background: var(--badge-bg);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem; border-radius: 20px;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+  }
+
+  /* ── PHASE CARD ── */
+  .phase-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--purple);
+    border-radius: 0 0 8px 8px;
+    padding: 1.75rem 2rem;
+    position: relative;
+    width: 100%; max-width: 900px;
+  }
+  .phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300;
+    color: rgba(139,92,246,0.1);
+    position: absolute; top: 0.5rem; right: 1.5rem;
+    line-height: 1;
+  }
+  .phase-week {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--purple-l);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── FLOW CYCLE ── */
+  .flow-cycle {
+    position: relative; width: 220px; height: 220px;
+    flex-shrink: 0;
+  }
+  .flow-center {
+    position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+  .flow-center .fc-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic; color: var(--purple-l);
+  }
+  .flow-node {
+    position: absolute;
+    text-align: center;
+    width: 80px;
+  }
+  .flow-node .fn-title {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--white); margin-bottom: 0.2rem;
+  }
+  .flow-node .fn-desc {
+    font-size: 0.6rem; color: var(--gray); line-height: 1.4;
+  }
+  /* top center */
+  .fn-struggle { top:-10px; left:50%; transform:translateX(-50%); }
+  /* right */
+  .fn-release  { top:50%; right:-30px; transform:translateY(-50%); }
+  /* bottom */
+  .fn-flow     { bottom:-10px; left:50%; transform:translateX(-50%); }
+  /* left */
+  .fn-recovery { top:50%; left:-30px; transform:translateY(-50%); }
+
+  /* ── QUOTE ── */
+  .quote-block {
+    border-left: 2px solid var(--purple);
+    padding: 0.75rem 1.5rem;
+    margin: 1rem 0;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-style: italic; font-weight: 300;
+    line-height: 1.8; color: var(--gray-l);
+  }
+
+  /* ── RESULT TAG ── */
+  .result-name {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--purple-l);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── PRICE ── */
+  .price-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 500; color: var(--white);
+    line-height: 1;
+  }
+
+  /* ── INCLUDED LIST ── */
+  .inc-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+  .inc-list li {
+    font-size: 0.9rem; color: var(--gray-l); font-weight: 300;
+    padding-left: 1.25rem; position: relative; line-height:1.5;
+  }
+  .inc-list li::before { content:'—'; position:absolute; left:0; color:var(--purple); }
+
+  /* ── TAGS ROW ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray); border: 1px solid rgba(148,163,184,0.2);
+    padding: 0.3rem 0.8rem; border-radius: 20px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed; bottom: 1.75rem; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 1.25rem; z-index: 200;
+  }
+  .nav-btn {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--purple-l); width:38px; height:38px; border-radius:50%;
+    cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition: all 0.25s ease;
+  }
+  .nav-btn:hover { background: var(--purple); border-color: var(--purple); color: #fff; }
+  .slide-counter {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
+    color: var(--gray);
+  }
+
+  /* DOTS */
+  .dots {
+    position: fixed; right: 1.75rem; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 0.5rem; z-index: 200;
+  }
+  .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(139,92,246,0.2); cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .dot.active { background: var(--purple); transform: scale(1.5); }
+
+  /* ── CHECKLIST ── */
+  .check-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.9rem; color: var(--gray-l); line-height: 1.5; font-weight:300;
+  }
+  .check-icon {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--purple-glow); border: 1px solid var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+    font-size: 0.55rem; color: var(--purple-l);
+  }
+</style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+  <!-- ─── SLIDE 1: COVER ─── -->
+  <div class="slide active" data-index="0">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="max-width:800px; text-align:center;">
+      <div class="section-label" style="text-align:center; margin-bottom:1.5rem;">3-Month Private Intensive</div>
+      <h1 class="hero-title" style="text-align:center;">Master Flow State &<br/>Align To Your<br/><span class="accent">Highest Self</span></h1>
+      <div class="divider divider-center"></div>
+      <p class="body" style="text-align:center; max-width:580px; margin:1.5rem auto 2.5rem;">12 weeks of private, neuroscience-backed coaching built around how your brain works. One dedicated coach. One clear system. Your next level, unlocked.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <span class="tag">Founders ready for the next gear</span>
+        <span class="tag">Leaders who want an edge</span>
+        <span class="tag">Builders seeking alignment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 2: THE ARC ─── -->
+  <div class="slide" data-index="1">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="width:100%; max-width:1050px;">
+      <div class="section-label">The 3-Month Arc</div>
+      <h2 class="section-title">One journey. Three phases.</h2>
+      <div class="divider"></div>
+      <div class="three-col" style="margin-top:2rem;">
+        <div class="card card-left">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.75rem;">01 — Foundation</div>
+          <p class="body-sm">Map your inner system. Meet the parts running the show. Regulate the nervous system. Train flow access on demand — multiple times daily.</p>
+        </div>
+        <div class="card card-left">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.75rem;">02 — Integration</div>
+          <p class="body-sm">Deep parts work. Unburden what lives in the body. Anchor your Future Self as a living identity — not a goal, but who you are now.</p>
+        </div>
+        <div class="card card-left">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.75rem;">03 — Embodiment</div>
+          <p class="body-sm">Solidify the systems. Flow as baseline, not peak state. Inner child and higher self — integrated, whole, living from the heart.</p>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--gray); text-align:center; margin-top:2rem; font-style:italic;">Shifts that would have taken years happen in months.</p>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 3: THE FLOW CYCLE ─── -->
+  <div class="slide" data-index="2">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="width:100%; max-width:1000px; display:flex; align-items:center; gap:5rem;">
+      <div style="flex:1;">
+        <div class="section-label">The Science</div>
+        <h2 class="section-title">The Flow Cycle<br/><span style="font-size:1.1rem; color:var(--gray); font-weight:300;">(Steven Kotler)</span></h2>
+        <div class="divider"></div>
+        <p class="body" style="margin-top:1rem;">Most high performers are great at struggle and flow — but skip release and crash through recovery. That's the leak.</p>
+        <p class="body" style="margin-top:0.75rem;">We train your system to move through all four phases intentionally — so flow becomes a skill you access on demand, not a state you stumble into.</p>
+        <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.6rem;">
+          <div class="check-item"><div class="check-icon">✓</div><span>60–90 min weekly sessions</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>17 dimensions of performance</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Fully personalized to your nervous system</span></div>
+        </div>
+      </div>
+      <!-- SVG Flow Cycle -->
+      <div style="flex-shrink:0; width:280px; height:280px; position:relative; display:flex; align-items:center; justify-content:center;">
+        <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Orbit ring -->
+          <circle cx="140" cy="140" r="110" stroke="rgba(139,92,246,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="140" cy="140" r="80" stroke="rgba(139,92,246,0.08)" stroke-width="1"/>
+          <!-- Arc arrows -->
+          <path d="M 140 30 A 110 110 0 0 1 250 140" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+          <path d="M 250 140 A 110 110 0 0 1 140 250" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+          <path d="M 140 250 A 110 110 0 0 1 30 140" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+          <path d="M 30 140 A 110 110 0 0 1 140 30" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="rgba(139,92,246,0.6)"/>
+            </marker>
+          </defs>
+          <!-- Nodes -->
+          <circle cx="140" cy="30" r="22" fill="#13162b" stroke="rgba(139,92,246,0.5)" stroke-width="1.5"/>
+          <circle cx="250" cy="140" r="22" fill="#13162b" stroke="rgba(139,92,246,0.5)" stroke-width="1.5"/>
+          <circle cx="140" cy="250" r="22" fill="#13162b" stroke="rgba(139,92,246,0.5)" stroke-width="1.5"/>
+          <circle cx="30" cy="140" r="22" fill="#13162b" stroke="rgba(139,92,246,0.5)" stroke-width="1.5"/>
+          <!-- Center -->
+          <circle cx="140" cy="140" r="38" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+        </svg>
+        <!-- Labels over SVG -->
+        <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); text-align:center; width:70px;">
+          <div style="font-size:0.65rem; font-weight:700; color:#fff; letter-spacing:0.05em;">Struggle</div>
+          <div style="font-size:0.55rem; color:var(--gray); margin-top:0.1rem;">Load the brain</div>
+        </div>
+        <div style="position:absolute; right:0; top:50%; transform:translateY(-50%); text-align:left; width:60px;">
+          <div style="font-size:0.65rem; font-weight:700; color:#fff; letter-spacing:0.05em;">Release</div>
+          <div style="font-size:0.55rem; color:var(--gray); margin-top:0.1rem;">Let go</div>
+        </div>
+        <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); text-align:center; width:60px;">
+          <div style="font-size:0.65rem; font-weight:700; color:var(--purple-l); letter-spacing:0.05em;">Flow</div>
+          <div style="font-size:0.55rem; color:var(--gray); margin-top:0.1rem;">Peak state</div>
+        </div>
+        <div style="position:absolute; left:0; top:50%; transform:translateY(-50%); text-align:right; width:60px;">
+          <div style="font-size:0.65rem; font-weight:700; color:#fff; letter-spacing:0.05em;">Recovery</div>
+          <div style="font-size:0.55rem; color:var(--gray); margin-top:0.1rem;">Integrate</div>
+        </div>
+        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:0.75rem; font-style:italic; color:var(--purple-l); line-height:1.4;">The<br/>Cycle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 4: MONTH 1 ─── -->
+  <div class="slide" data-index="3">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Phase 01</div>
+    </div>
+    <div style="width:100%; max-width:900px;">
+      <div class="section-label">Foundation</div>
+      <h2 class="section-title">Map. Regulate. Access.</h2>
+      <div class="divider"></div>
+      <div class="phase-card" style="margin-top:1.25rem;">
+        <div class="phase-num">01</div>
+        <div class="phase-week">Weeks 1 — 4</div>
+        <p class="body" style="margin-bottom:0.85rem;">We map your inner system. Meet the parts running the show — the achiever, the protector, the part that associates freedom with no commitment. We start nervous system regulation so your body becomes a safe place to feel everything.</p>
+        <p class="body" style="margin-bottom:0.85rem;">We go deep into flow state science — training your system to enter flow on demand, multiple times a day, and recover from it fully. Not waiting for flow to find you.</p>
+        <p style="font-size:0.9rem; color:var(--purple-l); font-style:italic; font-weight:400;">You sleep better. The mental loops quiet. Immediate clarity on decisions you've been circling for months.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 5: MONTH 2 ─── -->
+  <div class="slide" data-index="4">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Phase 02</div>
+    </div>
+    <div style="width:100%; max-width:900px;">
+      <div class="section-label">Integration</div>
+      <h2 class="section-title">Go deep. Anchor the future.</h2>
+      <div class="divider"></div>
+      <div class="phase-card" style="margin-top:1.25rem;">
+        <div class="phase-num">02</div>
+        <div class="phase-week">Weeks 5 — 8</div>
+        <p class="body" style="margin-bottom:0.85rem;">We do the deep work. Meet the exiles. Unburden what's stored in your body — the patterns wired in long before you started building anything.</p>
+        <p class="body" style="margin-bottom:0.85rem;">We anchor your Future Self — not as a visualization, but as an identity you start living from now. Your team notices. Your relationship shifts. You start making decisions from <em style="color:var(--white);">knowing</em> instead of from parts.</p>
+        <p style="font-size:0.9rem; color:var(--purple-l); font-style:italic; font-weight:400;">90% conviction. Synchronicities increase. The confusion starts dissolving. You trust yourself in a way you never have before.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 6: MONTH 3 ─── -->
+  <div class="slide" data-index="5">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Phase 03</div>
+    </div>
+    <div style="width:100%; max-width:900px;">
+      <div class="section-label">Embodiment</div>
+      <h2 class="section-title">Flow as baseline. Fully expressed.</h2>
+      <div class="divider"></div>
+      <div class="phase-card" style="margin-top:1.25rem;">
+        <div class="phase-num">03</div>
+        <div class="phase-week">Weeks 9 — 12</div>
+        <p class="body" style="margin-bottom:0.85rem;">We solidify the systems. Flow becomes your baseline, not a peak state. You're leading from presence, not pressure.</p>
+        <p class="body" style="margin-bottom:0.85rem;">The inner child and the higher self — integrated, whole, in alignment, living from the heart. Not performing. Not pushing. <em style="color:var(--white);">Just you, fully expressed, moving from a place that finally feels like home.</em></p>
+        <p style="font-size:0.9rem; color:var(--purple-l); font-style:italic; font-weight:400;">That's when the real work comes through. That's when everything that's been waiting for you starts arriving.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 7: INCLUDED ─── -->
+  <div class="slide" data-index="6">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="width:100%; max-width:1050px;">
+      <div class="section-label">Included Bonuses</div>
+      <h2 class="section-title">Everything in the container.</h2>
+      <div class="divider"></div>
+      <div class="two-col" style="margin-top:1.5rem;">
+        <div style="display:flex; flex-direction:column; gap:0.85rem;">
+          <div class="card" style="padding:1.1rem 1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span style="font-size:0.8rem; font-weight:600; color:var(--white);">FlowSpace Diagnostic</span>
+              <span class="value-badge">Value €500</span>
+            </div>
+            <p class="body-sm">Full 17-dimension assessment — 9 inner + 8 outer. See exactly where you're blocked.</p>
+          </div>
+          <div class="card" style="padding:1.1rem 1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span style="font-size:0.8rem; font-weight:600; color:var(--white);">Custom Flow Protocol</span>
+              <span class="value-badge">Value €750</span>
+            </div>
+            <p class="body-sm">Your personal triggers, rituals, recovery practices. Tailored to your schedule and energy.</p>
+          </div>
+          <div class="card" style="padding:1.1rem 1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span style="font-size:0.8rem; font-weight:600; color:var(--white);">Between-Session Support</span>
+              <span class="value-badge">Value €1,200</span>
+            </div>
+            <p class="body-sm">Voice and text access for 12 weeks. When it clicks or when you're stuck, you're not waiting.</p>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.85rem;">
+          <div class="card" style="padding:1.1rem 1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span style="font-size:0.8rem; font-weight:600; color:var(--white);">Framework Library</span>
+              <span class="value-badge">Value €500</span>
+            </div>
+            <p class="body-sm">Templates, exercises, and practices across all 17 dimensions. Yours to keep forever.</p>
+          </div>
+          <div class="card" style="padding:1.1rem 1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span style="font-size:0.8rem; font-weight:600; color:var(--white);">90-Day Integration Roadmap</span>
+              <span class="value-badge">Value €300</span>
+            </div>
+            <p class="body-sm">You leave with a plan, not just insights. Clear practices mapped for the 90 days after.</p>
+          </div>
+          <div class="card" style="padding:1.1rem 1.4rem; background:rgba(139,92,246,0.08); border-color:rgba(139,92,246,0.35);">
+            <div style="font-size:0.75rem; color:var(--gray); margin-bottom:0.25rem;">Combined value of everything included</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:500; color:var(--white);">€9,250</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 8: INVESTMENT ─── -->
+  <div class="slide" data-index="7">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="width:100%; max-width:900px;">
+      <div class="section-label">Your Investment</div>
+      <h2 class="section-title">One decision. 12 weeks. Permanent shift.</h2>
+      <div class="divider"></div>
+      <div class="two-col" style="margin-top:1.75rem;">
+        <div class="card" style="padding:2rem; background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.4); text-align:center;">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--purple-l); margin-bottom:1rem;">Pay in Full</div>
+          <div class="price-big">€4,900</div>
+          <div style="font-size:0.75rem; color:var(--gray); margin-top:0.5rem;">for the full 3 months</div>
+          <div style="margin-top:1rem; display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; color:var(--purple-l); background:var(--badge-bg); border:1px solid var(--border); padding:0.25rem 0.75rem; border-radius:20px;">Best value</div>
+        </div>
+        <div class="card" style="padding:2rem; text-align:center;">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:1rem;">Monthly</div>
+          <div class="price-big" style="color:var(--gray-l);">€1,800</div>
+          <div style="font-size:0.75rem; color:var(--gray); margin-top:0.5rem;">€5,400 total</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.25rem; padding:1.25rem 1.75rem; background:rgba(139,92,246,0.05); border-color:rgba(139,92,246,0.2);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.3rem;">First Session Guarantee</div>
+            <p class="body-sm">After session 1, if this isn't the right fit, walk away. No charge. That's how confident I am in what happens when we start.</p>
+          </div>
+          <div style="text-align:center; flex-shrink:0;">
+            <div style="font-size:2rem;">🛡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 9: WHY ANDREA ─── -->
+  <div class="slide" data-index="8">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="width:100%; max-width:1000px;">
+      <div class="section-label">The Bridge</div>
+      <h2 class="section-title">Neuroscience meets soul.</h2>
+      <div class="divider"></div>
+      <div class="two-col" style="margin-top:1.75rem;">
+        <div class="card card-left">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.75rem;">The Science</div>
+          <ul class="inc-list" style="gap:0.6rem;">
+            <li>McGill University — Neuroscience & Cognitive Science</li>
+            <li>Built peak performance programs with Steven Kotler</li>
+            <li>Flow Research Collective — 17 dimensions of human performance</li>
+            <li>Deep expertise in flow, trauma, nervous system science</li>
+          </ul>
+        </div>
+        <div class="card card-left">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.75rem;">The Soul</div>
+          <ul class="inc-list" style="gap:0.6rem;">
+            <li>2 years in Costa Rica — ceremony, shadow work, somatic healing</li>
+            <li>20+ events, 3 retreats, 5 years in the field</li>
+            <li>IFS parts work, inner child integration, nervous system regulation</li>
+            <li>Currently based in Ericeira, Portugal</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.95rem; color:var(--gray); text-align:center; margin-top:2rem; font-style:italic;">I'm not guiding you from a textbook. I'm guiding you from a path I've already walked.</p>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 10: TYLER ─── -->
+  <div class="slide" data-index="9">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Real Results</div>
+    </div>
+    <div style="width:100%; max-width:900px;">
+      <div class="section-label">Client — Tyler</div>
+      <div class="divider"></div>
+      <div class="quote-block" style="margin-top:1.25rem;">
+        <p class="quote-text">"With things that have been this close to the core of my upbringing and my sense of self, I would have expected it would have taken more time, been more destabilizing — but I've been able to really realign and start to claim a sense of self that is empowered and in line with my vision for myself."</p>
+      </div>
+      <div class="three-col" style="margin-top:1.5rem;">
+        <div class="card" style="padding:1.1rem; border-top:1px solid var(--purple);">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.4rem;">Inner Freedom</div>
+          <p class="body-sm">Serving from choice, not obligation</p>
+        </div>
+        <div class="card" style="padding:1.1rem; border-top:1px solid var(--purple);">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.4rem;">Clarity</div>
+          <p class="body-sm">Knowing what he wants and honoring it</p>
+        </div>
+        <div class="card" style="padding:1.1rem; border-top:1px solid var(--purple);">
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--purple-l); margin-bottom:0.4rem;">Relationships</div>
+          <p class="body-sm">Healed wounds with his parents</p>
+        </div>
+      </div>
+      <div class="quote-block" style="margin-top:1.25rem;">
+        <p class="quote-text" style="font-size:0.95rem;">"Trust your gut. Something in my gut just let me know that what we were going to do together would be significant and would help me change my life."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 11: JORDEN + AMREET ─── -->
+  <div class="slide" data-index="10">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Real Results</div>
+    </div>
+    <div style="width:100%; max-width:1000px;">
+      <div class="section-label">More Clients</div>
+      <div class="divider"></div>
+      <div class="two-col" style="margin-top:1.5rem;">
+        <div class="card card-left">
+          <div class="result-name">Jorden</div>
+          <p class="body-sm" style="margin-bottom:0.75rem;">Came in working 12-hour days, constant anxiety, second-guessing every decision — running a business in Amsterdam that wasn't working. Three months later, he closed it. Not from defeat — from clarity.</p>
+          <p style="font-size:0.9rem; color:var(--purple-l); font-style:italic;">Now training as a breathwork facilitator and building a retreat project in Portugal. He didn't optimize his life — he finally started living the one that was actually his.</p>
+        </div>
+        <div class="card card-left">
+          <div class="result-name">Amreet</div>
+          <p class="body-sm" style="margin-bottom:0.75rem;">Came in doubting his ability to lead with his gifts — wanting more flow, more aliveness, a deeper connection to his higher self. Energy scattered, sense of self fragmented.</p>
+          <p style="font-size:0.9rem; color:var(--purple-l); font-style:italic;">Three months later: deeply rooted, fully connected. His work as a DJ and event organizer expanded naturally. For the first time — fully alive, in harmony with life.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1.25rem; padding:1.25rem 1.75rem; background:rgba(139,92,246,0.05);">
+        <p style="font-size:0.9rem; color:var(--gray-l); text-align:center; font-style:italic; line-height:1.7;">When we work in the body — somatics, the nervous system, the subconscious mind, the energy and the field — shifts happen at the identity level. <strong style="color:var(--white); font-weight:500; font-style:normal;">Shifts that would have taken years happen in months.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 12: CLOSING ─── -->
+  <div class="slide" data-index="11">
+    <div class="slide-header">
+      <div class="brand">FLOWSPACE <span>by Andrea Karam</span></div>
+      <div class="badge-q2">Q2 2026</div>
+    </div>
+    <div style="max-width:720px; text-align:center;">
+      <div class="section-label" style="text-align:center;">For Deep</div>
+      <h2 class="section-title" style="text-align:center; font-size:clamp(1.4rem,2.5vw,2.2rem); line-height:1.5;">There's a version of you that hasn't<br/>fully shown up yet.<br/><span class="accent">You can feel it.</span></h2>
+      <div class="divider divider-center"></div>
+      <p class="body" style="text-align:center; margin:1.5rem 0;">If this is landing — reach out.<br/>I'd love to hear where you are.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
+        <span class="tag">€4,900 pay in full</span>
+        <span class="tag">€1,800 / month</span>
+        <span class="tag">4 spots · Q2 2026</span>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; color:var(--purple-l); margin-top:2rem;">Andrea Karam</div>
+      <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:0.25rem;">Flow State Coach · Ericeira, Portugal</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DOTS -->
+<div class="dots" id="dots"></div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nav-btn" id="prev">←</button>
+  <span class="slide-counter" id="counter">1 / 12</span>
+  <button class="nav-btn" id="next">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit');
+    const prev = current;
+    current = n;
+    setTimeout(() => slides[prev].classList.remove('exit'), 500);
+    slides[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${slides.length}`;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('next').addEventListener('click', () => { if (current < slides.length - 1) goTo(current + 1); });
+  document.getElementById('prev').addEventListener('click', () => { if (current > 0) goTo(current - 1); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && current < slides.length - 1) goTo(current + 1);
+    if (e.key === 'ArrowLeft' && current > 0) goTo(current - 1);
+  });
+</script>
+</body>
+</html>
