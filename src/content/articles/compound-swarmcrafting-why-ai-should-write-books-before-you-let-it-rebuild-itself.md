@@ -30,19 +30,37 @@ I call it compound swarmcrafting. I used to build flow 2.0. And books now take h
 \
 Here's how it works.
 
-## **The Forward Swarm: 86 Agents, One Book, Zero Outline**
+## **The Forward Deployed Swarm**
 
-The first test was ambitious on purpose. I wanted to see if my AI workforce manager, Flow, could produce something genuinely useful, not a summary, not a listicle, but a proper field guide synthesising research across six academic domains: swarm biology, military doctrine, competitive gaming, multi-agent systems, business strategy, and complexity science.
+I've written in detail about [how 86 AI agents wrote a 54,000-word tactical field guide while I slept](https://thecognitiveshift.com/publications/let-them-run/swarm-intelligence-the-book-86-ai-agents-wrote-while-i-slept/). I won't retell that story here. What I want to talk about is what made it work, because that's what makes compound swarmcrafting possible.
 
-I gave it a rambling description of what I wanted. No outline. No task list. No chapter structure. Just the vision.
+The approach came down to sequencing. Before a single word of the book was written, I had the swarm do three things first.
 
-Flow's dispatcher broke that vision into 86 tasks. It built specialised research skills before the agents even started writing, an 860-line cross-domain research protocol, an expert panel debate format, a knowledge synthesis methodology. Thirty workers ran in parallel across the six domains, and by the time I woke up the next morning, they'd produced 431,000 words of intermediate research.
+1. ...invent a framework
+1. ...conduct deep research across six domains I curated
+1. ...synthesise everything into a knowledge base.
 
-Two days later, that was distilled into a 54,000-word tactical field guide: How to Win with Agentic Swarms. Inside it, the agents had independently converged on a framework they called SWARMS, six dimensions that appeared consistently across every research domain: Sense, Wage, Adapt, Replicate, Mobilize, Sustain.
+Only then did writing begin.
 
-I didn't outline that framework. The swarm found it in the intersections between disciplines, the patterns that military strategists, biologists, and game designers had all discovered independently but never connected.
+The framework step is the most consequential. I gave the swarm a rambling description of what I wanted, something connecting swarm biology, military doctrine, competitive gaming, multi-agent systems, business strategy, and complexity science. From that, flow's planning pipeline generated a task with one critical instruction:
 
-That book was the forward swarm. The extraction. And it was about to become something more useful than a publication.
+```
+....design "a memorable strategic framework, analogous to OODA, that organizes all content into 5-7 chapters. Each letter maps to a strategic domain. The framework name should be memorable, tactical, and capture the essence of winning through swarm intelligence." 
+```
+
+A single worker picked that up and produced the SWARMS framework. Sense, Wage, Adapt, Replicate, Mobilize, Sustain, a six-dimension model it synthesised from the intersections between all six research domains.
+
+With the framework as the spine, 40+ research tasks ran sequentially accross all six domains, each producing a standalone evidence document. A synthesis phase mapped research to framework, identified gaps, ran structured debates on conflicting evidence. Only then did the writing wave begin, skeleton drafts, triple reviews, final rewrites, assembly.
+
+The result was a book that people are actually reading.
+
+> "*The book gets it*" – Shaun Thresher. \
+\
+"*What I've read is really, really good, great job*" – Damian Nomura's
+
+That credibility matters, because the entire compound swarmcrafting pattern depends on the forward swarm producing something genuinely useful, not AI slop, but real cross-domain synthesis that surfaces knowledge the models had but I didn't. Bringing my blind spots into light.
+
+After the project, I codified the methodology into a reusable skill, so any future Field Guide follows the same proven wave structure. But the book itself produced something even more valuable than a methodology. It produced a framework I could point back at my own system.
 
 ## **The Inverse: When the Swarm Audits Itself**
 
