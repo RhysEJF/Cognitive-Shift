@@ -54,7 +54,7 @@ With the framework as the spine, 40+ research tasks ran sequentially accross all
 
 The result was a book that people are actually reading.
 
-> "*The book gets it*" – Shaun Thresher. \
+> "*The book gets it*" – Shaun Thresher \
 \
 "*What I've read is really, really good, great job*" – Damian Nomura's
 
