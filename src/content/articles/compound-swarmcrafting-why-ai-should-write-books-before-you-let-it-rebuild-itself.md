@@ -46,7 +46,7 @@ The approach came down to sequencing. Before a single word of the book was writt
 
 Only then did writing begin.
 
-The framework step is the most consequential. I gave the swarm a rambling description of what I wanted, something connecting swarm biology, military doctrine, competitive gaming, multi-agent systems, business strategy, and complexity science. From that, Flow's planning pipeline generated a task with one critical instruction:
+The framework step is the most consequential. I gave the swarm a description of what I wanted, something connecting swarm biology, military doctrine, competitive gaming, multi-agent systems, business strategy, and complexity science. From that, Flow's planning pipeline generated a task with one critical instruction:
 
 ```
 ....design "a memorable strategic framework, analogous to OODA, that organizes all content into 5-7 chapters. Each letter maps to a strategic domain. The framework name should be memorable, tactical, and capture the essence of winning through swarm intelligence." 
