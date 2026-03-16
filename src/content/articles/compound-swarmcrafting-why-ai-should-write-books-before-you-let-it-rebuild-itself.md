@@ -9,7 +9,11 @@ authors:
   - rhys-fisher
 publication: let-them-run
 publishedAt: 2026-03-16
-tags: []
+tags:
+  - wiggum-loop
+  - swarms
+  - AI agent orchestration
+  - 'AI Harness Engineering '
 draft: false
 ---
 When I was 16, I fell in love with falconry after an afternoon walking a field with a Harris hawk on my arm, hunting rabbits with a group of falconers.
