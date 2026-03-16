@@ -26,7 +26,7 @@ When I finally got the falcon, it worked. Not cleanly. There were the bike rides
 
 The principle was simple: squeeze out every drop of knowledge before you commit to the hard part.
 
-This is exactly how I point AI swarms at some problems. Before I let a swarm rebuild Flow, my homegrown workforce manager, I made it write a book first. Swarm Intelligence. Not as a creative exercise. As a strategic extraction.
+This is exactly how I point AI swarms at some problems. Before I let a swarm rebuild [Flow](https://thecognitiveshift.com/publications/let-them-run/i-built-an-ai-workforce/), my homegrown workforce manager, I made it write a book first. [Swarm Intelligence](https://leanpub.com/agentic-swarms-tactical-field-guide). Not as a creative exercise. As a strategic extraction.
 
 I'm pulling latent knowledge out of the models across domains, synthesising it into frameworks that don't exist yet. Then I feed those frameworks back to the swarm to perform audits. Upgrade plans fall out the other end.
 
@@ -70,7 +70,7 @@ After the project, I codified the methodology into a [reusable skill](https://gi
 
 Here's where compound swarmcrafting diverges from normal AI workflows.
 
-Most people would take the book, [publish it](https://leanpub.com/agentic-swarms-tactical-field-guide), and move on. I did something different. I turned the book's framework into [a reusable scoring skill](https://github.com/RhysEJF/cognitive-shift-resources/blob/main/skills/swarms-assessment.md), a markdown file that any AI agent can consume, and pointed it back at the system that wrote it.
+Most people would take the book, publish it, and move on. I did something different. I turned the book's framework into [a reusable scoring skill](https://github.com/RhysEJF/cognitive-shift-resources/blob/main/skills/swarms-assessment.md), a markdown file that any AI agent can consume, and pointed it back at the system that wrote it.
 
 The SWARMS assessment skill scores any idea or system across those six dimensions on a 1–5 scale, checks alignment against ten universal principles the book identified, and produces a prioritised audit report. I'm sharing this skill so anyone can run the same assessment against their own systems. (*if you improve it, please dm me for repo write permissions)*
 
