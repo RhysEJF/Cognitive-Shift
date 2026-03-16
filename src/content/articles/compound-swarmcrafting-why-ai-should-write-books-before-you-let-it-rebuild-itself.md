@@ -54,13 +54,13 @@ The framework step is the most consequential. I gave the swarm a rambling descri
 
 A single worker picked that up and produced the SWARMS framework. Sense, Wage, Adapt, Replicate, Mobilize, Sustain, a six-dimension model it synthesised from the intersections between all six research domains.
 
-With the framework as the spine, 40+ research tasks ran sequentially accross all six domains, each producing a standalone evidence document. A synthesis phase mapped research to framework, identified gaps, ran structured debates on conflicting evidence. Only then did the writing wave begin, skeleton drafts, triple reviews, final rewrites, assembly.
+With the framework as the spine, 40+ research tasks ran sequentially across all six domains, each producing a standalone evidence document. A synthesis phase mapped research to framework, identified gaps, ran structured debates on conflicting evidence. Only then did the writing wave begin, skeleton drafts, triple reviews, final rewrites, assembly.
 
 The result was a book that people are actually reading.
 
 > "*The book gets it*" – Shaun Thresher \
 \
-"*What I've read is really, really good, great job*" – Damian Nomura's
+"*What I've read is really, really good, great job*" – Damian Nomura
 
 That credibility matters, because the entire compound swarmcrafting pattern depends on the forward swarm producing something genuinely useful, not AI slop, but real cross-domain synthesis that surfaces knowledge the models had but I didn't. Bringing my blind spots into light.
 
