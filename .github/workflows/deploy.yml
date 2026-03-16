@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,6 +19,84 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # ── Migrate repo images to R2 CDN ──
+      - name: Find article images
+        id: find-images
+        run: |
+          IMAGES=$(find src/content/articles -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.gif' \) 2>/dev/null || true)
+          if [ -z "$IMAGES" ]; then
+            echo "No images to migrate."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Found images to migrate:"
+            echo "$IMAGES"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload images to R2 and rewrite markdown references
+        if: steps.find-images.outputs.found == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+
+          ARTICLES_DIR="src/content/articles"
+          CDN_BASE="https://assets.thecognitiveshift.com"
+          R2_BUCKET="cognitive-shift-assets"
+          TIMESTAMP=$(date +%s)
+
+          find "$ARTICLES_DIR" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.gif' \) | while IFS= read -r IMAGE_PATH; do
+            FILENAME=$(basename "$IMAGE_PATH")
+
+            # Sanitize filename: lowercase, replace non-alphanumeric (except dots/hyphens) with hyphens
+            SANITIZED=$(echo "$FILENAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9.\-]/-/g' | sed 's/-\+/-/g' | sed 's/^-\|-$//g')
+            R2_KEY="articles/${TIMESTAMP}-${SANITIZED}"
+            CDN_URL="${CDN_BASE}/${R2_KEY}"
+
+            echo "Uploading: $IMAGE_PATH → $R2_KEY"
+            npx --yes wrangler@3 r2 object put "${R2_BUCKET}/${R2_KEY}" --file="$IMAGE_PATH"
+
+            # Relative path from articles dir (how it appears in markdown)
+            REL_PATH="${IMAGE_PATH#${ARTICLES_DIR}/}"
+
+            # Pass 1: Replace full relative path references (e.g. slug/body/file.png)
+            # Using perl \Q..\E for safe literal matching (handles dots, special chars)
+            export OLD_REF="$REL_PATH" NEW_REF="$CDN_URL"
+            find "$ARTICLES_DIR" -name '*.md' -exec perl -i -pe '
+              BEGIN { $old = $ENV{OLD_REF}; $new = $ENV{NEW_REF}; }
+              s/!\[([^\]]*)\]\(\Q$old\E\)/![$1]($new)/g;
+            ' {} +
+
+            # Pass 2: Replace bare filename references (e.g. file.png)
+            export OLD_REF="$FILENAME"
+            find "$ARTICLES_DIR" -name '*.md' -exec perl -i -pe '
+              BEGIN { $old = $ENV{OLD_REF}; $new = $ENV{NEW_REF}; }
+              s/!\[([^\]]*)\]\(\Q$old\E\)/![$1]($new)/g;
+            ' {} +
+
+            rm "$IMAGE_PATH"
+            echo "  Migrated and deleted: $IMAGE_PATH"
+          done
+
+          # Clean up empty directories left behind
+          find "$ARTICLES_DIR" -type d -empty -delete 2>/dev/null || true
+
+      - name: Commit migrated images
+        if: steps.find-images.outputs.found == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A src/content/articles/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: migrate article images to R2 CDN"
+            git push
+          fi
+
+      # ── Build and deploy ──
       - run: npm run build
 
       - uses: cloudflare/wrangler-action@v3
