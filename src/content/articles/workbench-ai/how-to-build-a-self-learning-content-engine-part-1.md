@@ -12,7 +12,7 @@ Monday morning. Twenty-five minutes. I'm reviewing last week's social media cont
 
 It's recommending what to write next. Not suggestions from a brainstorm. Evidence-based recommendations drawn from weeks of accumulated data.
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1773920989-image.png)
 
 (The result is viral content getting millions of views and thousands of engagements.)
 
@@ -66,7 +66,7 @@ And this is only part of the equation, as the content starts taking shape, dozen
 
 **Here's where it gets even more interesting.**
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1773920989-image.png)
 
 (Blur to protect client identity)
 
@@ -84,7 +84,7 @@ When the piece of content is finished, it's reviewed against a series of quality
 
 And the process repeats...
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1773920989-image.png)
 
 The system extracts what worked. A pattern here means a structural choice, a specific hook style, a framing approach, a vocabulary preference delivering a driven measurable results. Patterns performing across multiple pieces get promoted to high confidence. Patterns that were tested and didn't land get retired.
 
@@ -102,7 +102,7 @@ Three major shifts happen when a content system accumulates real knowledge.
 
 **The human role shifts.** You stop being an editor fixing AI output. You become the person setting direction, validating AI judgments, and catching the nuances of content that perform which data can't see, like timing, sensitivity, cultural context. The system might recommend a topic with high confidence based on past performance. But you know the industry just had a controversy that changes the context. You adjust. The system learns from that adjustment too. That 25-minute Monday morning review isn't busywork. It's the highest-leverage activity of the week. You're steering a system that handles the volume, enforces the quality, and compounds its own knowledge. Your job is to make sure it's pointed in the right direction.
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1773920989-image.png)
 
 Three months in, the healthcare practice I built this for tells the story. The system handles nearly 50 social media posts a week. We spends 25 minutes on Monday morning reviewing instead of most of the morning rewriting. **Three thousand followers grew to over 47,000 (at the time this is published**). Reach scaled tenfold. We've had several posts reach over one million viewers. Leads went from a a measly 15 to booking a medical clinic NINE months in advance. Not because the AI got smarter. Because the system accumulated enough operational knowledge to stop guessing.
 
