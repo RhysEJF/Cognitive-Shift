@@ -1,5 +1,5 @@
 ---
-title: How to Build A Self-Learning Content Engine
+title: How to Build A Self-Learning Content Engine (Part 1)
 authors:
   - Shaun Thresher
 publication: workbench-ai
