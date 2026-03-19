@@ -1,5 +1,9 @@
 ---
 title: How to Build A Self-Learning Content Engine (Part 1)
+excerpt: >-
+  Most AI content workflows start from scratch every Monday. This one
+  accumulates what works week-over-week, cutting editing time from hours to
+  minutes and turning content decisions into evidence-based lookups.
 authors:
   - Shaun Thresher
 publication: workbench-ai
