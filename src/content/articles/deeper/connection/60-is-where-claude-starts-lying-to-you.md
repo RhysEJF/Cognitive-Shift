@@ -53,7 +53,7 @@ But the degrade is not sudden, like a switch flipping. It's more like a like a s
 
 **Researchers call this CONTEXT ROT**
 
-Or the accumulated noise from conversation history, failed attempts, tool outputs, and contradictory instructions diluting the model's ability to focus on what matters (like what happens in The Matrix with the lady in the red dress). Studies on long-context performance show a 15-30% drop in accuracy once the context drops below the 50% mark. The model remembers what you said at the beginning. It tracks the present moment in your conversation but everything gets progressively fuzzier the more tokens you consume.
+Or the accumulated noise from conversation history, failed attempts, tool outputs, and contradictory instructions diluting the model's ability to focus on what matters (like what happens in The Matrix with the lady in the red dress). Studies on long-context performance show a 15-30% drop in accuracy for information buried in the middle of the context window. The model remembers what you said at the beginning. It tracks the present moment in your conversation but everything gets progressively fuzzier the more tokens you consume.
 
 If you're writing content, the voice drifts. If you're coding, the model contradicts its own suggestions.
 
@@ -65,7 +65,7 @@ In other words, you can't put the genie back in the bottle.
 
 The model is doing exactly what a language model does with rotting context, it's trying to calculate a nasa launch on a cocktail napkin.
 
-The 15-30% accuracy drop isn't theoretical. If you've ever had a session where the first hour was excellent and the second hour felt like a different model, you've experienced this jekly and hyde personality shift. You just didn't understand why.
+The 15-30% accuracy drop isn't theoretical. If you've ever had a session where the first hour was excellent and the second hour felt like a different model, you've experienced this Jekyl and Hyde personality shift. You just didn't understand why.
 
 ## Longer Context Windows Only Delay The Nightmare
 
