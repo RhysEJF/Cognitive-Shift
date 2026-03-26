@@ -8,7 +8,7 @@ excerpt: >-
   code itself. 
 authors:
   - shaun-thresher
-publication: workbench-ai
+publication: deeper-connection
 publishedAt: 2026-03-12
 tags:
   - ralph loop
