@@ -35,7 +35,7 @@ It was actually staring me in the face the entire time.
 
 It was a single line of configuration at the bottom of my terminal, that I'd never really paid any attention to.
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1774600604-image.png)
 
 ## The status line
 
@@ -109,7 +109,7 @@ You're focused on the conversation happening in your head snaking down to your f
 
 Personally, I got sick of beating my head against the wall so I automated the disposal of context rot. (CTX = context)
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1774600604-image.png)
 
 The system has three components, and none of them require writing code from scratch:
 
