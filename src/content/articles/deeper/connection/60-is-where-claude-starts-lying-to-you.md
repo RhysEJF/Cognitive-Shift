@@ -1,5 +1,9 @@
 ---
 title: 60% Is Where Claude Starts Lying to You
+excerpt: >-
+  AI output quality silently degrades as your context window fills, and by the
+  time you notice, the session is already cooked. The fix isn't a bigger context
+  window — it's a single line in your status bar and a rule: stop at 60%.
 authors:
   - shaun-thresher
 publication: deeper-connection
