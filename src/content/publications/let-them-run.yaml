@@ -1,2 +1,4 @@
 name: "Let Them Run"
+description: Deploy the swarm. Shape the outcome.
 owner: "rhys-fisher"
+isActive: true
