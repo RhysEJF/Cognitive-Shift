@@ -83,6 +83,10 @@ jobs:
           # Clean up empty directories left behind
           find "$ARTICLES_DIR" -type d -empty -delete 2>/dev/null || true
 
+      # ── Build first — if this fails, nothing gets committed ──
+      - run: npm run build
+
+      # ── Commit migration only after a successful build ──
       - name: Commit migrated images
         if: steps.find-images.outputs.found == 'true'
         run: |
@@ -92,13 +96,11 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: migrate article images to R2 CDN"
+            git commit -m "chore: migrate article images to R2 CDN [skip ci]"
             git push
           fi
 
-      # ── Build and deploy ──
-      - run: npm run build
-
+      # ── Deploy ──
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

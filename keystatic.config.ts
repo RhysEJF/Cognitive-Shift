@@ -56,6 +56,7 @@ export default config({
           label: 'Excerpt',
           multiline: true,
           description: 'One or two sentences shown on listing pages and used for SEO.',
+          validation: { isRequired: true },
         }),
         authors: fields.array(
           fields.text({ label: 'Author slug' }),
