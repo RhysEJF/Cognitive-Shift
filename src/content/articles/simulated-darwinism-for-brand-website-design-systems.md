@@ -20,7 +20,7 @@ The differences between sites were something to pause over. Same industries, sam
 
 It raised a question I never managed to put down. Why do companies commit to one design direction before knowing which one spreads?
 
-Years later, I now experiment with AI orchestration systems that manages autonomous workforces. I deploy swarms. When my long-running-agent harness [started working reliably](https://thecognitiveshift.com/publications/let-them-run/compound-swarmcrafting-why-ai-should-write-books-before-you-let-it-rebuild-itself/), I wanted to run an experiment I'd been carrying since those coefficient reports, what happens when the cost of exploring design directions drops to near zero?
+Years later, I now experiment with AI orchestration systems that manage autonomous workforces. I deploy swarms. When my long-running-agent harness [started working reliably](https://thecognitiveshift.com/publications/let-them-run/compound-swarmcrafting-why-ai-should-write-books-before-you-let-it-rebuild-itself/), I wanted to run an experiment I'd been carrying since those coefficient reports, what happens when the cost of exploring design directions drops to near zero?
 
 ## **$200K Buys You One Direction**
 
