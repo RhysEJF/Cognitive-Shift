@@ -14,7 +14,7 @@ draft: false
 ---
 When I ran Unvanity, my previous analytics agency, I went through a phase of setting up clients to chart their [word-of-mouth coefficient](https://www.reforge.com/blog/how-to-calculate-your-word-of-mouth-coefficient), the inherent virality of a website. How many new organic users does each active user generate? It looks like this. \
 \
-![](Generated%20Image%20March%2030,%202026%20-%203_18PM.jpg)
+![](https://assets.thecognitiveshift.com/articles/1774882679-generated-image-march-30-2026-3-18pm.jpg)
 
 The differences between sites were something to pause over. Same industries, same budgets. One site earned a free visit for every couple of paid visits. Others needed dozens to generate a viral session. That coefficient gap changed everything downstream, ad spend, scalability, the entire economics of the business.
 
@@ -36,7 +36,7 @@ I wanted to know what happens when you invert that ratio. Same budget, but inste
 
 Flow is my experimental AI workforce system. You define an outcome, shape the vision, it decomposes the work, spins up autonomous workers to push outcomes over the line while you sleep.
 
-![](Screenshot%202026-03-30%20at%2015.26.51.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-15.26.51.png)
 
 It shipped the website you're on. [Multiple books](https://leanpub.com/agentic-swarms-tactical-field-guide). Built its own scraping tools and decoded winning [content formulas](https://docs.google.com/document/d/1F4KcCX3xX8vvohaWBiarTv0oq-LPY-LFBp83jddcqHo/edit?usp=sharing). My swarm could think, but it was sandboxed. It could build its own tools when it needed to, and sometimes did, but not everything can be vibed so easily. There's real value locked in some APIs and systems that would take far longer to rebuild than any single outcome budget justifies. So I built an integration layer. Point Flow at a repo or API, it scopes its own integration, I approve or adjust, and workers execute with whatever external tools the task needs. That changed the surface area of what an outcome could be.
 
@@ -48,17 +48,17 @@ It shipped the website you're on. [Multiple books](https://leanpub.com/agentic-s
 
 The combination was immediate. Generate variants with Stitch. Test them against simulated humans with AskRally. Let the results inform the next generation. The question wasn't whether the loop was elegant, it was whether the signal would be real enough to act on.
 
-![](Screenshot%202026-03-30%20at%2015.37.48.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-15.37.48.png)
 
 ## **Proof of Concept: Getting Ralph Loops Running With Stitch**
 
 I pointed it at one of my own brands first. The Cognitive Shift, my playground for AI R&D. I started with a stupid simple outcome. extracted the copy, fed the same brief and content into Stitch through Flow, and asked for three directions.
 
-![](Screenshot%202026-03-30%20at%2015.55.31.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-15.55.31.png)
 
-![](Screenshot%202026-03-30%20at%2015.56.03.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-15.56.03.png)
 
-![](Screenshot%202026-03-30%20at%2015.59.47.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-15.59.47.png)
 
 What came back were three genuinely different design systems. Minimal, Dark, and Organic Minimal. Don't ask me what those mean… this was just a POC to get Flow talking to Stitch.
 
@@ -72,23 +72,23 @@ More importantly, this proved the integration layer worked. Stitch was operating
 
 The real test was a client engagement, a B2B SaaS company whose name I won't share. Weeks of strategy work had already been completed to define the business strategy, competitive positioning, and messaging pillars. All of it digested into context for the swarm.
 
-![](Screenshot%202026-03-30%20at%2016.05.30.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-16.05.30.png)
 
 Stitch generated three distinct design variants from the same strategic foundation. One read premium enterprise, restrained, authoritative, built to reassure procurement teams. Another went field-credible bold, industrial aesthetic, direct language, the kind of site that feels like it was made by people who've actually been on a rooftop. The third was conversion-optimized clean, structured for the analytical buyer who wants the pricing table before the mission statement.
 
 Each variant ran through rounds of AskRally persona feedback. Multiple feedback cycles. Fifty-four individual persona reviews. What's crazy is that Flow workers actually found relevant personas from our AskRally's GenPop panel. Not an exact match because we likely did not interview them, but the closest thing we have. I didn't even tell it to do that. It found a representative sample that aligns with a typical buyer committee for this client.
 
-![](Screenshot%202026-03-30%20at%2016.09.44.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-16.09.44.png)
 
-![](Screenshot%202026-03-30%20at%2016.10.00.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-16.10.00.png)
 
 Round one surfaced raw reactions. Every persona did mental math on the per-user pricing before reading another word. Trust gaps appeared. A construction company owner compared the software to three tools he'd already tried and abandoned. A hobby shop owner said the monthly cost was "more than the turbo exhaust on my rally car." A retired electrician recalled carbon paper invoices and wondered why software needed to cost anything at all.
 
-![](Screenshot%202026-03-30%20at%2016.11.08.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-16.11.08.png)
 
-![](Screenshot%202026-03-30%20at%2016.14.07.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-16.14.07.png)
 
-![](Screenshot%202026-03-30%20at%2016.13.01.png)
+![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-16.13.01.png)
 
 Round two addressed the obvious problems and surfaced deeper anxieties. Unease about AI-generated pricing, questions about contract flexibility, the absence of product visuals.
 
@@ -96,7 +96,7 @@ Round three closed remaining gaps, early price anchoring, adoption proof points,
 \
 After a few more rounds, each design had been iterated on to produce something like this in Stitch.
 
-![](Untitled%20design%20\(35).jpg)
+![](https://assets.thecognitiveshift.com/articles/1774882679-untitled-design-35-.jpg)
 
 The most useful finding wasn't which variant "won." in the sim or why. It was that when I look at the end result. It was hands down better than the first. Not after weeks of back and forth with stakeholders and tens of thousands in fees. But for less than $5 in tokens and a few hours letting the swarm run.
 
