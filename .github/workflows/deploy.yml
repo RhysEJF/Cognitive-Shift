@@ -47,6 +47,26 @@ jobs:
           R2_BUCKET="cognitive-shift-assets"
           TIMESTAMP=$(date +%s)
 
+          # Normalise markdown: URL-decode and unescape all local image
+          # references so the replacement passes below can match literal
+          # filenames.  Skips URLs starting with http(s)://.
+          python3 -c "
+          import re, urllib.parse, glob, os
+          for md in glob.glob(os.path.join('$ARTICLES_DIR', '**', '*.md'), recursive=True):
+              with open(md) as f: text = f.read()
+              def decode(m):
+                  alt, path = m.group(1), m.group(2)
+                  if path.startswith(('http://', 'https://')):
+                      return m.group(0)
+                  path = urllib.parse.unquote(path)
+                  path = re.sub(r'\\\\(.)', r'\1', path)
+                  return f'![{alt}]({path})'
+              out = re.sub(r'!\[([^\]]*)\]\((.+?\.(?:png|jpe?g|webp|gif))\)', decode, text)
+              if out != text:
+                  with open(md, 'w') as f: f.write(out)
+                  print(f'  Decoded image refs in: {md}')
+          "
+
           find "$ARTICLES_DIR" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.gif' \) | while IFS= read -r IMAGE_PATH; do
             FILENAME=$(basename "$IMAGE_PATH")
 
