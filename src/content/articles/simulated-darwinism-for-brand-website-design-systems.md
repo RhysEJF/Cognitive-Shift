@@ -42,9 +42,9 @@ It shipped the website you're on. [Multiple books](https://leanpub.com/agentic-s
 
 ## **Two Tools I Could Reason About**
 
-[Google Stitch](https://stitch.withgoogle.com/) was popping off in my feed, an agentic first design system for generating… design systems. I initially passed it off as unnecessary. My swarm had already built websites after all. But the Zoomable Canvas, design.md, and exportability was interesting enough to spend a couple of hours figuring out how to integrate this properly. Figured at the very least it would be cool to have a canvas to view a history of iterated design concepts. That's exactly the kind of capability that multiplies when you parallelize it during a client engagement.
+[Google Stitch](https://stitch.withgoogle.com/) was popping off in my feed, an agentic first design system for generating… design systems. I initially passed it off as unnecessary. My swarm had already built websites after all. But the Zoomable Canvas, design.md, and exportability were interesting enough to spend a couple of hours figuring out how to integrate this properly. Figured at the very least it would be cool to have a canvas to view a history of iterated design concepts. That's exactly the kind of capability that multiplies when you parallelize it during a client engagement.
 
-[AskRally](https://askrally.com/) is one of my startups, co-founded with Mike Taylor. I spent a months [building n8ns](https://askrally.com/workflows) for it, so knew where the alpha was when leveraging our [calibrated virtual focus groups](https://askrally.com/article/genpop-panel). We interviewed hundreds of real humans and trained AI personas 1:1.
+[AskRally](https://askrally.com/) is one of my startups, co-founded with Mike Taylor. I spent months [building n8ns](https://askrally.com/workflows) for it, so knew where the alpha was when leveraging our [calibrated virtual focus groups](https://askrally.com/article/genpop-panel). We interviewed hundreds of real humans and trained AI personas 1:1.
 
 The combination was immediate. Generate variants with Stitch. Test them against simulated humans with AskRally. Let the results inform the next generation. The question wasn't whether the loop was elegant, it was whether the signal would be real enough to act on.
 
@@ -52,7 +52,7 @@ The combination was immediate. Generate variants with Stitch. Test them against 
 
 ## **Proof of Concept: Getting Ralph Loops Running With Stitch**
 
-I pointed it at one of my own brands first. The Cognitive Shift, my playground for AI R&D. I started with a stupid simple outcome. extracted the copy, fed the same brief and content into Stitch through Flow, and asked for three directions.
+I pointed it at one of my own brands first. The Cognitive Shift, my playground for AI R&D. I started with a stupid simple outcome. Extracted the copy, fed the same brief and content into Stitch through Flow, and asked for three directions.
 
 ![](https://assets.thecognitiveshift.com/articles/1774882679-screenshot-2026-03-30-at-15.55.31.png)
 
@@ -98,7 +98,7 @@ After a few more rounds, each design had been iterated on to produce something l
 
 ![](https://assets.thecognitiveshift.com/articles/1774882679-untitled-design-35-.jpg)
 
-The most useful finding wasn't which variant "won." in the sim or why. It was that when I look at the end result. It was hands down better than the first. Not after weeks of back and forth with stakeholders and tens of thousands in fees. But for less than $5 in tokens and a few hours letting the swarm run.
+The most useful finding wasn't which variant "won" in the sim or why. It was that when I looked at the end result. It was hands down better than the first. Not after weeks of back and forth with stakeholders and tens of thousands in fees. But for less than $5 in tokens and a few hours letting the swarm run.
 
 The end direction wasn't briefed. It was discovered. Don't get me wrong, it's possible to configure it to be more opinionated. This was just a proof of concept to see if swarm and synthetic testing could be merged into a new design system. One that leverages evolutionary advantages. Something you could run in a scaled up fashion where you end up with dozens of pre-filtered brand concepts narrowed down from thousands tested against virtual focus groups.
 
@@ -108,7 +108,7 @@ This is what exploration buys you. A search space that reveals combinations a li
 
 In Flow, there's the option to add evals baked into outcomes and room to really cook a system for autonomous work that makes you feel things. The best bit about it. Once an outcome works, you can templatise it with a skill optimized for repeating the pattern. The brand website template doesn't just produce a website. It includes variant generation with design system output, feedback loops with audience-specific persona panels, iteration cycles with convergence tracking, and then when you have a winner going viral in simulators, you can get the swarm building the site, implementing analytics, adding CMS integration … all so the marketing team owns their content, and a design system that lives inside Claude so new pages can be built against it natively.
 
-For $200K with a partner running swarm infrastructure, you don't get one website. You get an evolutionary process that produces and tests thousands, iterating around the clock, running hundreds of cycles against synthetic humans calibrated on real voices. Dozens of promising brands in high fidelity clickable prototypes. Then only design that prove themselves in battle hardened evals reach the client's desk. \
+For $200K with a partner running swarm infrastructure, you don't get one website. You get an evolutionary process that produces and tests thousands, iterating around the clock, running hundreds of cycles against synthetic humans calibrated on real voices. Dozens of promising brands in high fidelity clickable prototypes. Then only designs that prove themselves in battle hardened evals reach the client's desk. \
 \
 The output isn't just a design system, a component library, a CMS structure, analytics, and a marketing team that builds new pages using rules that emerged from the process. It's launching with something that makes every future advertising dollar travel further. Because buy two clicks, get one free travels.
 
