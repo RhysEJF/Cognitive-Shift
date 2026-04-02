@@ -2,3 +2,4 @@ name: The Deeper Connection
 description: Going from AI slop to reader engagement.
 owner: shaun-thresher
 isActive: true
+order: 2

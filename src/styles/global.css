@@ -639,7 +639,8 @@ body {
   .article-body-wrap { padding-bottom: 1.5rem; }
 
   /* Publication cards */
-  .pub-card { padding: 1.25rem; }
+  .pub-grid { grid-template-columns: 1fr; }
+  .pub-card { padding: 2rem 1.25rem 1.5rem; }
 
   /* Newsletter modal */
   .modal-content { padding: 1.5rem; }
@@ -1132,42 +1133,63 @@ body {
 
 /* === Publications Index === */
 
+/* --- Publication Grid (horizontal card layout) --- */
+.pub-section {
+  max-width: 900px;
+}
 .pub-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
   text-align: left;
 }
 .pub-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
+  border-radius: 6px;
+  padding: 2.5rem 1.5rem 2rem;
   text-decoration: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.25s, transform 0.25s;
 }
 .pub-card:hover {
   border-color: var(--gold-border);
+  transform: translateY(-3px);
+}
+.pub-card-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 2px solid var(--border-light);
+}
+.pub-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .pub-card-name {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--cream);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 .pub-card-description {
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--cream-muted);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 .pub-card-meta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
+  margin-top: auto;
 }
 .pub-card-owner {
   font-size: 0.6rem;

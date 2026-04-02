@@ -4,12 +4,12 @@ import GoldRule from '../../components/GoldRule.astro';
 import SignupToggle from '../../components/SignupToggle.astro';
 import { getCollection } from 'astro:content';
 
-const publications = await getCollection('publications', ({ data }) => data.isActive);
+const publications = (await getCollection('publications', ({ data }) => data.isActive))
+  .sort((a, b) => a.data.order - b.data.order);
 const authors = await getCollection('authors');
 
-function getAuthorName(slug: string): string {
-  const author = authors.find(a => a.id === slug);
-  return author ? author.data.name : slug.replace(/-/g, ' ');
+function getAuthor(slug: string) {
+  return authors.find(a => a.id === slug);
 }
 ---
 <BaseLayout
@@ -28,26 +28,32 @@ function getAuthorName(slug: string): string {
   <div class="cream-band">
     <GoldRule />
 
-    <section class="content-section">
+    <section class="content-section pub-section">
       {publications.length === 0 ? (
         <p class="pub-empty">No publications yet. Check back soon.</p>
       ) : (
         <div class="pub-grid">
-          {publications.map((pub) => (
-            <a href={`/publications/${pub.id}/`} class="pub-card">
-              <div class="pub-card-name">{pub.data.name}</div>
-              {pub.data.description && (
-                <div class="pub-card-description">
-                  {pub.data.description.length > 160
-                    ? pub.data.description.slice(0, 160) + '...'
-                    : pub.data.description}
+          {publications.map((pub) => {
+            const author = getAuthor(pub.data.owner);
+            return (
+              <a href={`/publications/${pub.id}/`} class="pub-card">
+                {author?.data.avatar && (
+                  <div class="pub-card-avatar">
+                    <img src={author.data.avatar} alt={author.data.name} loading="lazy" />
+                  </div>
+                )}
+                <div class="pub-card-name">{pub.data.name}</div>
+                {pub.data.description && (
+                  <div class="pub-card-description">{pub.data.description}</div>
+                )}
+                <div class="pub-card-meta">
+                  <span class="pub-card-owner">
+                    {author ? author.data.name : pub.data.owner.replace(/-/g, ' ')}
+                  </span>
                 </div>
-              )}
-              <div class="pub-card-meta">
-                <span class="pub-card-owner">{getAuthorName(pub.data.owner)}</span>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
       )}
     </section>

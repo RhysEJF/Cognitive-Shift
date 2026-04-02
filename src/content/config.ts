@@ -7,6 +7,7 @@ const publications = defineCollection({
     description: z.string().optional(),
     owner: z.string(),
     isActive: z.boolean().default(true),
+    order: z.number().default(99),
   }),
 });
 
