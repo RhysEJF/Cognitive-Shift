@@ -1879,6 +1879,33 @@ body {
   color: var(--cream-muted);
 }
 
+/* --- Featured Quote --- */
+.training-quote {
+  padding: 6rem 2rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+.training-quote-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.training-quote-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--cream);
+}
+.training-quote-attribution {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1.5rem;
+}
+
 /* --- Register Interest --- */
 .training-register {
   padding: 5rem 2rem 6rem;
@@ -2091,6 +2118,32 @@ body {
   max-width: 420px;
   width: 90%;
   position: relative;
+}
+.lead-modal--wide {
+  max-width: 660px;
+}
+.cal-modal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.cal-modal-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.cal-modal-info {
+  flex: 1;
+}
+.cal-modal-desc {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--cream-muted);
+  margin-top: 0.4rem;
 }
 .lead-modal-close {
   position: absolute;

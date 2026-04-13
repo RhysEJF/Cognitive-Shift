@@ -5,6 +5,10 @@ import { getCollection } from 'astro:content';
 
 const offerings = (await getCollection('training-offerings'))
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const authors = await getCollection('authors');
+const rhys = authors.find(a => a.id === 'rhys-fisher');
+const rhysAvatar = rhys?.data.avatar || '';
 ---
 <BaseLayout
   title="Training | Rhys Fisher | The Cognitive Shift"
@@ -181,46 +185,22 @@ const offerings = (await getCollection('training-offerings'))
                 </div>
               )}
 
-              <button type="button" class="offering-cta" data-lead-trigger data-lead-product={offering.id}>{offering.data.ctaText}</button>
+              {offering.id === 'flow-os' ? (
+                <button type="button" class="offering-cta" data-calendly-trigger data-calendly-a1="I'm interested in Flow OS and would like to learn more about getting set up.">{offering.data.ctaText}</button>
+              ) : (
+                <button type="button" class="offering-cta" data-lead-trigger data-lead-product={offering.id}>{offering.data.ctaText}</button>
+              )}
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- For Teams -->
-    <section class="training-teams" aria-label="For teams">
-      <div class="training-teams-inner">
-        <div class="section-label">For companies & teams</div>
-        <h2 class="training-section-title">
-          Two strategies. One goal: AI-augmented teams.
-        </h2>
-        <div class="teams-strategies">
-          <div class="team-strategy">
-            <h3 class="team-strategy-title">Lift the floor</h3>
-            <p class="team-strategy-desc">
-              Bring your least experienced people up to speed fast. A half-day
-              or full-day workshop tailored to your team. Everyone leaves with
-              Claude Code running and producing real output. Best for teams where
-              broad adoption matters more than depth.
-            </p>
-          </div>
-          <div class="team-strategy">
-            <h3 class="team-strategy-title">Push the roof</h3>
-            <p class="team-strategy-desc">
-              Send your best 5-10 people through the Adoption Amplifier.
-              They come back building at 10x pace and can train others
-              internally. Better ROI per head: a handful of supercharged
-              operators lift the whole organisation.
-            </p>
-          </div>
-        </div>
-        <p class="teams-note">
-          Every corporate engagement starts with a pre-assessment, a survey
-          of your team's AI maturity, so we align on which strategy fits.
-          Custom workshop formats available: "Agency of the Future",
-          domain-specific sessions, multi-day intensives. Pricing from €8,000.
-        </p>
+    <!-- Quote -->
+    <section class="training-quote" aria-label="Quote">
+      <div class="training-quote-inner">
+        <div class="training-quote-text">&ldquo;The people who transform the world are almost never the ones in charge of it. They&rsquo;re the ones tinkering in the margins.&rdquo;</div>
+        <div class="training-quote-attribution">Mitchell Waldrop, The Dream Machine</div>
       </div>
     </section>
 
@@ -275,7 +255,7 @@ const offerings = (await getCollection('training-offerings'))
         <p class="training-register-sub">
           Tell me what you're looking for and I'll reach out personally.
         </p>
-        <button type="button" class="offering-cta training-register-cta" data-lead-trigger data-lead-product="general">Register interest</button>
+        <button type="button" class="offering-cta training-register-cta" data-calendly-trigger data-calendly-a1="The offerings on the page don't quite fit, but I feel like you could help. I'd love a quick call to figure out the right path.">Book a call</button>
         <p class="training-register-note">
           No spam. Just a conversation when there's a fit.
         </p>
@@ -316,11 +296,33 @@ const offerings = (await getCollection('training-offerings'))
       </div>
     </div>
 
-    <!-- Bottom Quote -->
-    <section class="bottom-cta" aria-label="Quote">
-      <div class="bottom-epigraph">&ldquo;You don't need to do the R&D. You just need access to someone who never stopped.&rdquo;</div>
-      <div class="bottom-attribution">&mdash; <a href="https://x.com/virtual_rf" target="_blank" rel="noopener">Rhys Fisher</a></div>
-    </section>
+    <!-- Calendly Booking Modal -->
+    <div class="lead-modal-overlay" id="calendly-modal" style="display:none;">
+      <div class="lead-modal lead-modal--wide">
+        <button class="lead-modal-close" id="calendly-modal-close" type="button">&times;</button>
+        <div class="cal-modal-header">
+          {rhysAvatar && <img src={rhysAvatar} alt="Rhys Fisher" class="cal-modal-avatar" />}
+          <div class="cal-modal-info">
+            <h3 class="lead-modal-title">Discovery call with Rhys</h3>
+            <p class="cal-modal-desc">
+              A 15-minute conversation to understand what you need and point you
+              to the right path forward. We can talk through your setup, explore
+              which add-ons make sense, or I can demo Flow OS live.
+            </p>
+          </div>
+        </div>
+        <div class="cal-email-gate" id="cal-email-gate">
+          <div class="lead-field">
+            <label for="cal-email">Your email (so I know who's booking)</label>
+            <input type="email" id="cal-email" placeholder="your@email.com" required />
+          </div>
+          <button type="button" class="lead-submit" id="cal-email-submit">Show availability</button>
+        </div>
+        <div id="calendly-embed-container" style="min-width:320px;height:630px;display:none;"></div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
   </main>
   <script src="/js/starlings.js" is:inline></script>
   <script is:inline>
@@ -375,6 +377,86 @@ const offerings = (await getCollection('training-offerings'))
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (overlay) overlay.addEventListener('click', function(e) {
       if (e.target === overlay) closeModal();
+    });
+
+    // Calendly modal
+    var calOverlay = document.getElementById('calendly-modal');
+    var calClose = document.getElementById('calendly-modal-close');
+    var calContainer = document.getElementById('calendly-embed-container');
+
+    var currentCalA1 = '';
+    var currentCalSource = '';
+    var calGate = document.getElementById('cal-email-gate');
+    var calEmailInput = document.getElementById('cal-email');
+    var calEmailSubmit = document.getElementById('cal-email-submit');
+
+    document.querySelectorAll('[data-calendly-trigger]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentCalA1 = btn.getAttribute('data-calendly-a1') || '';
+        currentCalSource = btn.closest('.offering-card') ? 'flow-os' : 'general';
+        // Reset state
+        calGate.style.display = '';
+        calContainer.style.display = 'none';
+        calContainer.innerHTML = '';
+        calEmailInput.value = '';
+        calOverlay.style.display = '';
+        calOverlay.classList.remove('lead-modal-fade-out');
+        calEmailInput.focus();
+      });
+    });
+
+    calEmailSubmit.addEventListener('click', function() {
+      var email = calEmailInput.value.trim();
+      if (!email) return;
+
+      // Save lead to PocketBase
+      calEmailSubmit.textContent = 'Loading...';
+      calEmailSubmit.disabled = true;
+
+      createTrainingLead({
+        email: email,
+        product: currentCalSource,
+        participants: 1,
+        start_date: '',
+        innovation_lab: ''
+      }).then(function() {
+        console.log('Lead captured before Calendly:', email);
+      }).catch(function(err) {
+        console.error('Lead capture error:', err);
+      }).finally(function() {
+        // Show Calendly with email prefilled
+        calGate.style.display = 'none';
+        calContainer.style.display = '';
+        if (window.Calendly) {
+          Calendly.initInlineWidget({
+            url: 'https://calendly.com/rhys-fisher/talk-with-rhys-15',
+            parentElement: calContainer,
+            prefill: {
+              email: email,
+              customAnswers: { a1: currentCalA1 }
+            }
+          });
+        }
+      });
+    });
+
+    // Allow Enter key to submit
+    calEmailInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') calEmailSubmit.click();
+    });
+
+    function closeCalModal() {
+      calOverlay.classList.add('lead-modal-fade-out');
+      calOverlay.addEventListener('animationend', function handler() {
+        calOverlay.removeEventListener('animationend', handler);
+        calOverlay.style.display = 'none';
+        calOverlay.classList.remove('lead-modal-fade-out');
+      });
+    }
+
+    if (calClose) calClose.addEventListener('click', closeCalModal);
+    if (calOverlay) calOverlay.addEventListener('click', function(e) {
+      if (e.target === calOverlay) closeCalModal();
     });
 
     if (form) {
