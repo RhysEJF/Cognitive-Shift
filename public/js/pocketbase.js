@@ -66,3 +66,19 @@ async function createCommunityApplication(data) {
     applied_at: new Date().toISOString()
   });
 }
+
+/**
+ * Create a training lead record.
+ * @param {Object} data - { email, product, participants, start_date }
+ * @returns {Promise<Object>} Created record
+ */
+async function createTrainingLead(data) {
+  return _pbPost(_pbUrl("training_leads"), {
+    email: data.email,
+    product: data.product,
+    participants: data.participants || 1,
+    desired_start_date: data.start_date || "",
+    innovation_lab: data.innovation_lab || "",
+    status: "new"
+  });
+}

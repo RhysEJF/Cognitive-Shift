@@ -34,4 +34,22 @@ const authors = defineCollection({
   }),
 });
 
-export const collections = { publications, articles, authors };
+const trainingOfferings = defineCollection({
+  type: 'data',
+  schema: z.object({
+    name: z.string(),
+    tagline: z.string(),
+    description: z.string(),
+    features: z.array(z.string()).default([]),
+    format: z.string().optional(),
+    idealFor: z.string().optional(),
+    pricingLabel: z.string(),
+    pricingDetail: z.string().optional(),
+    pricingNote: z.string().optional(),
+    ctaText: z.string().default('Learn more'),
+    highlighted: z.boolean().default(false),
+    order: z.number().default(99),
+  }),
+});
+
+export const collections = { publications, articles, authors, 'training-offerings': trainingOfferings };

@@ -1,0 +1,421 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import { getCollection } from 'astro:content';
+
+const offerings = (await getCollection('training-offerings'))
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+<BaseLayout
+  title="Training | Rhys Fisher | The Cognitive Shift"
+  description="AI augmentation: not slides, but code and training intertwined. From your first Claude Code session to managing multi-agent swarms."
+>
+  <main>
+    <!-- Hero -->
+    <section class="training-hero" aria-label="Training hero">
+      <canvas id="starlings-canvas"></canvas>
+      <div class="training-hero-content">
+        <div class="hero-eyebrow">AI Augmentation by Rhys Fisher</div>
+        <h1 class="hero-title">
+          I spent years in the <em>R&D</em>.<br />This is your shortcut.
+        </h1>
+        <p class="hero-body">
+          Most AI training leaves you inspired but unequipped. This gives you
+          a working setup, hands-on coaching, and the guardrails to avoid
+          chasing dead ends for months.
+        </p>
+        <GoldRule />
+        <p class="training-proof-line">
+          Built with AI: <a href="https://leanpub.com/agentic-swarms-tactical-field-guide" target="_blank" rel="noopener">published books overnight</a>,
+          <a href="https://askrally.com/" target="_blank" rel="noopener">synthetic user testing platforms</a>,
+          <a href="https://howlerbikes.com/" target="_blank" rel="noopener">custom titanium bikes</a>,
+          <a href="https://fizz.fit/" target="_blank" rel="noopener">video apps</a>,
+          <a href="https://thecognitiveshift.com/publications/let-them-run/i-built-an-ai-workforce/" target="_blank" rel="noopener">workforce management systems</a>, and
+          more startups than fit in a sentence. The breadth is the credential.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Journey -->
+    <section class="training-journey" aria-label="The journey">
+      <div class="training-journey-inner">
+        <div class="section-label">The progression</div>
+        <h2 class="training-section-title">
+          One journey. Five levels. From adoption to evolution.
+        </h2>
+        <div class="journey-steps">
+          <div class="journey-step">
+            <div class="journey-step-num">01</div>
+            <div class="journey-step-label">Adoption</div>
+            <div class="journey-step-desc">Claude Code fluency: install, configure, and start producing real output</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">
+            <div class="journey-step-num">02</div>
+            <div class="journey-step-label">Configuration</div>
+            <div class="journey-step-desc">Build your OS: integrations, tools, memory, and workflows tailored to how you work</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">
+            <div class="journey-step-num">03</div>
+            <div class="journey-step-label">Specialisation</div>
+            <div class="journey-step-desc">Templatised skills, reusable commands, and multi-agent workflows for your domain</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">
+            <div class="journey-step-num">04</div>
+            <div class="journey-step-label">Evaluation</div>
+            <div class="journey-step-desc">Measure what your agents produce. Evals that ensure quality at scale</div>
+          </div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">
+            <div class="journey-step-num">05</div>
+            <div class="journey-step-label">Evolution</div>
+            <div class="journey-step-desc">Darwinian selection embedded into your systems. Agents that improve themselves</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offerings -->
+    <section class="training-offerings" aria-label="Offerings">
+      <div class="training-offerings-inner">
+        <div class="section-label">Two paths</div>
+        <h2 class="training-section-title">
+          Start with the system. Go deeper with the programme.
+        </h2>
+        <p class="training-section-sub">
+          Flow OS is your AI operating system: code and training, intertwined.
+          The Adoption Amplifier is a 4-week transformation. Both paths lead to
+          the same place: you, operating at a fundamentally different level.
+        </p>
+
+        <div class="offerings-grid offerings-grid--two">
+          {offerings.map((offering) => (
+            <div class={`offering-card ${offering.data.highlighted ? 'offering-card--highlighted' : ''}`}>
+              {offering.data.highlighted && <div class="offering-badge">Deep transformation</div>}
+              <h3 class="offering-name">{offering.data.name}</h3>
+              <p class="offering-tagline">{offering.data.tagline}</p>
+              <GoldRule />
+              <p class="offering-description">{offering.data.description}</p>
+              <ul class="offering-features">
+                {offering.data.features.map((feature: string) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+              {offering.data.idealFor && (
+                <div class="offering-ideal">
+                  <span class="offering-ideal-label">Ideal for:</span> {offering.data.idealFor}
+                </div>
+              )}
+              <div class="offering-pricing">
+                <div class="offering-price">{offering.data.pricingLabel}</div>
+                {offering.data.pricingDetail && <div class="offering-price-detail">{offering.data.pricingDetail}</div>}
+                {offering.data.pricingNote && <div class="offering-price-note">{offering.data.pricingNote}</div>}
+              </div>
+
+              {offering.id === 'adoption-amplifier' && (
+                <div class="upgrade-dropdown">
+                  <button class="upgrade-toggle" type="button" data-upgrade-toggle>
+                    <span>Add Innovation Lab</span>
+                    <span class="upgrade-chevron">&#9662;</span>
+                  </button>
+                  <div class="upgrade-panel" data-upgrade-panel>
+                    <div class="upgrade-tier">
+                      <div class="upgrade-tier-header">
+                        <span class="upgrade-tier-name">Spark</span>
+                        <span class="upgrade-tier-price">€2,000 to €6,000</span>
+                      </div>
+                      <div class="upgrade-tier-quote">Validate before you commit. One focused question, one tangible answer.</div>
+                      <div class="upgrade-tier-desc">A focused sprint: prototype an idea, compare vendors, or build a proof of concept. Fast, focused, decisive.</div>
+                    </div>
+                    <div class="upgrade-tier">
+                      <div class="upgrade-tier-header">
+                        <span class="upgrade-tier-name">Reaction</span>
+                        <span class="upgrade-tier-price">€7,500 to €10,500</span>
+                      </div>
+                      <div class="upgrade-tier-quote">Some hunches deserve more than a slide deck. This is where you build the evidence.</div>
+                      <div class="upgrade-tier-desc">Go deeper: build working prototypes, stress-test assumptions, produce evidence that makes the build-vs-buy decision obvious.</div>
+                    </div>
+                    <div class="upgrade-tier upgrade-tier--featured">
+                      <div class="upgrade-tier-header">
+                        <span class="upgrade-tier-name">Signal</span>
+                        <span class="upgrade-tier-price">€11,500 to €25,000</span>
+                      </div>
+                      <div class="upgrade-tier-quote">Real breakthroughs don't come from sprints. They come from the patience to stay with a problem.</div>
+                      <div class="upgrade-tier-desc">Some R&D needs room to breathe. The rate drops as you commit more, because the commitment itself is what produces the breakthrough.</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {offering.id === 'flow-os' && (
+                <div class="upgrade-dropdown">
+                  <button class="upgrade-toggle" type="button" data-upgrade-toggle>
+                    <span>Partner programmes</span>
+                    <span class="upgrade-chevron">&#9662;</span>
+                  </button>
+                  <div class="upgrade-panel" data-upgrade-panel>
+                    <div class="upgrade-tier">
+                      <div class="upgrade-tier-header">
+                        <span class="upgrade-tier-name">Partner</span>
+                        <span class="upgrade-tier-price">€600/mo</span>
+                      </div>
+                      <div class="upgrade-tier-desc">Access to Flow Swarm, my long-running agent harness. 1 call with Rhys per month. Stay connected to the R&D as it evolves.</div>
+                    </div>
+                    <div class="upgrade-tier">
+                      <div class="upgrade-tier-header">
+                        <span class="upgrade-tier-name">Partner +</span>
+                        <span class="upgrade-tier-price">€1,200/mo</span>
+                      </div>
+                      <div class="upgrade-tier-desc">Everything in Partner, plus one day of dedicated research time per month. Your challenges become R&D inputs, and solutions come to you first.</div>
+                    </div>
+                    <div class="upgrade-tier upgrade-tier--featured">
+                      <div class="upgrade-tier-header">
+                        <span class="upgrade-tier-name">R&D Partner</span>
+                        <span class="upgrade-tier-price">Let's talk</span>
+                      </div>
+                      <div class="upgrade-tier-desc">Everything in Partner +, with deeper, ongoing R&D commitment. I work directly on your problem with dedicated scope and time. Licencing and deliverables agreed together.</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <button type="button" class="offering-cta" data-lead-trigger data-lead-product={offering.id}>{offering.data.ctaText}</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- For Teams -->
+    <section class="training-teams" aria-label="For teams">
+      <div class="training-teams-inner">
+        <div class="section-label">For companies & teams</div>
+        <h2 class="training-section-title">
+          Two strategies. One goal: AI-augmented teams.
+        </h2>
+        <div class="teams-strategies">
+          <div class="team-strategy">
+            <h3 class="team-strategy-title">Lift the floor</h3>
+            <p class="team-strategy-desc">
+              Bring your least experienced people up to speed fast. A half-day
+              or full-day workshop tailored to your team. Everyone leaves with
+              Claude Code running and producing real output. Best for teams where
+              broad adoption matters more than depth.
+            </p>
+          </div>
+          <div class="team-strategy">
+            <h3 class="team-strategy-title">Push the roof</h3>
+            <p class="team-strategy-desc">
+              Send your best 5-10 people through the Adoption Amplifier.
+              They come back building at 10x pace and can train others
+              internally. Better ROI per head: a handful of supercharged
+              operators lift the whole organisation.
+            </p>
+          </div>
+        </div>
+        <p class="teams-note">
+          Every corporate engagement starts with a pre-assessment, a survey
+          of your team's AI maturity, so we align on which strategy fits.
+          Custom workshop formats available: "Agency of the Future",
+          domain-specific sessions, multi-day intensives. Pricing from €8,000.
+        </p>
+      </div>
+    </section>
+
+    <!-- What Makes This Different -->
+    <section class="training-different" aria-label="What makes this different">
+      <div class="training-different-inner">
+        <div class="section-label">Why this, why now</div>
+        <div class="different-grid">
+          <div class="different-item">
+            <h3 class="different-title">Code + training, not slides</h3>
+            <p class="different-desc">
+              AI can write code, so code alone isn't valuable anymore.
+              What matters is augmenting the human. Flow OS is actual
+              infrastructure that makes your setup work, paired with the
+              training to make it yours.
+            </p>
+          </div>
+          <div class="different-item">
+            <h3 class="different-title">Cross-domain proof, not just theory</h3>
+            <p class="different-desc">
+              Books published overnight. Titanium bikes designed through AI.
+              Startups launched. Apps shipped. The breadth of what I've built
+              with AI is the proof that this approach transfers to anything.
+            </p>
+          </div>
+          <div class="different-item">
+            <h3 class="different-title">Living R&D, not a static course</h3>
+            <p class="different-desc">
+              I'm actively building and discovering every day. The add-ons
+              evolve with what I learn. Static AI courses go stale in months.
+              Your subscription stays current because the R&D never stops.
+            </p>
+          </div>
+          <div class="different-item">
+            <h3 class="different-title">Catalyst, not contractor</h3>
+            <p class="different-desc">
+              I've spent my career consulting, trading time for builds.
+              The real move is to be a catalyst for your transformation,
+              where you leverage AI in its full capacity to do more yourself.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register Interest -->
+    <section class="training-register" id="register" aria-label="Register interest">
+      <div class="training-register-inner">
+        <h2 class="training-section-title">
+          Interested? Let's talk.
+        </h2>
+        <p class="training-register-sub">
+          Tell me what you're looking for and I'll reach out personally.
+        </p>
+        <button type="button" class="offering-cta training-register-cta" data-lead-trigger data-lead-product="general">Register interest</button>
+        <p class="training-register-note">
+          No spam. Just a conversation when there's a fit.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lead Capture Modal -->
+    <div class="lead-modal-overlay" id="lead-modal" style="display:none;">
+      <div class="lead-modal">
+        <button class="lead-modal-close" id="lead-modal-close" type="button">&times;</button>
+        <h3 class="lead-modal-title">Register interest</h3>
+        <p class="lead-modal-sub" id="lead-modal-sub"></p>
+        <form class="lead-form" id="lead-form">
+          <input type="hidden" name="product" id="lead-product" />
+          <div class="lead-field">
+            <label for="lead-email">Email</label>
+            <input type="email" id="lead-email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="lead-field">
+            <label for="lead-participants">Number of participants</label>
+            <input type="number" id="lead-participants" name="participants" min="1" max="100" value="1" />
+          </div>
+          <div class="lead-field">
+            <label for="lead-start-date">Desired start date</label>
+            <input type="date" id="lead-start-date" name="start_date" />
+          </div>
+          <div class="lead-field" id="lead-innovation-wrap" style="display:none;">
+            <label for="lead-innovation-lab">Innovation Lab (embedded R&D)</label>
+            <select id="lead-innovation-lab" name="innovation_lab">
+              <option value="">Not interested right now</option>
+              <option value="spark">Spark (€2,000 to €6,000)</option>
+              <option value="reaction">Reaction (€7,500 to €10,500)</option>
+              <option value="signal">Signal (€11,500 to €25,000)</option>
+            </select>
+          </div>
+          <button type="submit" class="lead-submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Quote -->
+    <section class="bottom-cta" aria-label="Quote">
+      <div class="bottom-epigraph">&ldquo;You don't need to do the R&D. You just need access to someone who never stopped.&rdquo;</div>
+      <div class="bottom-attribution">&mdash; <a href="https://x.com/virtual_rf" target="_blank" rel="noopener">Rhys Fisher</a></div>
+    </section>
+  </main>
+  <script src="/js/starlings.js" is:inline></script>
+  <script is:inline>
+  (function() {
+    // Upgrade tier dropdowns (multiple)
+    document.querySelectorAll('[data-upgrade-toggle]').forEach(function(toggle) {
+      var panel = toggle.nextElementSibling;
+      if (!panel) return;
+      toggle.addEventListener('click', function() {
+        var open = panel.classList.toggle('upgrade-panel--open');
+        toggle.classList.toggle('upgrade-toggle--open', open);
+      });
+    });
+
+    // Lead capture modal
+    var overlay = document.getElementById('lead-modal');
+    var closeBtn = document.getElementById('lead-modal-close');
+    var form = document.getElementById('lead-form');
+    var productInput = document.getElementById('lead-product');
+    var subText = document.getElementById('lead-modal-sub');
+
+    var productLabels = {
+      'flow-os': 'Flow OS',
+      'adoption-amplifier': 'The Adoption Amplifier',
+      'general': ''
+    };
+
+    document.querySelectorAll('[data-lead-trigger]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var product = btn.getAttribute('data-lead-product');
+        productInput.value = product;
+        var label = productLabels[product];
+        subText.textContent = label ? 'You are registering interest in ' + label + '.' : 'Tell me what you are looking for.';
+        var innovationWrap = document.getElementById('lead-innovation-wrap');
+        innovationWrap.style.display = product === 'adoption-amplifier' ? '' : 'none';
+        document.getElementById('lead-innovation-lab').value = '';
+        overlay.style.display = '';
+        overlay.classList.remove('lead-modal-fade-out');
+        document.getElementById('lead-email').focus();
+      });
+    });
+
+    function closeModal() {
+      overlay.classList.add('lead-modal-fade-out');
+      overlay.addEventListener('animationend', function handler() {
+        overlay.removeEventListener('animationend', handler);
+        overlay.style.display = 'none';
+        overlay.classList.remove('lead-modal-fade-out');
+      });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('.lead-submit');
+        var original = btn.textContent;
+        btn.textContent = 'Submitting...';
+        btn.disabled = true;
+
+        try {
+          await createTrainingLead({
+            email: document.getElementById('lead-email').value.trim(),
+            product: productInput.value,
+            participants: parseInt(document.getElementById('lead-participants').value) || 1,
+            start_date: document.getElementById('lead-start-date').value,
+            innovation_lab: document.getElementById('lead-innovation-lab').value
+          });
+          btn.textContent = 'Submitted';
+          setTimeout(function() {
+            closeModal();
+            form.reset();
+            btn.textContent = original;
+            btn.disabled = false;
+          }, 1500);
+        } catch (err) {
+          console.error('Lead form error:', err);
+          btn.textContent = original;
+          btn.disabled = false;
+          var existing = form.querySelector('.lead-error');
+          if (existing) existing.remove();
+          var errEl = document.createElement('div');
+          errEl.className = 'lead-error';
+          errEl.textContent = 'Something went wrong. Please try again.';
+          errEl.style.color = '#c0392b';
+          errEl.style.fontSize = '0.8rem';
+          errEl.style.marginTop = '0.5rem';
+          form.appendChild(errEl);
+        }
+      });
+    }
+  })();
+  </script>
+</BaseLayout>

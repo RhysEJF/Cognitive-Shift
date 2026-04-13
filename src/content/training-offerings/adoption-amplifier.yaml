@@ -1,0 +1,29 @@
+name: The Adoption Amplifier
+tagline: 4 weeks to transform how you operate with AI
+description: >-
+  A semi-structured 4-week programme that doesn't just teach you tools. It
+  rewires how you work. Wherever you sit on the AI maturity curve, you
+  come out operating at a fundamentally different level. Includes Flow OS
+  for individuals, or tailored to your existing setup for enterprise teams.
+features:
+  - "Week 1: Flow OS training. Get set up, configured, and producing real output"
+  - "Week 2: \"Future of [your industry]\" workshop, driven by your use cases and learning goals"
+  - "Week 3: Open Q&A. Bring your blockers, challenges, and edge cases"
+  - "Week 4: Custom session designed dynamically based on how weeks 1-3 went"
+  - Weekly live sessions with Rhys
+  - Pre-programme survey so each session is tailored to what matters to you
+  - Flow OS included (or tailored for enterprise without dependency)
+format: 4-week programme. Weekly live sessions + exercises + async support.
+idealFor: >-
+  Individuals who want deep transformation in how they work with AI.
+  Enterprise teams who need an external catalyst for AI adoption, tailored
+  to existing tooling, no Flow OS dependency required.
+pricingLabel: "€5,000"
+pricingDetail: "For up to 5 people. €1,000 per additional person."
+pricingNote: >-
+  Includes Flow OS for individual participants. Enterprise engagements can
+  be tailored without Flow OS, and each programme gets its own dedicated
+  training materials. Graduates often continue on the Flow OS Partner tier.
+ctaText: Register interest
+highlighted: true
+order: 2

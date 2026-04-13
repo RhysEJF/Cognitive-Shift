@@ -1,4 +1,4 @@
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
   storage: {
@@ -35,6 +35,33 @@ export default config({
           description: 'Author slug (e.g. rhys-fisher)',
         }),
         isActive: fields.checkbox({ label: 'Active', defaultValue: true }),
+      },
+    }),
+
+    trainingOfferings: collection({
+      label: 'Training Offerings',
+      slugField: 'name',
+      path: 'src/content/training-offerings/*',
+      format: { data: 'yaml' },
+      schema: {
+        name: fields.slug({ name: { label: 'Name' } }),
+        tagline: fields.text({ label: 'Tagline' }),
+        description: fields.text({ label: 'Description', multiline: true }),
+        features: fields.array(
+          fields.text({ label: 'Feature' }),
+          {
+            label: 'Features',
+            itemLabel: (props) => props.value || 'Feature',
+          },
+        ),
+        format: fields.text({ label: 'Format' }),
+        idealFor: fields.text({ label: 'Ideal For', multiline: true }),
+        pricingLabel: fields.text({ label: 'Pricing Label' }),
+        pricingDetail: fields.text({ label: 'Pricing Detail' }),
+        pricingNote: fields.text({ label: 'Pricing Note', multiline: true }),
+        ctaText: fields.text({ label: 'CTA Button Text' }),
+        highlighted: fields.checkbox({ label: 'Highlighted', defaultValue: false }),
+        order: fields.integer({ label: 'Display Order', defaultValue: 99 }),
       },
     }),
 
