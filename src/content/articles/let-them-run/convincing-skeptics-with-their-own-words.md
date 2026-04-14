@@ -14,7 +14,7 @@ tags:
   - flow-os
   - persuasion
   - judgment-amplification
-draft: true
+draft: false
 ---
 This week, a client said something that stopped me mid-sentence.
 
