@@ -1,20 +1,28 @@
 ---
-title: "I Used AI to Convince a Skeptic That AI Works. He Didn't Notice."
-excerpt: "A client candidly admitted he couldn't show AI-generated work to his customers. That confession gave me the key to unlock a different skeptic -- one who'd been resisting for weeks. Here's how my AI second brain turned a casual insight into a research-backed argument in under ten minutes."
-authors: ["rhys-fisher"]
-publication: "let-them-run"
+title: I Used AI to Convince a Skeptic That AI Works. He Didn't Notice.
+excerpt: >-
+  A client candidly admitted he couldn't show AI-generated work to his
+  customers. That confession gave me the key to unlock a different skeptic --
+  one who'd been resisting for weeks. Here's how my AI second brain turned a
+  casual insight into a research-backed argument in under ten minutes.
+authors:
+  - rhys-fisher
+publication: let-them-run
 publishedAt: 2026-04-15
-tags: ["ai-adoption", "flow-os", "persuasion", "judgment-amplification"]
+tags:
+  - ai-adoption
+  - flow-os
+  - persuasion
+  - judgment-amplification
 draft: true
 ---
-
-Last week, a client said something that stopped me mid-sentence.
+This week, a client said something that stopped me mid-sentence.
 
 We were in the middle of his first Flow OS session -- walking through the architecture, the integrations, the compound learning loop. He was engaged. Nodding along. Then we hit the part about AI-generated content, and his energy shifted.
 
-"I can't show a client something AI made," he said. Not dismissive. Honest. Like he was confessing something he'd been carrying around for months.
+"*I can't show a client something AI made,*" he said. Not dismissive. Honest. Like he was confessing something he'd been carrying around for months.
 
-I told him: "Your judgment is what makes the system work or be shit."
+I told him, "*Your judgment is what makes the system work or be shit.*"
 
 He paused. Then he got it. The AI doesn't replace his expertise. It removes the mechanical friction so his judgment covers more ground. He signed up the same day.
 
