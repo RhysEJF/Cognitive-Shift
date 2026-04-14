@@ -34,6 +34,8 @@ And I was pretty sure Marcus was making the exact same error my client had just 
 
 This is where it gets interesting. I have a system I built called [Flow OS](https://thecognitiveshift.com/training/). Think of it as an AI second brain. A custom Claude Code harness with persistent memory, integrated tools, and a compound learning loop. Every project I do makes the next one faster. Every conversation gets captured. Every pattern gets extracted.
 
+![](https://assets.thecognitiveshift.com/articles/1776203306341-screenshot-2026-04-14-at-23.48.19.png)
+
 So I asked it to read my entire email history with Marcus.
 
 It pulled 14 emails across two threads spanning three months. Consulting paperwork, venture discussions, product pitches, late-night back-and-forth. And buried in a thread from February, it found the line I'd been looking for.
