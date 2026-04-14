@@ -26,7 +26,7 @@ I told him, "*Your judgment is what makes the system work or be shit.*"
 
 He paused. Then he got it. The AI doesn't replace his expertise. It removes the mechanical friction so his judgment covers more ground. That's the precise moment he gained conviction in taking AI adoption more seriously.
 
-That line kept bouncing around my head. Because I had another contact, let's call him Marcus, who'd been going back and forth with me for weeks about whether AI had any business being in his company. Smart guy. Experienced. Runs a software company. Started using AI for coding already. Makes the claim it can't build his basic CRUD up, while also telling to his co-founder "*We need to be more selective about who we demo the tool to.*"...
+That line kept bouncing around my head. Because I had another contact, let's call him Marcus, who'd been going back and forth with me for weeks about whether AI had any business being in his company. Smart guy. Experienced. Runs a software company. Started using AI for coding already. Makes the claim it can't build his basic CRUD app, while also telling to his co-founder "*We need to be more selective about who we demo the tool to.*"...
 
 And I was pretty sure Marcus was making the exact same error my client had just resolved in ten minutes.
 
