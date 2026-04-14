@@ -60,7 +60,7 @@ And Marcus already knew this. He just hadn't connected the dots between "*AI rev
 
 My client's insight gave me the reframe. But I needed more than a clever email. Marcus is the kind of person who respects evidence. He'd push back on opinion. He wouldn't push back on Harvard.
 
-So I asked Flow OS to do take this one parallel research task while I prepped my [longer running agent harness](https://thecognitiveshift.com/publications/let-them-run/i-built-an-ai-workforce/) for the night shift.
+So I asked Flow OS to take on this parallel research task while I prepped my [longer running agent harness](https://thecognitiveshift.com/publications/let-them-run/i-built-an-ai-workforce/) for the night shift.
 
 Three agents launched simultaneously. One searched for productivity studies from Harvard, BCG, Stanford, and MIT. Another hunted for disruption case studies, the Kodak-Blockbuster-BlackBerry pattern of evaluating new technology with old criteria. The third dug into the psychology of AI resistance. Dunning-Kruger effects, identity threat research, hidden usage statistics.
 
