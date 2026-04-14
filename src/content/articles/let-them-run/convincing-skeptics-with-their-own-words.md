@@ -2,9 +2,9 @@
 title: I Used AI to Convince a Skeptic That AI Works. He Didn't Notice.
 excerpt: >-
   A client candidly admitted he couldn't show AI-generated work to his
-  customers. That confession gave me the key to unlock a different skeptic,
-  one who'd been resisting for weeks. Here's how my AI second brain turned a
-  casual insight into a research-backed argument in under ten minutes.
+  customers. That confession gave me the key to unlock a different skeptic, one
+  who'd been resisting for weeks. Here's how my AI second brain turned a casual
+  insight into a research-backed argument in under ten minutes.
 authors:
   - rhys-fisher
 publication: let-them-run
@@ -24,9 +24,9 @@ We were in the middle of his first Flow OS session, walking through the architec
 
 I told him, "*Your judgment is what makes the system work or be shit.*"
 
-He paused. Then he got it. The AI doesn't replace his expertise. It removes the mechanical friction so his judgment covers more ground. He signed up the same day.
+He paused. Then he got it. The AI doesn't replace his expertise. It removes the mechanical friction so his judgment covers more ground. That's the precise moment he gained conviction in [Flow-OS](https://thecognitiveshift.com/training).
 
-That line kept bouncing around my head. Because I had another contact, let's call him Marcus, who'd been going back and forth with me for weeks about whether AI had any business being in his company beyond code generation. Smart guy. Experienced. Runs a software company. Uses AI for coding already. Thinks it stops there.
+That line kept bouncing around my head. Because I had another contact, let's call him Marcus, who'd been going back and forth with me for weeks about whether AI had any business being in his company. Smart guy. Experienced. Runs a software company. Started using AI for coding already. Makes the claim it can't build his basic CRUD up, while also telling to his co-founder "*We need to be more selective about who we demo the tool to.*"...
 
 And I was pretty sure Marcus was making the exact same error my client had just resolved in ten minutes.
 
@@ -46,7 +46,7 @@ Marcus used AI to review legal contracts. It caught seven issues my human eyes m
 
 ## The frame error
 
-Marcus's objection was consistent and internally logical. He'd say things like "automation works best when there's something of volume worth automating" and "aside from coding, what other business function do I need AI for?"
+Marcus's objection was consistent and internally logical. He'd say things like "*automation works best when there's something of volume worth automating*" and "*aside from coding, what other business function do I need AI for?"*
 
 If you define AI as automation, and you don't have high-volume repetitive tasks, then you logically conclude you don't need it. Makes perfect sense. Except the definition is wrong.
 
@@ -54,7 +54,7 @@ AI isn't automation. Automation follows scripts. It does if-this-then-that. It b
 
 AI reasons. It handles ambiguity. It interprets context. It's not an assembly line. It's an amplifier for your thinking.
 
-And Marcus already knew this. He just hadn't connected the dots between "AI reviewed my contracts" and "AI can review my market research, sales pipeline, and marketing strategy too."
+And Marcus already knew this. He just hadn't connected the dots between "*AI reviewed my contracts*" and "*AI can review my market research, sales pipeline, and marketing strategy too.*"
 
 ## Building the case in ten minutes
 
