@@ -82,7 +82,7 @@ I didn't argue. I didn't pitch. I just placed his behavior next to his belief an
 
 The whole thing landed in his inbox in under ten minutes from the moment I started. Research, slides, email, sent. \
 \
-![](Screenshot%202026-04-14%20at%2023.11.42.png)
+![](https://assets.thecognitiveshift.com/articles/1776202192-screenshot-2026-04-14-at-23.11.42.png)
 
 \*I since solved the triple ''' thing. (*progress not perfection*)
 
@@ -102,7 +102,7 @@ The bottleneck wasn't building the argument. It was deciding the argument was wo
 
 Here's the best part. I told Marcus everything.
 
-![](Screenshot%202026-04-14%20at%2023.15.18.png)
+![](https://assets.thecognitiveshift.com/articles/1776202192-screenshot-2026-04-14-at-23.15.18.png)
 
 Not because AI replaced my thinking. Because it amplified it.
 
