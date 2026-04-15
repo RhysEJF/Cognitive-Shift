@@ -79,7 +79,7 @@ Then I remembered I had swarms [generating books end-to-end overnight](https://t
 
 ## The Overnight Build
 
-I used Flow OS to configure the long-running agent orchestration add-on, with an outcome to build a replacement. It created a plan, broke it into tasks, and deployed an autonomous worker before bed.
+Flow OS has a mode where you define the outcome you want, the system decomposes it into tasks, and autonomous agents work through them unsupervised. I pointed it at the problem and went to bed.
 
 The plan was simple. Fork an open-source Chrome extension called [TranscripTonic](https://github.com/vivek-nexus/transcriptonic) that already knows how to read Google Meet captions. Add a webhook that posts the transcript to a local server. Have that server upload to Google Drive in the exact format my learning pipeline expects.
 
