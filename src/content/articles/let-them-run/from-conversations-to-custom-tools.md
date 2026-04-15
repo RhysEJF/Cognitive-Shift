@@ -51,7 +51,7 @@ That's when I realised what I was sitting on.
 
 ## The Scale Problem (and the Browser That Solved It)
 
-I had a year's worth of conversations in Tactiq. Over 700 transcripts from the past 12 months alone! Every client call, every co-founder sync, every exploratory chat with a stranger who might become important. All sitting in a SaaS tool's archive, doing nothing. Worse than nothing. Because I was paying $240/year for it.
+I had years of conversations in Tactiq. Over 700 transcripts from the past 12 months alone! Every client call, every co-founder sync, every exploratory chat with a stranger who might become important. All sitting in a SaaS tool's archive, doing nothing. Worse than nothing. Because I was paying $240/year for it.
 
 I wanted them all in my system. Tactiq lets you auto-push to places, but wouldn't let me bulk export to drive.
 
