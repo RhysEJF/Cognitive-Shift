@@ -98,7 +98,7 @@ source: meeting-transcriber
 platform: google-meet
 ```
 
-![](https://assets.thecognitiveshift.com/articles/1776288900-image.png)
+![](https://assets.thecognitiveshift.com/articles/1776290379677-screenshot-2026-04-15-at-23.25.43.png)
 
 With the full transcript, speaker names, timestamps. Exactly the format my pipeline consumes.
 
