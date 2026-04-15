@@ -10,7 +10,7 @@ excerpt: >-
 authors:
   - rhys-fisher
 publication: let-them-run
-publishedAt: 2026-04-15
+publishedAt: 2026-04-16
 tags:
   - ai-second-brain
   - flow-os
@@ -23,7 +23,7 @@ I was staring at a $20 invoice from Tactiq, my meeting transcription tool at the
 
 *"What if I ran these transcripts through my custom Claude Code persistent memory* ingestion system*?"*
 
-Not transcribe. Not summarise. A Custom Claude Code setup that learns and get smarter with use. As in extract the relationships, the decisions, the frameworks, the promises people made, the things I said I'd do and forgot about. The stuff that matters six months later when you're building something where the conversation you had would have been a real unlock.
+Not transcribe. Not summarise. A Custom Claude Code setup that learns and gets smarter with use. As in extract the relationships, the decisions, the frameworks, the promises people made, the things I said I'd do and forgot about. The stuff that matters six months later when you're building something where the conversation you had would have been a real unlock.
 
 That question set off a chain reaction that ended with me cancelling the subscription entirely and having [Flow OS](https://thecognitiveshift.com/training) take the night shift, and build my own transcriber. But the transcriber isn't the interesting part. The interesting part is what happened before that.
 
@@ -39,7 +39,7 @@ From one hour-long conversation, the system produced:
 
 **A contact profile** with details I'd forgotten I knew. Mike's current venture priorities, his rate card, his network connections, his tax situation. Not because any of that was the point of the call. It was ambient context that a human brain discards but a persistent system captures.
 
-**A relationship timeline** tracking how our dynamic has evolved. It even captured how our co-founder dynamic had shifted in nuanced, meaningful, and positive way. Fourteen distinct relationship moments, each tagged with whether it was constructive, a milestone, or a signal worth watching.
+**A relationship timeline** tracking how our dynamic has evolved. It even captured how our co-founder dynamic had shifted in a nuanced, meaningful, and positive way. Fourteen distinct relationship moments, each tagged with whether it was constructive, a milestone, or a signal worth watching.
 
 **A conversation summary** with ten structured discussion points. Not bullet points from the transcript. Structured knowledge: "*Skills remain valuable even as models improve"* backed by Mike's specific argument about employee handbooks at McDonald's. "*Everything is a search problem*" with his battleship analogy for entrepreneurship.
 
@@ -53,7 +53,7 @@ That's when I realised what I was sitting on.
 
 ## The Scale Problem (and the Browser That Solved It)
 
-I had a year's worth of conversations in Tactiq. Over 700 hundred transcripts from the past 12 months alone! Every client call, every co-founder sync, every exploratory chat with a stranger who might become important. All sitting in a SaaS tool's archive, doing nothing. Worst than nothing. Because I was paying $240/year for it.
+I had a year's worth of conversations in Tactiq. Over 700 transcripts from the past 12 months alone! Every client call, every co-founder sync, every exploratory chat with a stranger who might become important. All sitting in a SaaS tool's archive, doing nothing. Worse than nothing. Because I was paying $240/year for it.
 
 I wanted them all in my system. Tactiq lets you auto-push to places, but wouldn't let me bulk export to drive.
 
@@ -61,7 +61,7 @@ So I did what any reasonable person would do. I asked my AI to figure it out.
 
 Flow OS has Playwright integrated as a browser automation tool out of the box. Instead of me reverse-engineering Tactiq's UI and writing a scraping script, I went for a bike ride on my [vibe coded gravel bike](https://howlerbikes.com/), and just DM'd my system over telegram, pointed at Tactiq and told it to figure out how to save each transcript to Google Drive.
 
-It logged in, discovered the sequence of buttons to click, and templated the process. Then it spun up 50 Parallel agents that progressively worked through saving every transcript, handling pagination, waiting for uploads, moving to the next one.
+It logged in, discovered the sequence of buttons to click, and templated the process. Then it spun up 50 parallel agents that progressively worked through saving every transcript, handling pagination, waiting for uploads, moving to the next one.
 
 After filtering based on contacts who I've spoken to this year, 133 transcripts saved to Google Drive. From there, I ran the same /learn command that had worked on the single conversation. But this time, at scale.
 
