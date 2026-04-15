@@ -70,7 +70,7 @@ Within five minutes, flow-os had 29 research-backed data points.
 
 BCG found that consultants using AI produced 40% higher quality output. Stanford and Carnegie Mellon showed human-AI teams outperform pure AI by 68.7%. A KPMG study of 48,000 people across 47 countries found 57% of workers already use AI and hide it. In Marcus's own industry, 93% of service organisations have already started implementing AI.
 
-I fed all of this into a single source document, uploaded it to NotebookLM, and generated a [nine-slide deck](https://drive.google.com/file/d/1P1MLiaq7l8cvc7YBYy46l4lptUYiqRDA/view?usp=sharing) with a narrative arc. The pattern, the frame error, the evidence, the psychology, his industry's movement, and the compounding cost of waiting.
+Flow OS fed all of this into a single source document, uploaded it to NotebookLM via its built-in integration, and generated a [nine-slide deck](https://drive.google.com/file/d/1P1MLiaq7l8cvc7YBYy46l4lptUYiqRDA/view?usp=sharing) with a narrative arc. The pattern, the frame error, the evidence, the psychology, his industry's movement, and the compounding cost of waiting.
 
 It did not just cook the slides, it wrote the email, hit send.
 
