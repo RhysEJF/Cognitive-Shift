@@ -33,7 +33,7 @@ I started with a single transcript. A strategy call with my co-founder Mike, rec
 
 I fed it to my AI second brain (a system I've been building called Flow OS, which gives Claude Code persistent memory across sessions) and asked it to extract everything useful.
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1776288900-image.png)
 
 From one hour-long conversation, the system produced:
 
@@ -100,7 +100,7 @@ source: meeting-transcriber
 platform: google-meet
 ```
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1776288900-image.png)
 
 With the full transcript, speaker names, timestamps. Exactly the format my pipeline consumes.
 
@@ -116,7 +116,7 @@ Most people use AI like a calculator. You type a question, you get an answer, yo
 
 The moment your AI can remember what it learned yesterday, the economics change completely. Each conversation becomes compound interest. That strategy call with Mike didn't just produce a transcript. It produced structured knowledge that will inform every future interaction with him, every pitch to a similar client, every decision about where to focus.
 
-![](image.png)
+![](https://assets.thecognitiveshift.com/articles/1776288900-image.png)
 
 And when you stack enough of those conversations together, the system starts seeing patterns you can't. It notices that three different people mentioned the same concern about your positioning. It tracks that you promised four different people you'd follow up on something and haven't. It connects a framework someone mentioned in January to a problem you're trying to solve in April.
 
