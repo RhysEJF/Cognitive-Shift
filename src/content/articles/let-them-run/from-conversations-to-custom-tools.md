@@ -75,7 +75,7 @@ I landed on them being a Chrome extension that joins my Google Meet calls, reads
 
 I'd been paying $20 a month for a MutationObserver. FML.\
 \
-Then I remembered I had swarms [generating books end-to-end overnight](https://thecognitiveshift.com/publications/let-them-run/swarm-intelligence-the-book-86-ai-agents-wrote-while-i-slept/) that were selling! Surely it could build this for me, ready the next day.
+Then I remembered I had swarms [generating books end-to-end overnight](https://thecognitiveshift.com/publications/let-them-run/swarm-intelligence-the-book-86-ai-agents-wrote-while-i-slept/) that were selling! Surely it could have this ready by morning.
 
 ## The Overnight Build
 
