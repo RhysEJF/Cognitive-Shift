@@ -19,7 +19,7 @@ draft: false
 ---
 I was staring at a $20 invoice from Tactiq, my meeting transcription tool at the time, when I made the mistake of asking a question that cost me a few hours.
 
-*"What if I ran these transcripts through my custom Claude Code persistent memory* ingestion system*?"*
+*"What if I ran these transcripts through my custom Claude Code persistent memory ingestion system?"*
 
 Not transcribe. Not summarise. A Custom Claude Code setup that learns and gets smarter with use. As in extract the relationships, the decisions, the frameworks, the promises people made, the things I said I'd do and forgot about. The stuff that matters six months later when you're building something where the conversation you had would have been a real unlock.
 
