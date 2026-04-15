@@ -114,8 +114,6 @@ The AI just made it possible to do in 10 minutes what would otherwise taken a lo
 
 The question isn't whether AI works for him. He already proved it does.
 
-My question to him is how long he'll keep pretending AI is just an "*add on*" in his industry. \
-\
-For some folk, two years of zero sales isn't enough of market punishment to update their priors. Ouch. \
-\
-For everyone else looking to become their augmented self. [I'm here for it](https://x.com/virtual_rf).
+Whether he acts on that is his call.
+
+For everyone else building their augmented self — [I'm here for it](https://x.com/virtual_rf).
