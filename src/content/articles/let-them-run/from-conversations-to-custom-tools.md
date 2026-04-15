@@ -23,7 +23,7 @@ I was staring at a $20 invoice from Tactiq, my meeting transcription tool at the
 
 Not transcribe. Not summarise. A Custom Claude Code setup that learns and gets smarter with use. As in extract the relationships, the decisions, the frameworks, the promises people made, the things I said I'd do and forgot about. The stuff that matters six months later when you're building something where the conversation you had would have been a real unlock.
 
-That question set off a chain reaction that ended with me cancelling the subscription entirely and having [Flow OS](https://thecognitiveshift.com/training) take the night shift, and build my own transcriber. But the transcriber isn't the interesting part. The interesting part is what happened before that.
+That question set off a chain reaction that ended with me cancelling the subscription entirely. [Flow OS](https://thecognitiveshift.com/training) took the night shift and built my own transcriber. But the transcriber isn't the interesting part. The interesting part is what happened before that.
 
 ## One Conversation, Six Outputs
 
