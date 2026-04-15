@@ -1,7 +1,5 @@
 ---
-title: >-
-  I Replaced a $20/Month Subscription by Asking My AI What It Could Learn From
-  My Old Conversations
+title: '133 Forgotten Conversations. 9,529 Lines of Intelligence. Zero Monthly Fees.'
 excerpt: >-
   I asked my AI second brain to extract knowledge from a year of meeting
   transcripts. It mined 133 conversations into 40+ contact profiles and 9,500
