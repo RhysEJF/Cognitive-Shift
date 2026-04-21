@@ -1,3 +1,7 @@
 # Legacy redirects for Cloudflare Pages
 # Old GitHub Pages URLs used query params — the JS redirect in BaseLayout handles those.
 # This file handles any simple path redirects if needed in the future.
+
+# Publication rename: deeper-connection → deep-connection
+/publications/deeper-connection/ /publications/deep-connection/ 301
+/publications/deeper-connection/* /publications/deep-connection/:splat 301

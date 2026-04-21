@@ -8,7 +8,7 @@ excerpt: >-
   code itself. 
 authors:
   - shaun-thresher
-publication: deeper-connection
+publication: deep-connection
 publishedAt: 2026-03-12
 tags:
   - ralph loop

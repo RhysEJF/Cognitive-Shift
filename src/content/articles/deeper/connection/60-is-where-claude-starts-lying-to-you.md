@@ -6,7 +6,7 @@ excerpt: >-
   window — it's a single line in your status bar and a rule: stop at 60%.
 authors:
   - shaun-thresher
-publication: deeper-connection
+publication: deep-connection
 publishedAt: 2026-03-26
 tags: []
 draft: false

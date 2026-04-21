@@ -6,7 +6,7 @@ excerpt: >-
   minutes and turning content decisions into evidence-based lookups.
 authors:
   - Shaun Thresher
-publication: deeper-connection
+publication: deep-connection
 publishedAt: 2026-03-19
 tags:
   - content
