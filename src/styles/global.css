@@ -193,7 +193,7 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 1.15rem;
   font-style: italic;
-  color: var(--cream-muted);
+  color: var(--cream);
   margin-bottom: 0.5rem;
   max-width: 380px;
   margin-left: auto;
@@ -201,7 +201,7 @@ body {
 }
 .bottom-attribution {
   font-size: 0.65rem;
-  color: var(--muted);
+  color: var(--cream-dim);
   letter-spacing: 0.1em;
   margin-bottom: 0;
 }
@@ -285,13 +285,13 @@ body {
   border-top: 1px solid var(--border-cream);
 }
 .cream-band .bottom-epigraph {
-  color: var(--text-secondary);
+  color: var(--text-dark);
 }
 .cream-band .bottom-attribution {
-  color: var(--text-secondary);
+  color: var(--text-body);
 }
 .cream-band .bottom-attribution a {
-  color: var(--text-secondary);
+  color: var(--gold);
 }
 .cream-band .mode-toggle-label {
   color: #a09888;
