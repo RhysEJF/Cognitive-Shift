@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GoldRule from '../../components/GoldRule.astro';
 import NewsletterModal from '../../components/NewsletterModal.astro';
 import SignupToggle from '../../components/SignupToggle.astro';
+import SummarizeButtons from '../../components/SummarizeButtons.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -194,6 +195,11 @@ if (type === 'publication') {
 
           <div class="article-body-wrap">
             <GoldRule />
+
+            <SummarizeButtons
+              title={article.data.title}
+              url={`https://thecognitiveshift.com/publications/${article.data.publication}/${article.slug.includes('/') ? article.slug.split('/').pop() : article.slug}/`}
+            />
 
             <div class="article-top-signup">
               <SignupToggle id="article-top" />
