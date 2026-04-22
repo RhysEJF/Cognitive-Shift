@@ -19,6 +19,43 @@ export default config({
           label: 'Avatar URL',
           description: 'Full URL to author avatar (e.g. https://assets.thecognitiveshift.com/authors/your-name.jpeg)',
         }),
+        socialLinks: fields.object({
+          twitter: fields.text({
+            label: 'X (Twitter)',
+            description: 'Full URL to X/Twitter profile (e.g. https://x.com/username)',
+          }),
+          linkedin: fields.text({
+            label: 'LinkedIn',
+            description: 'Full URL to LinkedIn profile (e.g. https://linkedin.com/in/username)',
+          }),
+          website: fields.text({
+            label: 'Website',
+            description: 'Full URL to personal website (e.g. https://example.com)',
+          }),
+          instagram: fields.text({
+            label: 'Instagram',
+            description: 'Full URL to Instagram profile (e.g. https://instagram.com/username)',
+          }),
+          youtube: fields.text({
+            label: 'YouTube',
+            description: 'Full URL to YouTube channel (e.g. https://youtube.com/@username)',
+          }),
+          github: fields.text({
+            label: 'GitHub',
+            description: 'Full URL to GitHub profile (e.g. https://github.com/username)',
+          }),
+          substack: fields.text({
+            label: 'Substack',
+            description: 'Full URL to Substack newsletter (e.g. https://username.substack.com)',
+          }),
+          medium: fields.text({
+            label: 'Medium',
+            description: 'Full URL to Medium profile (e.g. https://medium.com/@username)',
+          }),
+        }, {
+          label: 'Social Links',
+          description: 'Add your social media and website links. Only fill in the platforms you use.',
+        }),
       },
     }),
 

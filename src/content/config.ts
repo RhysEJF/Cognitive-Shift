@@ -31,6 +31,16 @@ const authors = defineCollection({
     name: z.string(),
     bio: z.string().optional(),
     avatar: z.string().optional(),
+    socialLinks: z.object({
+      twitter: z.string().optional(),
+      linkedin: z.string().optional(),
+      website: z.string().optional(),
+      instagram: z.string().optional(),
+      youtube: z.string().optional(),
+      github: z.string().optional(),
+      substack: z.string().optional(),
+      medium: z.string().optional(),
+    }).optional(),
   }),
 });
 
