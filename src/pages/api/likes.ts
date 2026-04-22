@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('https://thecognitiveshift.pocketbase.io');
+const pb = new PocketBase('https://pocketbase-production-3085.up.railway.app');
 
 // Rate limiting map: IP -> { count, resetTime }
 const rateLimitMap = new Map();
@@ -42,28 +42,32 @@ function getClientIP(request: Request): string {
 export const GET: APIRoute = async ({ request }) => {
   try {
     const url = new URL(request.url);
-    const articleId = url.searchParams.get('articleId');
+    const articleSlug = url.searchParams.get('articleSlug');
 
-    if (!articleId) {
+    if (!articleSlug) {
       return new Response(
-        JSON.stringify({ error: 'Article ID is required' }),
+        JSON.stringify({ error: 'Article slug is required' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    // Try to get existing like count
+    // Count total likes for this article
     try {
-      const record = await pb.collection('article_likes').getFirstListItem(
-        `article_id="${articleId}"`
-      );
+      const records = await pb.collection('article_likes').getFullList({
+        filter: `article_slug="${articleSlug}"`
+      });
+
       return new Response(
-        JSON.stringify({ likes: record.like_count || 0 }),
+        JSON.stringify({
+          likes: records.length,
+          userHasLiked: false // Will be determined by frontend localStorage
+        }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     } catch (error) {
-      // Record doesn't exist, return 0
+      console.error('Error fetching likes:', error);
       return new Response(
-        JSON.stringify({ likes: 0 }),
+        JSON.stringify({ likes: 0, userHasLiked: false }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     }
@@ -79,60 +83,78 @@ export const GET: APIRoute = async ({ request }) => {
 export const POST: APIRoute = async ({ request }) => {
   try {
     const clientIP = getClientIP(request);
-
-    // Check rate limit
-    if (isRateLimited(clientIP)) {
-      return new Response(
-        JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
-        { status: 429, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
+    const userAgent = request.headers.get('user-agent') || 'unknown';
+    const userFingerprint = `${clientIP}-${userAgent}`.substring(0, 100); // Hash for privacy
 
     const body = await request.json();
-    const { articleId } = body;
+    const { articleSlug } = body;
 
-    if (!articleId) {
+    if (!articleSlug) {
       return new Response(
-        JSON.stringify({ error: 'Article ID is required' }),
+        JSON.stringify({ error: 'Article slug is required' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    // Try to get existing record
-    let record;
+    // Check if user already liked this article
     try {
-      record = await pb.collection('article_likes').getFirstListItem(
-        `article_id="${articleId}"`
+      const existingLike = await pb.collection('article_likes').getFirstListItem(
+        `article_slug="${articleSlug}" && user_fingerprint="${userFingerprint}"`
       );
 
-      // Update existing record
-      const updatedRecord = await pb.collection('article_likes').update(record.id, {
-        like_count: (record.like_count || 0) + 1
+      if (existingLike) {
+        return new Response(
+          JSON.stringify({ error: 'Already liked this article' }),
+          { status: 409, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
+    } catch (error) {
+      // No existing like found, continue
+    }
+
+    // Check daily rate limit (10 likes per day)
+    const today = new Date().toISOString().split('T')[0];
+    try {
+      const todayLikes = await pb.collection('article_likes').getFullList({
+        filter: `user_fingerprint="${userFingerprint}" && liked_at>="${today} 00:00:00"`
+      });
+
+      if (todayLikes.length >= 10) {
+        return new Response(
+          JSON.stringify({ error: 'Daily like limit reached (10 per day)' }),
+          { status: 429, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
+    } catch (error) {
+      // Continue if error checking daily limits
+    }
+
+    // Create new like
+    try {
+      await pb.collection('article_likes').create({
+        article_slug: articleSlug,
+        user_fingerprint: userFingerprint,
+        liked_at: new Date().toISOString()
+      });
+
+      // Get updated total count
+      const allLikes = await pb.collection('article_likes').getFullList({
+        filter: `article_slug="${articleSlug}"`
       });
 
       return new Response(
-        JSON.stringify({ likes: updatedRecord.like_count }),
+        JSON.stringify({
+          likes: allLikes.length,
+          success: true
+        }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     } catch (error) {
-      // Record doesn't exist, create new one
-      try {
-        const newRecord = await pb.collection('article_likes').create({
-          article_id: articleId,
-          like_count: 1
-        });
-
-        return new Response(
-          JSON.stringify({ likes: newRecord.like_count }),
-          { status: 200, headers: { 'Content-Type': 'application/json' } }
-        );
-      } catch (createError) {
-        console.error('Error creating like record:', createError);
-        return new Response(
-          JSON.stringify({ error: 'Failed to create like record' }),
-          { status: 500, headers: { 'Content-Type': 'application/json' } }
-        );
-      }
+      console.error('Error creating like:', error);
+      return new Response(
+        JSON.stringify({ error: 'Failed to create like' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
     }
   } catch (error) {
     console.error('Error processing like:', error);

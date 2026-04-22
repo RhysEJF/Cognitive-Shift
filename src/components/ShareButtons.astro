@@ -143,18 +143,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Like button functionality
   const likeButton = document.querySelector('.like-btn');
   if (likeButton) {
-    const articleId = likeButton.getAttribute('data-article-id');
+    const articleSlug = likeButton.getAttribute('data-article-id'); // Using as slug now
     const likeCount = likeButton.querySelector('.like-count');
-    const storageKey = `liked-${articleId}`;
+    const storageKey = `liked-${articleSlug}`;
 
-    // Check if already liked
-    const hasLiked = localStorage.getItem(storageKey) === 'true';
+    // Check if already liked in localStorage
+    let hasLiked = localStorage.getItem(storageKey) === 'true';
     if (hasLiked) {
       likeButton.classList.add('liked');
     }
 
-    // Load current like count
-    loadLikeCount(articleId, likeCount);
+    // Load current like count from real API
+    loadLikeCount(articleSlug, likeCount);
 
     // Handle like click
     likeButton.addEventListener('click', async () => {
@@ -162,32 +162,57 @@ document.addEventListener('DOMContentLoaded', () => {
         return; // Already liked, do nothing
       }
 
-      // Temporary localStorage solution while API is being set up
-      const currentCount = parseInt(likeCount.textContent) || 0;
-      const newCount = currentCount + 1;
+      try {
+        const response = await fetch('/api/likes', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ articleSlug })
+        });
 
-      likeCount.textContent = newCount;
-      likeButton.classList.add('liked');
-      localStorage.setItem(storageKey, 'true');
-      localStorage.setItem(`count-${articleId}`, newCount.toString());
+        const data = await response.json();
 
-      // TODO: Replace with real API when database is set up
-      console.log('Like saved locally - will sync with database when available');
+        if (response.ok && data.success) {
+          // Success - update UI
+          likeCount.textContent = data.likes;
+          likeButton.classList.add('liked');
+          localStorage.setItem(storageKey, 'true');
+          hasLiked = true;
+          console.log('Like saved to database! 🧡');
+        } else if (response.status === 409) {
+          // Already liked - sync localStorage
+          likeButton.classList.add('liked');
+          localStorage.setItem(storageKey, 'true');
+          hasLiked = true;
+          console.log('Already liked this article');
+        } else if (response.status === 429) {
+          // Rate limited
+          alert('Daily like limit reached (10 per day). Try again tomorrow!');
+        } else {
+          console.error('Failed to like:', data.error);
+        }
+      } catch (err) {
+        console.error('Network error:', err);
+      }
     });
   }
 });
 
-async function loadLikeCount(articleId, countElement) {
-  // Load from localStorage while API is being set up
-  const savedCount = localStorage.getItem(`count-${articleId}`);
-  if (savedCount) {
-    countElement.textContent = savedCount;
-  } else {
+async function loadLikeCount(articleSlug, countElement) {
+  try {
+    const response = await fetch(`/api/likes?articleSlug=${articleSlug}`);
+    if (response.ok) {
+      const data = await response.json();
+      countElement.textContent = data.likes;
+      console.log(`Loaded ${data.likes} likes from database`);
+    } else {
+      countElement.textContent = '0';
+    }
+  } catch (err) {
+    console.error('Failed to load like count:', err);
     countElement.textContent = '0';
   }
-
-  // TODO: Replace with real API when database is set up
-  console.log('Loading likes from browser storage - will use database when available');
 }
 </script>
 
