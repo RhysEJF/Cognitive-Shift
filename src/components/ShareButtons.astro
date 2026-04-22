@@ -162,38 +162,32 @@ document.addEventListener('DOMContentLoaded', () => {
         return; // Already liked, do nothing
       }
 
-      try {
-        const response = await fetch('/api/likes', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ articleId })
-        });
+      // Temporary localStorage solution while API is being set up
+      const currentCount = parseInt(likeCount.textContent) || 0;
+      const newCount = currentCount + 1;
 
-        if (response.ok) {
-          const data = await response.json();
-          likeCount.textContent = data.likes;
-          likeButton.classList.add('liked');
-          localStorage.setItem(storageKey, 'true');
-        }
-      } catch (err) {
-        console.error('Failed to like article:', err);
-      }
+      likeCount.textContent = newCount;
+      likeButton.classList.add('liked');
+      localStorage.setItem(storageKey, 'true');
+      localStorage.setItem(`count-${articleId}`, newCount.toString());
+
+      // TODO: Replace with real API when database is set up
+      console.log('Like saved locally - will sync with database when available');
     });
   }
 });
 
 async function loadLikeCount(articleId, countElement) {
-  try {
-    const response = await fetch(`/api/likes?articleId=${articleId}`);
-    if (response.ok) {
-      const data = await response.json();
-      countElement.textContent = data.likes;
-    }
-  } catch (err) {
-    console.error('Failed to load like count:', err);
+  // Load from localStorage while API is being set up
+  const savedCount = localStorage.getItem(`count-${articleId}`);
+  if (savedCount) {
+    countElement.textContent = savedCount;
+  } else {
+    countElement.textContent = '0';
   }
+
+  // TODO: Replace with real API when database is set up
+  console.log('Loading likes from browser storage - will use database when available');
 }
 </script>
 
