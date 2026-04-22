@@ -5,22 +5,8 @@ import PocketBase from 'pocketbase';
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Connect to PocketBase
+// Connect to PocketBase (anonymous access)
 const pb = new PocketBase('https://pocketbase-production-3085.up.railway.app');
-
-// Authenticate with PocketBase as admin
-async function authenticatePocketBase() {
-  try {
-    await pb.admins.authWithPassword(
-      process.env.POCKETBASE_ADMIN_EMAIL,
-      process.env.POCKETBASE_ADMIN_PASSWORD
-    );
-    console.log('✅ PocketBase authenticated successfully');
-  } catch (error) {
-    console.error('❌ PocketBase authentication failed:', error);
-    process.exit(1);
-  }
-}
 
 // Middleware
 app.use(cors({
@@ -147,15 +133,8 @@ app.post('/api/likes', async (req, res) => {
   }
 });
 
-// Start server with authentication
-async function startServer() {
-  await authenticatePocketBase();
-
-  app.listen(port, () => {
-    console.log(`🚀 Cognitive Shift API running on port ${port}`);
-    console.log(`🔗 Connected to PocketBase: https://pocketbase-production-3085.up.railway.app`);
-    console.log(`🔐 PocketBase authenticated and ready`);
-  });
-}
-
-startServer();
+app.listen(port, () => {
+  console.log(`🚀 Cognitive Shift API running on port ${port}`);
+  console.log(`🔗 Connected to PocketBase: https://pocketbase-production-3085.up.railway.app`);
+  console.log(`🔓 Using anonymous access to article_likes collection`);
+});
