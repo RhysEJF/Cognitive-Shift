@@ -1,3 +1,9 @@
-name: "Rhys Fisher"
-bio: "maker of fizzy things"
-avatar: "https://assets.thecognitiveshift.com/authors/rhys-fisher.jpeg"
+name: Rhys Fisher
+bio: maker of fizzy things
+avatar: https://assets.thecognitiveshift.com/authors/rhys-fisher.jpeg
+socialLinks:
+  twitter: https://x.com/virtual_rf
+  linkedin: https://www.linkedin.com/in/rejf/
+  youtube: https://www.youtube.com/@FlyWithRhys
+  github: https://github.com/RhysEJF
+  substack: https://substack.com/@rhysfisher
