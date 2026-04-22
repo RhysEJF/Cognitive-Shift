@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       try {
-        const response = await fetch('/api/likes', {
+        const response = await fetch('https://endearing-trust-production-b257.up.railway.app/api/likes', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadLikeCount(articleSlug, countElement) {
   try {
-    const response = await fetch(`/api/likes?articleSlug=${articleSlug}`);
+    const response = await fetch(`https://endearing-trust-production-b257.up.railway.app/api/likes?articleSlug=${articleSlug}`);
     if (response.ok) {
       const data = await response.json();
       countElement.textContent = data.likes;
