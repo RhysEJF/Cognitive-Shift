@@ -1,0 +1,65 @@
+---
+// Giscus comments component
+// You'll need to set up GitHub Discussions on your repo and get these values from https://giscus.app
+---
+
+<div id="comments" class="comments-section">
+  <h3 class="comments-title">Comments</h3>
+  <div class="comments-container">
+    <!-- Giscus will inject the comment system here -->
+    <script
+      src="https://giscus.app/client.js"
+      data-repo="RhysEJF/Cognitive-Shift"
+      data-repo-id="" <!-- You'll need to add your repo ID from giscus.app -->
+      data-category="General"
+      data-category-id="" <!-- You'll need to add your category ID from giscus.app -->
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+</div>
+
+<style>
+.comments-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-cream);
+}
+
+.comments-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.comments-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Giscus theme customization */
+.giscus-frame {
+  width: 100% !important;
+}
+
+@media (max-width: 600px) {
+  .comments-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .comments-title {
+    font-size: 1.3rem;
+  }
+}
+</style>

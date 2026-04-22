@@ -4,6 +4,8 @@ import GoldRule from '../../components/GoldRule.astro';
 import NewsletterModal from '../../components/NewsletterModal.astro';
 import SignupToggle from '../../components/SignupToggle.astro';
 import SummarizeButtons from '../../components/SummarizeButtons.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import Comments from '../../components/Comments.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -191,15 +193,22 @@ if (type === 'publication') {
               <span class="article-meta-sep">&middot;</span>
               <span class="article-meta-date">{formatDate(article.data.publishedAt)}</span>
             </div>
+
+            <ShareButtons
+              title={article.data.title}
+              url={`https://thecognitiveshift.com/publications/${article.data.publication}/${article.slug.includes('/') ? article.slug.split('/').pop() : article.slug}/`}
+              articleId={article.slug}
+            />
           </header>
 
           <div class="article-body-wrap">
             <GoldRule />
 
-            <SummarizeButtons
+            <!-- Summarize buttons temporarily hidden - user feedback: other platforms not working properly -->
+            <!-- <SummarizeButtons
               title={article.data.title}
               url={`https://thecognitiveshift.com/publications/${article.data.publication}/${article.slug.includes('/') ? article.slug.split('/').pop() : article.slug}/`}
-            />
+            /> -->
 
             <div class="article-top-signup">
               <SignupToggle id="article-top" />
@@ -230,6 +239,8 @@ if (type === 'publication') {
                 </div>
               );
             })}
+
+            <Comments />
           </div>
         </main>
 
