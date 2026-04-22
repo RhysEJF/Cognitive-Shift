@@ -4,11 +4,7 @@ import keystatic from '@keystatic/astro';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  output: 'server',
-  adapter: cloudflare({
-    mode: 'advanced',
-    functionPerRoute: false,
-  }),
+  adapter: cloudflare(),
   site: 'https://thecognitiveshift.com',
   integrations: [react(), keystatic()],
 });
