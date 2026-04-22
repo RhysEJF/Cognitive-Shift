@@ -8,6 +8,20 @@ const port = process.env.PORT || 3000;
 // Connect to PocketBase
 const pb = new PocketBase('https://pocketbase-production-3085.up.railway.app');
 
+// Authenticate with PocketBase as admin
+async function authenticatePocketBase() {
+  try {
+    await pb.admins.authWithPassword(
+      process.env.POCKETBASE_ADMIN_EMAIL,
+      process.env.POCKETBASE_ADMIN_PASSWORD
+    );
+    console.log('✅ PocketBase authenticated successfully');
+  } catch (error) {
+    console.error('❌ PocketBase authentication failed:', error);
+    process.exit(1);
+  }
+}
+
 // Middleware
 app.use(cors({
   origin: ['https://thecognitiveshift.com', 'https://cognitive-shift.pages.dev', 'http://localhost:4321'],
@@ -133,7 +147,15 @@ app.post('/api/likes', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Cognitive Shift API running on port ${port}`);
-  console.log(`🔗 Connected to PocketBase: https://pocketbase-production-3085.up.railway.app`);
-});
+// Start server with authentication
+async function startServer() {
+  await authenticatePocketBase();
+
+  app.listen(port, () => {
+    console.log(`🚀 Cognitive Shift API running on port ${port}`);
+    console.log(`🔗 Connected to PocketBase: https://pocketbase-production-3085.up.railway.app`);
+    console.log(`🔐 PocketBase authenticated and ready`);
+  });
+}
+
+startServer();
