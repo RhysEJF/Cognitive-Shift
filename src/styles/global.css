@@ -187,6 +187,7 @@ body {
 .bottom-cta {
   padding: 4rem 2rem;
   text-align: center;
+  background: var(--panel);
 }
 .bottom-epigraph {
   font-family: 'Playfair Display', serif;
