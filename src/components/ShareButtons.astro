@@ -126,11 +126,12 @@ const whatsappUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
       <span class="like-count">0</span>
     </button>
 
-    <!-- Comments Link -->
+    <!-- Comments Link with Count -->
     <a href="#comments" class="comment-btn" title="Jump to comments">
       <svg class="comment-icon" viewBox="0 0 24 24" fill="currentColor">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
+      <span class="comment-count">0</span>
       <span class="comment-text">Comments</span>
     </a>
   </div>
@@ -139,6 +140,9 @@ const whatsappUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
 <script>
 // Share button functionality
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Comment count functionality - wait for Giscus to load
+  updateCommentCount();
 
   // Like button functionality
   const likeButton = document.querySelector('.like-btn');
@@ -213,6 +217,90 @@ async function loadLikeCount(articleSlug, countElement) {
     console.error('Failed to load like count:', err);
     countElement.textContent = '0';
   }
+}
+
+function updateCommentCount() {
+  const commentCountElement = document.querySelector('.comment-count');
+  if (!commentCountElement) return;
+
+  // Function to extract comment count from Giscus
+  function extractGiscusCount() {
+    // Look for the Giscus iframe
+    const giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (!giscusFrame) return null;
+
+    try {
+      // Try to access the iframe content (this may fail due to CORS)
+      const frameDoc = giscusFrame.contentDocument || giscusFrame.contentWindow.document;
+
+      // Look for comment count indicators in Giscus
+      const commentElements = frameDoc.querySelectorAll('[data-testid="comment-count"], .comment-count, .gsc-comment-count');
+      if (commentElements.length > 0) {
+        const countText = commentElements[0].textContent.trim();
+        const count = parseInt(countText.match(/\d+/)?.[0] || '0');
+        return count;
+      }
+
+      // Alternative: look for discussion header or comment list
+      const discussions = frameDoc.querySelectorAll('.gsc-comment, .discussion, [class*="comment"]');
+      return discussions.length;
+
+    } catch (err) {
+      // CORS restrictions prevent direct access
+      // Use postMessage API if available, or return null
+      console.log('Cannot access Giscus frame due to CORS restrictions');
+      return null;
+    }
+  }
+
+  // Function to check for Giscus and update count
+  function checkForGiscus() {
+    const giscusFrame = document.querySelector('iframe.giscus-frame');
+
+    if (giscusFrame) {
+      // Giscus has loaded, try to get count
+      setTimeout(() => {
+        const count = extractGiscusCount();
+        if (count !== null && count > 0) {
+          commentCountElement.textContent = count.toString();
+          console.log(`Updated comment count to ${count}`);
+        }
+      }, 1000); // Wait a bit for Giscus content to fully load
+    } else {
+      // Giscus hasn't loaded yet, check again
+      setTimeout(checkForGiscus, 500);
+    }
+  }
+
+  // Use Intersection Observer to trigger comment loading when user scrolls near comments
+  const commentsSection = document.querySelector('#comments, .comments-section');
+  if (commentsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Comments section is visible, start checking for Giscus
+          checkForGiscus();
+          observer.disconnect(); // Stop observing once we've triggered
+        }
+      });
+    }, {
+      // Trigger when comments section is 200px from viewport
+      rootMargin: '200px'
+    });
+
+    observer.observe(commentsSection);
+  }
+
+  // Also listen for Giscus postMessage events (if available)
+  window.addEventListener('message', (event) => {
+    if (event.origin === 'https://giscus.app') {
+      // Giscus sends messages, we can try to extract count info
+      if (event.data && typeof event.data === 'object') {
+        // This is a fallback - Giscus may not send count info directly
+        setTimeout(checkForGiscus, 500);
+      }
+    }
+  });
 }
 </script>
 
@@ -365,6 +453,11 @@ async function loadLikeCount(articleSlug, countElement) {
 .comment-icon {
   width: 16px;
   height: 16px;
+}
+
+.comment-count {
+  font-weight: 500;
+  min-width: 1ch;
 }
 
 /* Responsive */
