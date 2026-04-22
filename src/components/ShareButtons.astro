@@ -15,20 +15,23 @@ const encodedUrl = encodeURIComponent(url);
 const twitterUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
 const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
 const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+const substackUrl = `https://substack.com/inbox/post/new?utm_source=share&title=${encodedTitle}&url=${encodedUrl}`;
 ---
 
 <div class="share-engagement">
   <div class="share-buttons">
-    <!-- Copy Link -->
-    <button
-      class="share-btn copy-link"
-      data-url={url}
-      title="Copy link"
+    <!-- Substack -->
+    <a
+      href={substackUrl}
+      target="_blank"
+      rel="noopener"
+      class="share-btn substack"
+      title="Share on Substack"
     >
       <svg class="share-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
       </svg>
-    </button>
+    </a>
 
     <!-- Twitter/X -->
     <a
@@ -94,29 +97,8 @@ const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
 </div>
 
 <script>
-// Copy to clipboard functionality
+// Share button functionality
 document.addEventListener('DOMContentLoaded', () => {
-  const copyButton = document.querySelector('.copy-link');
-  if (copyButton) {
-    copyButton.addEventListener('click', async () => {
-      const url = copyButton.getAttribute('data-url');
-      try {
-        await navigator.clipboard.writeText(url);
-
-        // Temporary feedback
-        const originalTitle = copyButton.title;
-        copyButton.title = 'Copied!';
-        copyButton.classList.add('copied');
-
-        setTimeout(() => {
-          copyButton.title = originalTitle;
-          copyButton.classList.remove('copied');
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy URL:', err);
-      }
-    });
-  }
 
   // Like button functionality
   const likeButton = document.querySelector('.like-btn');
@@ -217,9 +199,10 @@ async function loadLikeCount(articleId, countElement) {
 }
 
 /* Platform-specific hover colors */
-.share-btn.copy-link:hover {
-  background: var(--text-secondary);
-  color: var(--cream-bg);
+.share-btn.substack:hover {
+  background: #FF6719;
+  color: white;
+  border-color: #FF6719;
 }
 
 .share-btn.twitter:hover {
@@ -238,12 +221,6 @@ async function loadLikeCount(articleId, countElement) {
   background: #1877F2;
   color: white;
   border-color: #1877F2;
-}
-
-.copy-link.copied {
-  background: var(--gold);
-  color: var(--bg);
-  border-color: var(--gold);
 }
 
 /* Engagement Actions */
