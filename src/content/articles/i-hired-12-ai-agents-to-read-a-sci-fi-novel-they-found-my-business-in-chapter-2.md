@@ -27,7 +27,7 @@ The row says "*Distributed software agent collective (metacortex), a cloud of so
 
 That's Flow OS.
 
-Or at least one of the things I've been using it for the last months.
+Or at least [one of the things](https://thecognitiveshift.com/publications/let-them-run/compound-swarmcrafting-why-ai-should-write-books-before-you-let-it-rebuild-itself/) I've been using it for the last months.
 
 Except the row doesn't come from my notes, or my pitch deck, or one of my client calls.
 
