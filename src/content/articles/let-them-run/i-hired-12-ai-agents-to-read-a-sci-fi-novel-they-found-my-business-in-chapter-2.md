@@ -39,7 +39,7 @@ And I didn't read the novel. Twelve AI agents did. In seven minutes. While I mad
 
 ## Why I pointed AI at a sci-fi novel
 
-Accelerando is the book that spawned the whole lobster branding meme (e.g. openClaw). Its protagonist, Manfred Macx, uploads lobster neural patterns so the crustaceans can migrate to the asteroid belt as autonomous economic agents. It's the canonical post-scarcity novel. Nine interconnected chapters covering IP law gone feral, reputation economies, the singularity, corporate-grade legal personhood for uplifted animals, and what happens when attention is the only scarce resource left.
+Accelerando is the book that spawned the whole lobster branding meme (e.g. Open Claw). Its protagonist, Manfred Macx, uploads lobster neural patterns so the crustaceans can migrate to the asteroid belt as autonomous economic agents. It's the canonical post-scarcity novel. Nine interconnected chapters covering IP law gone feral, reputation economies, the singularity, corporate-grade legal personhood for uplifted animals, and what happens when attention is the only scarce resource left.
 
 It's 289 pages. It's idea-dense in a way that makes your brain hurt. Stross crams a serious business idea into nearly every paragraph, often as a throwaway aside.
 
@@ -58,7 +58,7 @@ Here's what I actually did.
 1. I wrote ONE prompt template. It said something along the lines of, extract every futuristic technology, product, market, or societal shift. Fill in this 24-column schema...
 1. I mapped the book into 12 chunks. Nine chapters. Three of them were long, so I split those in half. Each chunk ~18-25 pages.
 1. I spawned all 12 agents in a single message. One Agent call per chunk. Each agent got a 10-line brief pointing to the shared template, plus its assigned pages and output file path.
-1. I waited a few minutes. The agents read their chunks in parallel and wrote their findings, 394KB of structured ideas, to a CSV I could import into this [Google Sheet](Accelerando is the book that spawned the whole lobster branding meme (e.g. openClaw). Its protagonist, Manfred Macx, uploads lobster neural patterns so the crustaceans can migrate to the asteroid belt as autonomous economic agents. It's the canonical post-scarcity novel: nine interconnected chapters covering IP law gone feral, reputation economies, the singularity, corporate-grade legal personhood for uplifted animals, and what happens when attention is the only scarce resource left.) and share with you all.
+1. I waited a few minutes. The agents read their chunks in parallel and wrote their findings, 394KB of structured ideas, to a CSV I could import into this [Google Sheet](https://docs.google.com/spreadsheets/d/1TvpR20NXfuOHvWER7WJK6ZqZI88l80hOXZRyoRoo46E/edit?usp=sharing).
 
 Timeline, minutes. [The vibe](https://www.tiktok.com/@jakob.robic5/video/7619788544030166303?).
 
