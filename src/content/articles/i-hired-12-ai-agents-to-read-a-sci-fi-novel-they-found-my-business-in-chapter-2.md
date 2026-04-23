@@ -37,7 +37,7 @@ And I didn't read the novel. Twelve AI agents did. In seven minutes. While I mad
 
 ## Why I pointed AI at a sci-fi novel
 
-Accelerando is the book that spawned the whole lobster branding meme (e.g. openClaw). Its protagonist, Manfred Macx, uploads lobster neural patterns so the crustaceans can migrate to the asteroid belt as autonomous economic agents. It's the canonical post-scarcity novel. Nine interconnected chapters covering IP law gone feral, reputation economies, the singularity, corporate-grade legal personhood for uplifted animals, and what happens when attention is the only scarce resource left.
+Accelerando is the book that spawned the whole lobster branding meme (e.g. OpenClaw). Its protagonist, Manfred Macx, uploads lobster neural patterns so the crustaceans can migrate to the asteroid belt as autonomous economic agents. It's the canonical post-scarcity novel. Nine interconnected chapters covering IP law gone feral, reputation economies, the singularity, corporate-grade legal personhood for uplifted animals, and what happens when attention is the only scarce resource left.
 
 It's 289 pages. It's idea-dense in a way that makes your brain hurt. Stross crams a serious business idea into nearly every paragraph, often as a throwaway aside.
 
