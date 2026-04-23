@@ -129,6 +129,6 @@ Most people think about AI assistance as "faster research" or "better writing." 
 
 Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in minutes. The frameworks caught blindspots that traditional financial planning missed.
 
-![Post-scarcity mental models meme](https://assets.thecognitiveshift.com/articles/post-scarcity-mental-models-meme.png)
+![Post-scarcity mental models meme](https://assets.thecognitiveshift.com/articles/1776936279795-screenshot-2026-04-23-at-11.24.33.png)
 
 And now thanks to the importable repo I linked to above, you can too. Once you import it, type /post-scarcity [your question here]. And if you're a Flow OS customer, DM me and I'll share some perks.  
