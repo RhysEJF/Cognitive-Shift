@@ -127,7 +127,7 @@ Most people think about AI assistance as "faster research" or "better writing." 
 
 Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in under an hour. The frameworks caught blindspots that traditional financial planning missed.
 
-
+![Post-scarcity mental models meme](/post-scarcity-mental-models-meme.png)
 
 And here's the thing. You can do this with any expert domain that's been documented. Military strategy texts. Biotech R&D papers. Regulatory law cases. Customer development interviews. Extract the reasoning patterns, not just the conclusions.
 
