@@ -99,7 +99,7 @@ I pointed this skill at the first five chapters of Accelerando.
 
 Out came models like **Substrate Independence of Cognition** (the principle that work becomes portable across biological, digital, and hybrid substrates), **Agalmic Economy** (value flow through reputation and gifts when marginal cost hits zero), and **Abundance Graduation** (goods exiting markets entirely when they become cheap enough).
 
-Eleven models total. Each one structured with the same format as Mental Models OS, clear triggers for when to apply them, and specific walkthroughs for analysis.
+Eleven models and counting (it's still running as I generate this article). Each one structured with the same format as Mental Models OS, clear triggers for when to apply them, and specific walkthroughs for analysis.
 
 Then I had a thought. What would happen if I tested these post-scarcity models against a real decision and compared them to traditional mental models?
 
