@@ -99,13 +99,13 @@ I pointed this skill at the first five chapters of Accelerando.
 
 Out came models like **Substrate Independence of Cognition** (the principle that work becomes portable across biological, digital, and hybrid substrates), **Agalmic Economy** (value flow through reputation and gifts when marginal cost hits zero), and **Abundance Graduation** (goods exiting markets entirely when they become cheap enough).
 
-Eleven models and counting (it's still running as I generate this article). Each one structured with the same format as Mental Models OS, clear triggers for when to apply them, and specific walkthroughs for analysis.
+[Eleven models and counting](https://github.com/RhysEJF/cognitive-shift-resources/tree/main/post-scarcity-mental-models) (it's still running as I generate this article). Each one structured with the same format as Mental Models OS, clear triggers for when to apply them, and specific walkthroughs for analysis.
 
 Then I had a thought. What would happen if I tested these post-scarcity models against a real decision and compared them to traditional mental models?
 
 ### The Savings Test
 
-I picked a simple personal finance question. "How much of my salary should I save going forward?"
+I picked a simple hypothetical finance question. "How much of my salary should I save going forward?"
 
 I ran the question through both frameworks.
 
@@ -125,9 +125,9 @@ The synthesis was better than either framework alone.
 
 Most people think about AI assistance as "faster research" or "better writing." But what I'm seeing is something different. AI lets you extract reasoning patterns from any domain and apply them to your specific problems.
 
-Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in an afternoon and tested them against my real financial decisions. The frameworks caught blindspots that traditional financial planning missed.
+Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in under an hour. The frameworks caught blindspots that traditional financial planning missed.
 
-That's not just automation. That's cognitive transplantation.
+
 
 And here's the thing. You can do this with any expert domain that's been documented. Military strategy texts. Biotech R&D papers. Regulatory law cases. Customer development interviews. Extract the reasoning patterns, not just the conclusions.
 
