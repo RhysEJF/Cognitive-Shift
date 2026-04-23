@@ -19,7 +19,7 @@ tags:
   - cognitive-transplantation
   - financial-planning
   - agent-swarms
-draft: true
+draft: false
 ---
 It's 9pm. I'm staring at row 21 of a spreadsheet.
 
