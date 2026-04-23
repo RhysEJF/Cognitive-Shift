@@ -35,6 +35,8 @@ It comes from a Charles Stross novel written in 2005.
 
 And I didn't read the novel. Twelve AI agents did. In seven minutes. While I made a hot chocolate. (*full disclosure: I am listening to the audio version*)
 
+![Accelerando book cover](https://assets.thecognitiveshift.com/articles/1776935642382-screenshot-2026-04-23-at-11.13.54.png)
+
 ## Why I pointed AI at a sci-fi novel
 
 Accelerando is the book that spawned the whole lobster branding meme (e.g. openClaw). Its protagonist, Manfred Macx, uploads lobster neural patterns so the crustaceans can migrate to the asteroid belt as autonomous economic agents. It's the canonical post-scarcity novel. Nine interconnected chapters covering IP law gone feral, reputation economies, the singularity, corporate-grade legal personhood for uplifted animals, and what happens when attention is the only scarce resource left.
