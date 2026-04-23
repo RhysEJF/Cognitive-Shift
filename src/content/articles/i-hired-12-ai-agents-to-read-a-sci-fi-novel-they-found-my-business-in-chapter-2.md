@@ -68,7 +68,7 @@ Let me show you one of the ideas the agents pulled out. Just remember that each 
 
 Quote *"Panulirus interruptus uploads. Something tells me you might have heard of it?"*
 
-What Stross describes. Scan the neural connectome of a lobster. Run it as software. Grant it corporate-grade legal personhood. Dispatch the uplifted lobster-minds to the asteroid belt as cheap, expendable workers for hostile environments. Sounds a lot like what we do at [AskRally](https://askrally.com/article/genpop-panel), but with humans. Like something straight out of [Pantheon](https://youtu.be/wTgYeETwgKQ?si=BDG47sW6XWls3xAe).
+What Stross describes. Scan the neural connectome of a lobster. Run it as software. Grant it corporate-grade legal personhood. Dispatch the uplifted lobster-minds to the asteroid belt as cheap, expendable workers for hostile environments. Sounds a lot like what we do at [AskRally](https://askrally.com/article/genpop-panel), but instead of humans, Manfred did it with 🦞😂. Like something straight out of [Pantheon](https://youtu.be/wTgYeETwgKQ?si=BDG47sW6XWls3xAe).
 
 What the agent extracted:
 
