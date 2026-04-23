@@ -125,18 +125,8 @@ The synthesis was better than either framework alone.
 
 Most people think about AI assistance as "faster research" or "better writing." But what I'm seeing is something different. AI lets you extract reasoning patterns from any domain and apply them to your specific problems.
 
-Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in an afternoon and tested them against my real financial decisions. The frameworks caught blindspots that traditional financial planning missed.
+Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in minutes. The frameworks caught blindspots that traditional financial planning missed.
 
 ![Post-scarcity mental models meme](https://assets.thecognitiveshift.com/post-scarcity-mental-models-meme.png)
 
-That's not just automation. That's cognitive transplantation.
-
-And here's the thing. You can do this with any expert domain that's been documented. Military strategy texts. Biotech R&D papers. Regulatory law cases. Customer development interviews. Extract the reasoning patterns, not just the conclusions.
-
-### Take This Home
-
-I've open-sourced the extraction skill and all eleven post-scarcity mental models at [cognitive-shift-resources](https://github.com/RhysEJF/cognitive-shift-resources). You can download the skill and try it on your own source material.
-
-But don't stop with post-scarcity thinking. Pick the smartest person you know in any domain. Find their best documented work. Extract their reasoning patterns. Test them against your own decisions.
-
-The question isn't whether AI can read a book. It's whether you can transplant the author's brain into your own decision-making process.
+And now thanks to the importable repo I linked to above, you can too. Once you import it, type /post-scarcity [your question here]. And if you're a Flow OS customer, DM me and I'll share some perks.  
