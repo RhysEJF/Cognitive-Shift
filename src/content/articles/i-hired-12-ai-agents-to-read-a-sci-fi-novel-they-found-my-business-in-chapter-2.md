@@ -1,7 +1,7 @@
 ---
 title: I Hired 12 AI Agents to Read a Sci-Fi Novel. They Found My Business in Chapter 2.
 excerpt: >-
-  I pointed 12 AI agents at Accelerando, the canonical post-scarcity novel, and they extracted 230 structured business ideas in seven minutes. One of them was my current product. I didn't read the novel - I just made hot chocolate while parallel agents read 289 pages simultaneously.
+  I pointed 12 AI agents at Accelerando and extracted 230 business ideas in seven minutes. But the real goldmine wasn't the ideas - it was the mental models. I extracted Stross's post-scarcity reasoning patterns, tested them against my savings decisions, and compared them to traditional frameworks. The synthesis was better than either alone.
 authors:
   - rhys-fisher
 publication: let-them-run
@@ -12,8 +12,10 @@ tags:
   - claude-code
   - accelerando
   - post-scarcity
-  - idea-extraction
-  - flow-os
+  - mental-models
+  - decision-frameworks
+  - cognitive-transplantation
+  - financial-planning
   - agent-swarms
 draft: true
 ---
@@ -86,88 +88,62 @@ What the agent extracted:
 - Time horizon, far
 - Adjacent ideas, uplifted-rodent micro-task pools, pet-consciousness preservation services, non-human voting blocs
 
-Is any of this a venture I'm going to build next quarter? No. But the adjacent ideas column (pet consciousness preservation, non-human voting blocs (those are a rabbit hole worth an afternoon. And the agent surfaced them unprompted, because I told it to capture three spin-offs per row.
+Is any of this a venture I'm going to build next quarter? No. Already have a stake in this one. But there is an adjacent ideas column capturing three spin-offs per row. And there are hundreds of other rows! Something to review when I'm bored watching my swarm do the busy work.
 
-### Idea #2. The metacortex (Ch2, p30) (aka the thing I'm already building
+## But what if the ideas weren't the real goldmine?
 
-Quote "The metacortex (a distributed cloud of software agents that surrounds him in netspace, borrowing CPU cycles from convenient processors... spawning new agents to research new experiences, and at night, they return to roost and share their knowledge."
+For weeks I'd been using [Mental Models OS](https://github.com/darnoux/mental-models-os), an open-source library of 80+ decision-making frameworks, and absolutely loving it as a way to break down problems through different mindsets. First principles, inversion, systems thinking, probabilistic reasoning. Each model shifts how you see a problem.
 
-Time horizon the agent assigned, mid (5-15 years).
+But staring at those 230 Accelerando ideas, I had a different question. What if the real value wasn't in Stross's specific products, but in how his brain *thinks* about post-scarcity problems?
 
-Stross wrote this in 2004. I'm building it right now.
+Accelerando isn't just packed with ideas. It's jam-packed with abundance mindset reasoning patterns. What if I could extract those patterns as mental models and test them against real decisions?
 
-The agent classified it as "SaaS for agent management; licensing of agent architectures; compute reselling." That's three of the five revenue lines on my Flow OS deck. The adjacent ideas field lists "agent-as-a-service marketplace, agent insurance/reliability guarantees, agent consciousness metrics." Two of those are on my Q3 roadmap.
+So I built a skill to do exactly that.
 
-I didn't read this chapter before I started building Flow OS. I've read Accelerando twice in my life but not since 2018. The fact that my current product is a 20-year-old sci-fi gag is either extremely validating or mildly terrifying, and I haven't decided which.
+### Extracting Mental Models from Fiction
 
-### Idea #3. Patent-jurisdiction-shopping service (Ch1, p8)
+I created an extraction skill that reads text and pulls out genuine reasoning patterns, not just ideas. The skill has strict criteria. A mental model must apply across multiple situations, have a describable mechanism, change how you think about future problems, and have clear triggers for when to use it.
 
-Quote "He's the guy who patented the business practice of moving your e-business somewhere with a slack intellectual property regime."
+I pointed this skill at the first five chapters of Accelerando.
 
-Time horizon, near (0-5 years). Business model, consulting fees + percentage of savings. Regulatory friction, high (obviously).
+Out came models like **Substrate Independence of Cognition** (the principle that work becomes portable across biological, digital, and hybrid substrates), **Agalmic Economy** (value flow through reputation and gifts when marginal cost hits zero), and **Abundance Graduation** (goods exiting markets entirely when they become cheap enough).
 
-This is a post-scarcity IP idea masquerading as a near-term venture, and it's the kind of thing that would never occur to me sitting in a café (but sitting in Stross's head in 2005, it was a throwaway character detail on page 8. The agent caught it, structured it, and filed it under Finance / IP / Governance with a note about tax-exile adjacency.
+Eleven models total. Each one structured with the same format as Mental Models OS, clear triggers for when to apply them, and specific walkthroughs for analysis.
 
-This is the thing I came to this book for. Stross's post-scarcity brain pre-thinks the weird IP contortions I'm about to live through. The agents pulled 17 more finance-and-IP-adjacent ideas just from chapters 1-3.
+Then I had a thought. What would happen if I tested these post-scarcity models against a real decision and compared them to traditional mental models?
 
-## The full sheet
+### The Savings Test
 
-230 ideas. 24 columns each. Five thousand, five hundred, and twenty data points extracted from a single novel in seven minutes.
+I picked a simple personal finance question. "How much of my salary should I save going forward?"
 
-👉 [Link to the Google Sheet (coming]
+I ran the question through both frameworks.
 
-Every row has the verbatim quote. Every row is traceable to a page. Every row has a confidence flag, explicit (Stross literally describes it), inferred (Stross implies it), or speculative (the agent stretched (kept because loose-net beats missing a gem).
+**Traditional Mental Models** (first principles, probabilistic thinking, margin of safety, trade-offs analysis) recommended saving 25% with a phased approach. Build a $20k emergency fund first ($1,200/month), then shift to aggressive growth investments ($1,500/month). Classic defensive-then-offensive strategy.
 
-Top categories by volume. Governance (34 ideas), Space economy (21), Finance (17), Identity (16), AI agents (14), Mind uploading (14). The book is dense.
+**Post-Scarcity Models** recommended 20-25% but with completely different reasoning. Smaller emergency fund (10% to 3-6 months expenses) because cognitive work is increasingly substrate-independent and platform costs are falling. Larger capability investment (15%) because earning potential scales non-linearly with AI amplification.
 
-I can now grep this sheet for "near-term venture with a reputation-economy moat and high regulatory friction" and get a shortlist. Stross already did the creative lift. The agents did the extraction lift. My job is curation (which is the only job I actually want.
+Same total savings rate. Completely different allocation and reasoning.
 
-## Why this changes how I read
+The traditional models assumed historical risk patterns and linear career progression. The post-scarcity models assumed falling platform costs, location independence, and exponential capability gains from AI tools.
 
-Here's the shift that's keeping me up.
+Both frameworks surfaced valid concerns the other missed. Traditional models caught health emergencies and market downturns. Post-scarcity models caught platform lock-in risks and the precedent-setting nature of AI worker financial planning.
 
-AI doesn't just read faster. It reads in parallel.
+The synthesis was better than either framework alone.
 
-A human reader is single-threaded. You open a book at page 1, you close it at page 289, and everything in between is sequential. Your memory of chapter 2 decays by the time you hit chapter 7. Your note-taking is lossy. Your ability to notice that "this idea on page 30 is adjacent to the idea on page 193" degrades with every chapter that passes.
+### Why This Matters
 
-Twelve agents reading twelve chunks don't have that problem. Each one has a full, fresh context window focused on its 20 pages. None of them forget. The synthesis (looking across chapters (happens at CSV-merge time, not inside one exhausted reader's head.
+Most people think about AI assistance as "faster research" or "better writing." But what I'm seeing is something different. AI lets you extract reasoning patterns from any domain and apply them to your specific problems.
 
-And once the book is in a CSV, it stays in a CSV. Next month when I'm planning a new venture, I grep for "governance + near-term + low capital intensity" and Stross's brain is still available to me. The book becomes a queryable idea database. Each book I process compounds into the next project.
+Stross spent years thinking through post-scarcity edge cases. I extracted his mental frameworks in an afternoon and tested them against my real financial decisions. The frameworks caught blindspots that traditional financial planning missed.
 
-This is the second shift. AI doesn't just automate (it accumulates. I've now built one reusable pipeline (the parallel extraction prompt, the merger script, the verification sweep) that works on any long-form text. The next book takes seven minutes. The one after that takes seven minutes. In a year I'll have thirty books of structured ideas, all cross-searchable, all traceable to verbatim quotes with page numbers.
+That's not just automation. That's cognitive transplantation.
 
-I'm not a better reader than I was last week. I have a better reading system.
+And here's the thing. You can do this with any expert domain that's been documented. Military strategy texts. Biotech R&D papers. Regulatory law cases. Customer development interviews. Extract the reasoning patterns, not just the conclusions.
 
-## The capability most people miss
+### Take This Home
 
-Here's the thing. most people don't know about Claude Code (or any agentic AI tool).
+I've open-sourced the extraction skill and all eleven post-scarcity mental models at [cognitive-shift-resources](https://github.com/RhysEJF/cognitive-shift-resources). You can download the skill and try it on your own source material.
 
-You can spawn N sub-agents in a single message and they run in parallel.
+But don't stop with post-scarcity thinking. Pick the smartest person you know in any domain. Find their best documented work. Extract their reasoning patterns. Test them against your own decisions.
 
-Not "ask Claude to do N things sequentially." Not "open N chat tabs." Parallel sub-agent spawning (one orchestrator, N workers, one wall-clock cost instead of N.
-
-Almost nobody uses this. Most people use AI like a single-threaded colleague, one prompt, one response, wait, next prompt. That's like hiring a brilliant consultant and making them do every task one at a time with no team.
-
-The shift isn't "AI is a tool." It's "AI is a workforce you can instance on demand." When you need 12 parallel readers, you spawn 12. When you need 50 synthetic persona interviews, you spawn 50. When you need 200 code-review agents to audit a repo, you spawn 200. The marginal cost of the 12th agent vs the 1st agent is negligible.
-
-If you're still using Claude or ChatGPT as a one-prompt-at-a-time assistant, you are leaving about 90% of the tool on the floor.
-
-## Try this yourself
-
-Pick a reference book you've always meant to read properly but never will. A Stross novel. A 400-page industry report. A decade of your competitor's blog posts downloaded into one PDF.
-
-Write ONE extraction prompt template describing what you want to pull out of it and the schema for each row.
-
-Split the book into 20-page chunks.
-
-Spawn one agent per chunk in a single message. run_in_background, true. Each agent gets the template plus its chunk pages plus its output file path.
-
-Wait the two minutes.
-
-Merge. Verify. Query.
-
-The book you've been meaning to read for five years becomes a structured database tonight.
-
-The question isn't whether AI can read a book.
-
-It's whether your AI can read twelve chapters at once while you make coffee.
+The question isn't whether AI can read a book. It's whether you can transplant the author's brain into your own decision-making process.
