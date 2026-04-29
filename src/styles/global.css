@@ -1742,6 +1742,11 @@ body {
 .testimonial-item {
   text-align: center;
 }
+.testimonial-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 400px;
+}
 .testimonial-avatar {
   width: 80px;
   height: 80px;
