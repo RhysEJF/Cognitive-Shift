@@ -88,7 +88,7 @@ $ grep -ril "buy-in\|stakeholder" memory/ experiences/
 20 files (too broad)
 ```
 
-By the time I'd run seven keyword variations, grep had surfaced two candidates. James F., from a demo I ran in 2025. Y., from a pricing discussion at a UK university. Both fit *some* aspects of the description. Neither was the person I was actually thinking of.
+By the time I'd run seven keyword variations, grep had surfaced two candidates. One from a 2025 demo. One from a UK university pricing discussion. Both fit *some* aspects of the description. Neither was the person I was actually thinking of.
 
 That's grep's ceiling. Two plausible-but-wrong candidates, and the actual answer hidden in a file the keywords never reached.
 
