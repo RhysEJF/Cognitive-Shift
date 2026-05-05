@@ -216,7 +216,7 @@ If you're already running a Second Brain and want the easiest way to upgrade, po
 4. Installs QMD locally and indexes your collection
 5. Updates your `/plan` and `/learn` commands to query through QMD instead of grep
 
-You should be done in under an hour. But if you feel like you want more support or get started with Flow OS, [book a call with me here](https://thecognitiveshift.com/training/) to chat. Here's what some of my customers are saying.
+You should be done in under an hour. Or if you'd rather have a surgeon scrubbed in, or want the full Flow OS setup, [book a call](https://thecognitiveshift.com/training/). Here's what people who've made the switch are saying.
 
 > "I feel like I'm living in the future already." - Tom Parker
 
