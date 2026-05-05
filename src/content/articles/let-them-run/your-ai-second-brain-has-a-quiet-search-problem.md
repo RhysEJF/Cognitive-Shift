@@ -8,7 +8,7 @@ excerpt: >-
 authors:
   - rhys-fisher
 publication: let-them-run
-# publishedAt: 2026-05-05
+publishedAt: 2026-05-05
 tags:
   - ai-memory
   - qmd
@@ -18,7 +18,7 @@ tags:
   - markdown
   - semantic-search
   - hybrid-search
-draft: true
+draft: false
 ---
 If you're reading this, you've probably already purchased an AI Second Brain. Markdown files in a folder system. Claude Code reading them. The core `/plan`, `/work` and `/learn` commands, and a custom crafted CLAUDE.md that gets injected at session start and tells the model where to go to find out more about your world.
 
