@@ -208,7 +208,7 @@ That's what your Second Brain can unlock the moment the search layer stops being
 
 ## How Do I Use QMD?
 
-If you're already running a Second Brain and want the easiest way to upgrade, point Claude at [this template](https://github.com/RhysEJF/cognitive-shift-resources/tree/main/second-brain-transplant-to-qmd) and ask it to run the brain transplant. Your Second Brain keeps its shape. The Flow OS core takes over the thinking. Here's what happens during the procedure.
+If you're already running a Second Brain and want the easiest way to upgrade, point Claude at [this template](https://github.com/RhysEJF/cognitive-shift-resources/tree/main/second-brain-transplant-to-qmd) and ask it to run the brain transplant. Your Second Brain keeps its shape. The Flow OS core takes over the remembering. Here's what happens during the procedure.
 
 1. Audits your existing memory folder for structure
 2. Backs everything up to a fresh git branch (so nothing is lost)
